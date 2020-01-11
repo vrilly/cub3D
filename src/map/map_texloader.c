@@ -5,28 +5,39 @@
 /*                                                     +:+                    */
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/01/10 16:38:31 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/10 17:54:15 by tjans         ########   odam.nl         */
+/*   Created: 2020/01/11 18:03:50 by tjans         #+#    #+#                 */
+/*   Updated: 2020/01/11 18:08:15 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <libft.h>
-#include "map.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   map_texloader.c                                    :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: tjans <tjans@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/01/10 16:38:31 by tjans         #+#    #+#                 */
+/*   Updated: 2020/01/11 18:03:16 by tjans         ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "map_seq.h"
 
-static void	*read_file_content(char *path)
+int	load_texture(const char *ti, t_fdstream *fs, t_texture *dst, void *mlx)
 {
-}
+	char	*line;
+	int		ti_len;
 
-int	load_texture(const char *tex_ident, char *line, void **dst)
-{
-	void	*texture;
-
-	if (ft_strncmp(line, tex_ident, 2))
+	ti_len = ft_strlen(ti);
+	if (fd_readline(fs, &line) != 1)
+		return (0);
+	if (ft_strncmp(line, ti, ti_len))
 		return (0);
 	line = ft_strchr(line, ' ');
 	if (!*line || !*(line + 1))
 		return (0);
 	line++;
+	dst->data = mlx_xpm_file_to_image(mlx, line, &dst->width, &dst->height);
+	return (dst->data != NULL);
 }

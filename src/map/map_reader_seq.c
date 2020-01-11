@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 19:13:58 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/11 17:11:09 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/11 18:09:18 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 #include "cub3d.h"
 #include "map_seq.h"
 
-int	map_reader_seq_resolution(t_fdstream *fs, t_map *map)
+int	map_reader_seq_resolution(t_fdstream *fs, t_map *map, t_game *state)
 {
 	char	*res_line;
 	char	*res_line_next;
 	int		res;
 
+	(void)state;
 	if (fd_readline(fs, &res_line) != 1)
 		return (0);
 	if (*res_line != 'R')
@@ -41,6 +42,15 @@ int	map_reader_seq_resolution(t_fdstream *fs, t_map *map)
 	return (1);
 }
 
-int	map_reader_seq_textures(t_fdstream *fs, t_map *map)
+int	map_reader_seq_textures(t_fdstream *fs, t_map *map, t_game *state)
 {
+	int	success;
+
+	success = 0;
+	success += load_texture("NO", fs, &map->texture_north, state->mlx_ptr);
+	success += load_texture("SO", fs, &map->texture_south, state->mlx_ptr);
+	success += load_texture("WE", fs, &map->texture_west, state->mlx_ptr);
+	success += load_texture("EA", fs, &map->texture_east, state->mlx_ptr);
+	success += load_texture("S", fs, &map->texture_sprite, state->mlx_ptr);
+	return (success == 5);
 }
