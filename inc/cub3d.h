@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 16:55:04 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/11 17:11:49 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/11 17:20:18 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <fcntl.h>
 # include <mlx.h>
 # include <libft.h>
+# include "texture.h"
 
 enum			e_map_tile_type {
 	TILE_EMPTY = 0,
@@ -28,11 +29,11 @@ typedef struct	s_map
 {
 	char					map_name[32];
 
-	void					*texture_north;
-	void					*texture_south;
-	void					*texture_west;
-	void					*texture_east;
-	void					*texture_sprite;
+	t_texture				texture_north;
+	t_texture				texture_south;
+	t_texture				texture_west;
+	t_texture				texture_east;
+	t_texture				texture_sprite;
 
 	enum e_map_tile_type	*mapdata;
 
