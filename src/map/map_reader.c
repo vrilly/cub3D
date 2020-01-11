@@ -6,11 +6,10 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 17:33:47 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/11 17:23:21 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/11 18:32:17 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
 #include "map_seq.h"
 
 static int	(*g_read_seq[2])(t_fdstream *, t_map *, t_game *) =
