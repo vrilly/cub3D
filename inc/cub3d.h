@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 16:55:04 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/11 17:20:18 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/11 18:39:44 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ typedef struct	s_map
 
 	enum e_map_tile_type	*mapdata;
 
-	int						color_floor;
-	int						color_ceiling;
+	unsigned int			color_floor;
+	unsigned int			color_ceiling;
 
 	int						x_res;
 	int						y_res;

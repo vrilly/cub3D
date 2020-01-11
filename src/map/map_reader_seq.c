@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 19:13:58 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/11 18:32:17 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/11 20:35:21 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,20 @@ int	map_reader_seq_textures(t_fdstream *fs, t_map *map, t_game *state)
 {
 	int	success;
 
-	success = 0;
-	success += load_texture("NO", fs, &map->texture_north, state->mlx_ptr);
+	success = load_texture("NO", fs, &map->texture_north, state->mlx_ptr);
 	success += load_texture("SO", fs, &map->texture_south, state->mlx_ptr);
 	success += load_texture("WE", fs, &map->texture_west, state->mlx_ptr);
 	success += load_texture("EA", fs, &map->texture_east, state->mlx_ptr);
 	success += load_texture("S", fs, &map->texture_sprite, state->mlx_ptr);
 	return (success == 5);
+}
+
+int	map_reader_seq_colors(t_fdstream *fs, t_map *map, t_game *state)
+{
+	int success;
+
+	(void)state;
+	success = get_color_val('F', fs, &map->color_floor);
+	success += get_color_val('C', fs, &map->color_ceiling);
+	return (success == 2);
 }

@@ -6,7 +6,7 @@
 #    By: tjans <tjans@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/09 16:21:06 by tjans         #+#    #+#                  #
-#    Updated: 2020/01/11 17:24:09 by tjans         ########   odam.nl          #
+#    Updated: 2020/01/11 19:52:16 by tjans         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ LDFLAGS	:= -L $(LIBFT)/out -L $(LIBMLX) -lft -lmlx -lm \
 			-framework OpenGL -framework AppKit
 
 S_CUB3D	= cub3d.c
-S_MAP	= map_reader.c map_reader_seq.c map_texloader.c
+S_MAP	= map_reader.c map_reader_seq.c map_texloader.c map_color.c
 
 SRCS	:= $(S_CUB3D) $(S_MAP)
 HDRS	:= cub3d.h texture.h map_seq.h
