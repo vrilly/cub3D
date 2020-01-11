@@ -6,7 +6,7 @@
 #    By: tjans <tjans@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/09 16:21:06 by tjans         #+#    #+#                  #
-#    Updated: 2020/01/11 17:10:58 by tjans         ########   odam.nl          #
+#    Updated: 2020/01/11 17:13:58 by tjans         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,9 +39,12 @@ $(OBJ_DIR)/%.o : %.c $(addprefix $(INC_DIR)/, $(HDRS)) | dirs
 all: $(NAME)
 
 $(LIBFT_LIB) : $(LIBFT)
-	@DEBUG=1 $(MAKE) -C $(LIBFT)
+	@DEBUG=1 $(MAKE) -C $<
 
-$(NAME): $(addprefix $(OBJ_DIR)/, $(OBJS)) | $(LIBFT_LIB)
+$(LIBMLX_LIB) : $(LIBMLX)
+	$(MAKE) -C $<
+
+$(NAME): $(addprefix $(OBJ_DIR)/, $(OBJS)) | $(LIBFT_LIB) $(LIBMLX_LIB)
 	@echo Linking $(NAME)
 	@$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 	@echo ---DONE---
@@ -52,6 +55,7 @@ clean:
 
 fclean: clean
 	@$(MAKE) -C $(LIBFT) fclean
+	@$(MAKE) -C $(LIBMLX) clean
 	@$(RM) $(NAME)
 
 re: fclean all
