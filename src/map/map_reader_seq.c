@@ -6,12 +6,10 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 19:13:58 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/11 18:09:18 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/11 18:28:42 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-#include <stdlib.h>
 #include "cub3d.h"
 #include "map_seq.h"
 
