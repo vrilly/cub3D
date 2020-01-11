@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 17:33:47 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/11 19:54:55 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/11 21:19:23 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static int	(*g_read_seq[3])(t_fdstream *, t_map *, t_game *) =
 {
-	map_reader_seq_resolution,
-	map_reader_seq_textures,
-	map_reader_seq_colors
+	&map_reader_seq_resolution,
+	&map_reader_seq_textures,
+	&map_reader_seq_colors
 };
 
 t_map		*read_map_from_file(char *path, t_game *state)
