@@ -6,7 +6,7 @@
 #    By: tjans <tjans@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/09 16:21:06 by tjans         #+#    #+#                  #
-#    Updated: 2020/01/11 17:13:58 by tjans         ########   odam.nl          #
+#    Updated: 2020/01/11 17:16:53 by tjans         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ NAME	= cub3D
 VPATH	:= $(SRC_DIR)
 
 CFLAGS	:= -g -Wall -Wextra -I $(INC_DIR) -I $(LIBFT)/inc -I $(LIBMLX)
-LDFLAGS	:= -L $(LIBFT)/out -L $(LIBMLX) -lft -lmlx -lm
+LDFLAGS	:= -L $(LIBFT)/out -L $(LIBMLX) -lft -lmlx -lm \
+			-framework OpenGL -framework AppKit
 
 S_CUB3D	= cub3d.c
 S_MAP	= map_reader.c map_reader_seq.c
