@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 16:37:53 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/11 17:01:32 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/11 17:07:32 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(void)
 	state.mlx_ptr = mlx_init();
 	if (!state.mlx_ptr)
 		return (0);
-	state.current_map = read_map_from_file("map.cub", state.mlx_ptr);
+	state.current_map = read_map_from_file("map.cub", &state);
 	if (!state.current_map)
 		return -1;
 	ft_putendl_fd("cub3D", 1);

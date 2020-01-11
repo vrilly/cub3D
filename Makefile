@@ -6,7 +6,7 @@
 #    By: tjans <tjans@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/09 16:21:06 by tjans         #+#    #+#                  #
-#    Updated: 2020/01/11 16:59:18 by tjans         ########   odam.nl          #
+#    Updated: 2020/01/11 17:10:58 by tjans         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ S_CUB3D	= cub3d.c
 S_MAP	= map_reader.c map_reader_seq.c
 
 SRCS	:= $(S_CUB3D) $(S_MAP)
-HDRS	:= map.h cub3d.h
+HDRS	:= cub3d.h
 OBJS	:= $(SRCS:.c=.o)
 
 $(OBJ_DIR)/%.o : %.c $(addprefix $(INC_DIR)/, $(HDRS)) | dirs

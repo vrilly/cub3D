@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 17:33:47 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/11 17:01:07 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/11 17:07:52 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	(*g_read_seq[2])(t_fdstream *, t_map *) =
 	map_reader_seq_textures
 };
 
-t_map		*read_map_from_file(char *path, void *mlx_ptr)
+t_map		*read_map_from_file(char *path, t_game *state)
 {
 	t_map		*map;
 	t_fdstream	*fs;
