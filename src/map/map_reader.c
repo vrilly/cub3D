@@ -6,13 +6,43 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 17:33:47 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/09 17:34:34 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/11 17:01:07 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-#include "map.h"
+#include "cub3d.h"
+#include "map_seq.h"
 
-t_map	*read_map_from_file(char *path)
+static int	(*g_read_seq[2])(t_fdstream *, t_map *) =
 {
+	map_reader_seq_resolution,
+	map_reader_seq_textures
+};
+
+t_map		*read_map_from_file(char *path, void *mlx_ptr)
+{
+	t_map		*map;
+	t_fdstream	*fs;
+	int			i;
+
+	i = 0;
+	fs = fd_open(path, O_RDONLY);
+	if (!fs)
+		return (NULL);
+	map = ft_calloc(1, sizeof(t_map));
+	if (!map)
+		return (NULL);
+	while (i < 2)
+	{
+		if (!g_read_seq[i](fs, map))
+		{
+			free(map);
+			return (NULL);
+		}
+		i++;
+	}
+	fd_close(fs);
+	free(fs);
+	ft_strlcpy(map->map_name, path, 32);
+	return (map);
 }

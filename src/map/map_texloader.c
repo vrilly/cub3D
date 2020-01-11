@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   cub3d.c                                            :+:    :+:            */
+/*   map_texloader.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/01/09 16:37:53 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/11 17:01:32 by tjans         ########   odam.nl         */
+/*   Created: 2020/01/10 16:38:31 by tjans         #+#    #+#                 */
+/*   Updated: 2020/01/10 17:54:15 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include <stdlib.h>
+#include <libft.h>
+#include "map.h"
+#include "map_seq.h"
 
-int main(void)
+static void	*read_file_content(char *path)
 {
-	t_game	state;
+}
 
-	state.mlx_ptr = mlx_init();
-	if (!state.mlx_ptr)
+int	load_texture(const char *tex_ident, char *line, void **dst)
+{
+	void	*texture;
+
+	if (ft_strncmp(line, tex_ident, 2))
 		return (0);
-	state.current_map = read_map_from_file("map.cub", state.mlx_ptr);
-	if (!state.current_map)
-		return -1;
-	ft_putendl_fd("cub3D", 1);
-	ft_putnbr_fd(state.current_map->x_res, 1);
-	ft_putendl_fd(NULL, 1);
-	ft_putnbr_fd(state.current_map->y_res, 1);
-	ft_putendl_fd(NULL, 1);
-	free(state.current_map);
-	while (1) {}
-	return 0;
+	line = ft_strchr(line, ' ');
+	if (!*line || !*(line + 1))
+		return (0);
+	line++;
 }

@@ -6,27 +6,30 @@
 #    By: tjans <tjans@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/09 16:21:06 by tjans         #+#    #+#                  #
-#    Updated: 2020/01/09 16:36:10 by tjans         ########   odam.nl          #
+#    Updated: 2020/01/11 16:59:18 by tjans         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-SRC_DIR	= src
+SRC_DIR	= src src/map
 INC_DIR	= inc
 OBJ_DIR = obj
 
 LIBFT		= libft
 LIBFT_LIB	:= $(LIBFT)/out/libft.a
+LIBMLX		= libmlx
+LIBMLX_LIB	:= $(LIBMLX)/libmlx.dylib
 
 NAME	= cub3D
 VPATH	:= $(SRC_DIR)
 
-CFLAGS	:= -Wall -Wextra -I $(INC_DIR) -I $(LIBFT)/inc
-LDFLAGS	:= -L $(LIBFT)/out -lft -lm
+CFLAGS	:= -g -Wall -Wextra -I $(INC_DIR) -I $(LIBFT)/inc -I $(LIBMLX)
+LDFLAGS	:= -L $(LIBFT)/out -L $(LIBMLX) -lft -lmlx -lm
 
 S_CUB3D	= cub3d.c
+S_MAP	= map_reader.c map_reader_seq.c
 
-SRCS	:= $(S_CUB3D)
-HDRS	:=
+SRCS	:= $(S_CUB3D) $(S_MAP)
+HDRS	:= map.h cub3d.h
 OBJS	:= $(SRCS:.c=.o)
 
 $(OBJ_DIR)/%.o : %.c $(addprefix $(INC_DIR)/, $(HDRS)) | dirs
@@ -36,7 +39,7 @@ $(OBJ_DIR)/%.o : %.c $(addprefix $(INC_DIR)/, $(HDRS)) | dirs
 all: $(NAME)
 
 $(LIBFT_LIB) : $(LIBFT)
-	@$(MAKE) -C $(LIBFT)
+	@DEBUG=1 $(MAKE) -C $(LIBFT)
 
 $(NAME): $(addprefix $(OBJ_DIR)/, $(OBJS)) | $(LIBFT_LIB)
 	@echo Linking $(NAME)

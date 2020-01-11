@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 17:21:08 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/09 17:36:05 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/11 17:00:38 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,11 @@ typedef struct	s_map
 
 	int						color_floor;
 	int						color_ceiling;
+
+	int						x_res;
+	int						y_res;
 }				t_map;
 
-t_map			*read_map_from_file(char *path);
+t_map			*read_map_from_file(char *path, void *mlx_ptr);
 
 #endif
