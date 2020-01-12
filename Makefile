@@ -23,8 +23,14 @@ NAME	= cub3D
 VPATH	:= $(SRC_DIR)
 
 CFLAGS	:= -g -Wall -Wextra -I $(INC_DIR) -I $(LIBFT)/inc -I $(LIBMLX)
-LDFLAGS	:= -L $(LIBFT)/out -L $(LIBMLX) -lft -lmlx -lm \
-			-framework OpenGL -framework AppKit
+
+UNAME_S	:= $(shell uname -s)
+ifeq ($(UNAME_S), Darwin)
+	LDFLAGS	:= -L $(LIBFT)/out -L $(LIBMLX) -lft -lmlx -lm \
+				-framework OpenGL -framework AppKit
+else
+	LDFLAGS	:= -L $(LIBFT)/out -L $(LIBMLX) -lft -lmlx -lm
+endif
 
 S_CUB3D	= cub3d.c
 S_MAP	= map_reader.c map_reader_seq.c map_texloader.c map_color.c
@@ -47,7 +53,7 @@ $(LIBMLX_LIB) : $(LIBMLX)
 
 $(NAME): $(addprefix $(OBJ_DIR)/, $(OBJS)) | $(LIBFT_LIB) $(LIBMLX_LIB)
 	@echo Linking $(NAME)
-	@$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+	@$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 	@echo ---DONE---
 
 clean:
