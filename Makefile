@@ -29,7 +29,8 @@ ifeq ($(UNAME_S), Darwin)
 	LDFLAGS	:= -L $(LIBFT)/out -L $(LIBMLX) -lft -lmlx -lm \
 				-framework OpenGL -framework AppKit
 else
-	LDFLAGS	:= -L $(LIBFT)/out -L $(LIBMLX) -lft -lmlx -lm
+	LDFLAGS	:= -L $(LIBFT)/out -L $(LIBMLX) -lft -lmlx -lm \
+				-lXext -lX11 -lbsd
 endif
 
 S_CUB3D	= cub3d.c
