@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 13:37:55 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/13 17:40:50 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/13 20:13:14 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,11 @@ int			map_reader_seq_mapdata(t_fdstream *fs, t_map *map, t_game *state)
 		if (!parse_line(line, map->mapdata + (curr_line * map->map_width),
 					curr_line, state))
 			return (0);
+		free(line);
 		ret = fd_readline(fs, &line);
 		curr_line++;
 	}
+	free(line);
 	map->map_height = curr_line;
 	return (1);
 }

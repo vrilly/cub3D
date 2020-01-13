@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 18:31:43 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/13 16:04:06 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/13 20:12:08 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,6 @@ int					get_color_val(const char ti,
 	if (!atoi_rgbval(rgbval, line_i))
 		return (0);
 	*dst = parse_rgbval(rgbval);
+	free(line);
 	return (1);
 }
