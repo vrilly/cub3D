@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 13:37:55 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/13 20:13:14 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/13 20:52:55 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,9 @@ static int	parse_line(char *line, enum e_map_tile_type *mapdata,
 	{
 		while (line[i] == ' ' && line[i + 1] != '\0')
 			i++;
-		line_c = line[i] - '0';
-		if (line_c < 0 || line_c > 2 || is_pdir(line_c))
+		if (ft_isdigit(line[i]))
+			line_c = line[i] - '0';
+		if ((line_c < 0 || line_c > 2) && !is_pdir(line_c))
 			return (0);
 		if (is_pdir(line_c))
 			set_spawn(line_c, cl, i, state);
