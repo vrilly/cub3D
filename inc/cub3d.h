@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 16:55:04 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/11 21:24:02 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/13 16:00:36 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@
 enum			e_map_tile_type {
 	TILE_EMPTY = 0,
 	TILE_WALL = 1,
-	TILE_ITEM = 2,
-	TILE_PLAYER = 3
+	TILE_ITEM = 2
 };
 
 typedef struct	s_map
@@ -39,6 +38,7 @@ typedef struct	s_map
 	unsigned int			map_width;
 	unsigned int			map_height;
 
+
 	unsigned int			color_floor;
 	unsigned int			color_ceiling;
 
@@ -51,6 +51,9 @@ typedef struct	s_game
 	t_map	*current_map;
 
 	void	*mlx_ptr;
+
+	float	camera_x;
+	float	camera_y;
 }				t_game;
 
 t_map			*read_map_from_file(char *path, t_game *state);
