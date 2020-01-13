@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 20:17:28 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/13 20:19:54 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/13 20:28:16 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,30 @@ void	calc_step(t_game *state)
 		state->rcp.step_y = 1;
 		state->rcp.s_dist_y =
 			(state->vec.map_y + 1 - state->vec.pos_y) * state->rcp.d_dist_y;
+	}
+}
+
+void	calc_dda(t_game *state)
+{
+	int	mapdata_l_offset;
+
+	while (state->rcp.hit == 0)
+	{
+		if (state->rcp.s_dist_x < state->rcp.s_dist_y)
+		{
+			state->rcp.s_dist_x += state->rcp.d_dist_x;
+			state->vec.map_x += state->rcp.step_x;
+			state->rcp.side = 0;
+		}
+		else
+		{
+			state->rcp.s_dist_y += state->rcp.d_dist_y;
+			state->vec.map_y += state->rcp.step_y;
+			state->rcp.side = 1;
+		}
+		mapdata_l_offset = state->vec.map_y * state->current_map->map_width;
+		if (state->current_map->mapdata
+				[mapdata_l_offset + state->vec.map_x] > 0)
+			state->rcp.hit = 1;
 	}
 }
