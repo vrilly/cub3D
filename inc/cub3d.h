@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 16:55:04 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/13 16:00:36 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/13 17:50:21 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ typedef struct	s_map
 	unsigned int			map_width;
 	unsigned int			map_height;
 
-
 	unsigned int			color_floor;
 	unsigned int			color_ceiling;
 
@@ -46,16 +45,30 @@ typedef struct	s_map
 	int						y_res;
 }				t_map;
 
+typedef struct	s_vectors
+{
+	double	pos_x;
+	double	pos_y;
+
+	double	dir_x;
+	double	dir_y;
+
+	double	plane_x;
+	double	plane_y;
+}				t_vectors;
+
 typedef struct	s_game
 {
-	t_map	*current_map;
+	t_map		*current_map;
 
-	void	*mlx_ptr;
+	void		*mlx_ptr;
+	void		*window;
 
-	float	camera_x;
-	float	camera_y;
+	t_vectors	vec;
 }				t_game;
 
 t_map			*read_map_from_file(char *path, t_game *state);
+int				create_renderer_window(t_game *state);
+int				destroy_renderer_window(t_game *state);
 
 #endif
