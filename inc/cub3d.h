@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 16:55:04 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/13 17:50:21 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/13 19:51:08 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 # include <fcntl.h>
 # include <mlx.h>
 # include <libft.h>
+# include <math.h>
 # include "texture.h"
+# include "gfx.h"
 
 enum			e_map_tile_type {
 	TILE_EMPTY = 0,
@@ -55,6 +57,9 @@ typedef struct	s_vectors
 
 	double	plane_x;
 	double	plane_y;
+
+	int		map_x;
+	int		map_y;
 }				t_vectors;
 
 typedef struct	s_game
@@ -65,10 +70,12 @@ typedef struct	s_game
 	void		*window;
 
 	t_vectors	vec;
+	t_rc_params	rcp;
 }				t_game;
 
 t_map			*read_map_from_file(char *path, t_game *state);
 int				create_renderer_window(t_game *state);
 int				destroy_renderer_window(t_game *state);
+int				render_frame(t_game *state);
 
 #endif
