@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 16:55:04 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/13 20:28:56 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/13 20:40:01 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef struct	s_game
 
 	t_vectors	vec;
 	t_rc_params	rcp;
+	t_draw_p	vis;
 }				t_game;
 
 t_map			*read_map_from_file(char *path, t_game *state);
@@ -81,5 +82,6 @@ int				render_frame(t_game *state);
 void			precalc(t_game *state, int x);
 void			calc_step(t_game *state);
 void			calc_dda(t_game *state);
+void			prerendercalc(t_game *state);
 
 #endif

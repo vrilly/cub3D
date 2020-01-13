@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 20:17:28 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/13 20:28:16 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/13 20:44:54 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	precalc(t_game *state, int x)
 {
+	ft_bzero(&state->rcp, sizeof(t_rc_params));
 	state->rcp.camera_x = 2 * x / state->current_map->x_res - 1;
 	state->rcp.rc_dir_x = state->vec.dir_x +
 		state->vec.plane_x * state->rcp.camera_x;
@@ -76,4 +77,26 @@ void	calc_dda(t_game *state)
 				[mapdata_l_offset + state->vec.map_x] > 0)
 			state->rcp.hit = 1;
 	}
+}
+
+void	prerendercalc(t_game *state)
+{
+	if (state->rcp.side == 0)
+		state->rcp.walldist =
+			(state->vec.map_x - state->vec.pos_x +
+			(1 - state->rcp.step_x) / 2) / state->rcp.rc_dir_x;
+	else
+		state->rcp.walldist =
+			(state->vec.map_y - state->vec.pos_y +
+			(1 - state->rcp.step_y) / 2) / state->rcp.rc_dir_y;
+	state->vis.line_height =
+		(int)(state->current_map->y_res / state->rcp.walldist);
+	state->vis.line_start = -state->vis.line_height / 2 +
+		state->current_map->y_res / 2;
+	if (state->vis.line_start < 0)
+		state->vis.line_start = 0;
+	state->vis.line_end = state->vis.line_height / 2 +
+		state->current_map->y_res / 2;
+	if (state->vis.line_end >= state->current_map->y_res)
+		state->vis.line_end = state->current_map->y_res - 1;
 }
