@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 16:55:04 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/11 18:39:44 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/11 21:24:02 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct	s_map
 	t_texture				texture_sprite;
 
 	enum e_map_tile_type	*mapdata;
+	unsigned int			map_width;
+	unsigned int			map_height;
 
 	unsigned int			color_floor;
 	unsigned int			color_ceiling;
