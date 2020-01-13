@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 16:55:04 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/13 19:51:08 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/13 20:20:21 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,8 @@ t_map			*read_map_from_file(char *path, t_game *state);
 int				create_renderer_window(t_game *state);
 int				destroy_renderer_window(t_game *state);
 int				render_frame(t_game *state);
+
+void			precalc(t_game *state, int x);
+void			calc_step(t_game *state);
 
 #endif

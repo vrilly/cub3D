@@ -6,7 +6,7 @@
 #    By: tjans <tjans@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/09 16:21:06 by tjans         #+#    #+#                  #
-#    Updated: 2020/01/13 18:11:21 by tjans         ########   odam.nl          #
+#    Updated: 2020/01/13 20:17:55 by tjans         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ endif
 S_CUB3D	= cub3d.c
 S_MAP	= map_reader.c map_reader_seq.c map_texloader.c map_color.c \
 		  map_parser.c
-S_GFX	= window.c renderer.c
+S_GFX	= window.c renderer.c render_calc.c
 
 SRCS	:= $(S_CUB3D) $(S_MAP) $(S_GFX)
 HDRS	:= cub3d.h texture.h map_seq.h gfx.h
