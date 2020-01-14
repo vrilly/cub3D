@@ -14,14 +14,13 @@
 
 void	precalc(t_game *state, int x)
 {
-	ft_bzero(&state->rcp, sizeof(t_rc_params));
 	state->rcp.camera_x = 2 * x / state->current_map->x_res - 1;
 	state->rcp.rc_dir_x = state->vec.dir_x +
 		state->vec.plane_x * state->rcp.camera_x;
 	state->rcp.rc_dir_y = state->vec.dir_y +
 		state->vec.plane_y * state->rcp.camera_x;
-	state->vec.map_x = (int)state->vec.pos_x;
-	state->vec.map_y = (int)state->vec.pos_y;
+	state->vec.map_x = state->vec.pos_x;
+	state->vec.map_y = state->vec.pos_y;
 	state->rcp.d_dist_x = fabs(1 / state->rcp.rc_dir_x);
 	state->rcp.d_dist_y = fabs(1 / state->rcp.rc_dir_y);
 }
