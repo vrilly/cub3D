@@ -6,10 +6,11 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 16:37:53 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/11 17:07:32 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/13 19:50:46 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "cub3d.h"
 
 int main(void)
@@ -22,12 +23,18 @@ int main(void)
 	state.current_map = read_map_from_file("map.cub", &state);
 	if (!state.current_map)
 		return -1;
-	ft_putendl_fd("cub3D", 1);
-	ft_putnbr_fd(state.current_map->x_res, 1);
-	ft_putendl_fd(NULL, 1);
-	ft_putnbr_fd(state.current_map->y_res, 1);
-	ft_putendl_fd(NULL, 1);
+	printf("cub3D\ncolor test:\nF: %#x\nC: %#x\n", state.current_map->color_floor, state.current_map->color_ceiling);
+	create_renderer_window(&state);
+	state.vec.dir_x = -1;
+	state.vec.dir_y = 0;
+	state.vec.plane_x = 0;
+	state.vec.plane_y = 0.66;
+	while (1)
+	{
+		mlx_loop_hook(state.mlx_ptr, &render_frame, &state);
+		mlx_loop(state.mlx_ptr);
+	}
+	destroy_renderer_window(&state);
 	free(state.current_map);
-	while (1) {}
 	return 0;
 }

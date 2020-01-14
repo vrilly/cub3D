@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 16:55:04 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/11 18:39:44 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/13 20:40:01 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@
 # include <fcntl.h>
 # include <mlx.h>
 # include <libft.h>
+# include <math.h>
 # include "texture.h"
+# include "gfx.h"
 
 enum			e_map_tile_type {
 	TILE_EMPTY = 0,
 	TILE_WALL = 1,
-	TILE_ITEM = 2,
-	TILE_PLAYER = 3
+	TILE_ITEM = 2
 };
 
 typedef struct	s_map
@@ -36,6 +37,8 @@ typedef struct	s_map
 	t_texture				texture_sprite;
 
 	enum e_map_tile_type	*mapdata;
+	unsigned int			map_width;
+	unsigned int			map_height;
 
 	unsigned int			color_floor;
 	unsigned int			color_ceiling;
@@ -44,13 +47,41 @@ typedef struct	s_map
 	int						y_res;
 }				t_map;
 
+typedef struct	s_vectors
+{
+	double	pos_x;
+	double	pos_y;
+
+	double	dir_x;
+	double	dir_y;
+
+	double	plane_x;
+	double	plane_y;
+
+	int		map_x;
+	int		map_y;
+}				t_vectors;
+
 typedef struct	s_game
 {
-	t_map	*current_map;
+	t_map		*current_map;
 
-	void	*mlx_ptr;
+	void		*mlx_ptr;
+	void		*window;
+
+	t_vectors	vec;
+	t_rc_params	rcp;
+	t_draw_p	vis;
 }				t_game;
 
 t_map			*read_map_from_file(char *path, t_game *state);
+int				create_renderer_window(t_game *state);
+int				destroy_renderer_window(t_game *state);
+int				render_frame(t_game *state);
+
+void			precalc(t_game *state, int x);
+void			calc_step(t_game *state);
+void			calc_dda(t_game *state);
+void			prerendercalc(t_game *state);
 
 #endif
