@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 16:55:04 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/13 20:40:01 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/15 17:28:13 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct	s_game
 
 	void		*mlx_ptr;
 	void		*window;
+	t_frame		frame;
 
 	t_vectors	vec;
 	t_rc_params	rcp;
