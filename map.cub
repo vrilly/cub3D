@@ -1,0 +1,13 @@
+R 320 240
+NO res/wall_n.xpm
+SO res/wall_s.xpm
+WE res/wall_w.xpm
+EA res/wall_e.xpm
+S ./test.xpm
+F 255,255,255
+C 129,0,1
+111111111
+100000001
+1000S0001
+100000001
+111111111
