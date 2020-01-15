@@ -6,10 +6,11 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 18:08:12 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/15 18:11:47 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/15 18:50:51 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "cub3d.h"
 
 static void	vert_line(int x, t_game *state, t_draw_p *params)
@@ -31,6 +32,7 @@ static void	vert_line(int x, t_game *state, t_draw_p *params)
 int			render_frame(t_game *state)
 {
 	int	x;
+	static int first = 1;
 
 	x = 0;
 	start_frame(state);
@@ -40,9 +42,19 @@ int			render_frame(t_game *state)
 		calc_step(state);
 		calc_dda(state);
 		prerendercalc(state);
+		if (first && x % 10 == 0)
+			printf("[x %3d] lh: %4d ls: %4d le: %4d\n",
+					x,
+					state->vis.line_height,
+					state->vis.line_start,
+					state->vis.line_end);
+		if (first && x % 50 == 0)
+			dump_gamestate(state);
 		vert_line(x, state, &state->vis);
 		x++;
 	}
+	if (first)
+		first = 0;
 	end_frame(state);
 	mlx_do_sync(state->mlx_ptr);
 	return (1);
