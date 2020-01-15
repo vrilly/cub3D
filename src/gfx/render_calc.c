@@ -57,6 +57,7 @@ void	calc_dda(t_game *state)
 {
 	int	mapdata_l_offset;
 
+	state->rcp.hit = 0;
 	while (state->rcp.hit == 0)
 	{
 		if (state->rcp.s_dist_x < state->rcp.s_dist_y)
