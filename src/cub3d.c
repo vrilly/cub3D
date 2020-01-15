@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 16:37:53 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/13 19:50:46 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/15 16:18:14 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int main(void)
 {
 	t_game	state;
 
+	ft_bzero(&state, sizeof(t_game));
 	state.mlx_ptr = mlx_init();
 	if (!state.mlx_ptr)
 		return (0);
