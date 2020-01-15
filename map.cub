@@ -3,7 +3,7 @@ NO res/wall_n.xpm
 SO res/wall_s.xpm
 WE res/wall_w.xpm
 EA res/wall_e.xpm
-S ./test.xpm
+S res/wall_n.xpm
 F 255,255,255
 C 129,0,1
 111111111
