@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 18:08:12 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/13 20:49:08 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/13 20:54:26 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	vert_line(int x, t_game *state, t_draw_p *params)
 	while (i < params->line_end)
 	{
 		mlx_pixel_put(state->mlx_ptr, state->window,
-				x, i, 0x00FFFFFF);
+				x, i, 0x000000FF);
 		i++;
 	}
 }
