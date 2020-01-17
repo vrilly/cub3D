@@ -6,12 +6,27 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 16:37:53 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/15 16:18:14 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/17 21:12:37 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <X11/X.h>
 #include "cub3d.h"
+
+int	kp_hook(int kc, t_game *state)
+{
+	if (kc == 123)
+		rotate_left(state);
+	if (kc == 124)
+		rotate_right(state);
+	if (kc == 2)
+		state->debug = 1;
+	if (kc == 126)
+		forwards(state);
+	if (kc == 125)
+		backwards(state);
+}
 
 int main(void)
 {
@@ -33,6 +48,7 @@ int main(void)
 	while (1)
 	{
 		mlx_loop_hook(state.mlx_ptr, &render_frame, &state);
+		mlx_hook(state.window, KeyPress, KeyPressMask, &kp_hook, &state);
 		mlx_loop(state.mlx_ptr);
 	}
 	destroy_renderer_window(&state);
