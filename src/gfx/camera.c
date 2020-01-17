@@ -6,11 +6,38 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 19:42:49 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/15 19:51:23 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/17 18:51:21 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	forwards(t_game *state)
+{
+	state->vec.pos_x += state->vec.dir_x * 0.5;
+	state->vec.pos_y += state->vec.dir_y * 0.5;
+	printf("%f:%f\n", state->vec.pos_x, state->vec.pos_y);
+}
+
+void	backwards(t_game *state)
+{
+	state->vec.pos_x -= state->vec.dir_x * 0.5;
+	state->vec.pos_y -= state->vec.dir_y * 0.5;
+	printf("%f:%f\n", state->vec.pos_x, state->vec.pos_y);
+}
+
+void	rotate_left(t_game *state)
+{
+	t_vectors		*vec;
+	const double	odirx = state->vec.dir_x;
+	const double	oplanex = state->vec.plane_x;
+
+	vec = &state->vec;
+	vec->dir_x = odirx * cos(0.15) - vec->dir_y * sin(0.15);
+	vec->dir_y = odirx * sin(0.15) + vec->dir_y * cos(0.15);
+	vec->plane_x = oplanex * cos(0.15) - vec->plane_y * sin(0.15);
+	vec->plane_y = oplanex * sin(0.15) + vec->plane_y * sin(0.15);
+}
 
 void	rotate_right(t_game *state)
 {
@@ -19,8 +46,8 @@ void	rotate_right(t_game *state)
 	const double	oplanex = state->vec.plane_x;
 
 	vec = &state->vec;
-	vec->dir_x = odirx * cos(-5) - vec->dir_y * sin(-5);
-	vec->dir_y = odirx * sin(-5) + vec->dir_y * cos(-5);
-	vec->plane_x = oplanex * cos(-5) - vec->plane_y * sin(-5);
-	vec->plane_y = oplanex * sin(-5) + vec->plane_y * sin(-5);
+	vec->dir_x = odirx * cos(-0.15) - vec->dir_y * sin(-0.15);
+	vec->dir_y = odirx * sin(-0.15) + vec->dir_y * cos(-0.15);
+	vec->plane_x = oplanex * cos(-0.15) - vec->plane_y * sin(-0.15);
+	vec->plane_y = oplanex * sin(-0.15) + vec->plane_y * sin(-0.15);
 }
