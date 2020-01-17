@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 19:42:49 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/17 18:51:21 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/17 21:23:17 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,26 +28,26 @@ void	backwards(t_game *state)
 
 void	rotate_left(t_game *state)
 {
-	t_vectors		*vec;
-	const double	odirx = state->vec.dir_x;
-	const double	oplanex = state->vec.plane_x;
+	double	olddirx;
+	double	oldplanex;
 
-	vec = &state->vec;
-	vec->dir_x = odirx * cos(0.15) - vec->dir_y * sin(0.15);
-	vec->dir_y = odirx * sin(0.15) + vec->dir_y * cos(0.15);
-	vec->plane_x = oplanex * cos(0.15) - vec->plane_y * sin(0.15);
-	vec->plane_y = oplanex * sin(0.15) + vec->plane_y * sin(0.15);
+	olddirx = state->vec.dir_x;
+	oldplanex = state->vec.plane_x;
+	state->vec.dir_x = olddirx * cos(0.0835) - state->vec.dir_y * sin(0.0835);
+	state->vec.dir_y = olddirx * sin(0.0835) + state->vec.dir_y * cos(0.0835);
+	state->vec.plane_x = oldplanex * cos(0.0835) - state->vec.plane_y * sin(0.0835);
+	state->vec.plane_y = oldplanex * sin(0.0835) + state->vec.plane_y * cos(0.0835);
 }
 
 void	rotate_right(t_game *state)
 {
-	t_vectors		*vec;
-	const double	odirx = state->vec.dir_x;
-	const double	oplanex = state->vec.plane_x;
+	double	olddirx;
+	double	oldplanex;
 
-	vec = &state->vec;
-	vec->dir_x = odirx * cos(-0.15) - vec->dir_y * sin(-0.15);
-	vec->dir_y = odirx * sin(-0.15) + vec->dir_y * cos(-0.15);
-	vec->plane_x = oplanex * cos(-0.15) - vec->plane_y * sin(-0.15);
-	vec->plane_y = oplanex * sin(-0.15) + vec->plane_y * sin(-0.15);
+	olddirx = state->vec.dir_x;
+	oldplanex = state->vec.plane_x;
+	state->vec.dir_x = olddirx * cos(-0.0835) - state->vec.dir_y * sin(-0.0835);
+	state->vec.dir_y = olddirx * sin(-0.0835) + state->vec.dir_y * cos(-0.0835);
+	state->vec.plane_x = oldplanex * cos(-0.0835) - state->vec.plane_y * sin(-0.0835);
+	state->vec.plane_y = oldplanex * sin(-0.0835) + state->vec.plane_y * cos(-0.0835);
 }
