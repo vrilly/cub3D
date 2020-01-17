@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 20:17:28 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/13 20:44:54 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/17 21:18:09 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	precalc(t_game *state, int x)
 {
-	state->rcp.camera_x = 2 * x / state->current_map->x_res - 1;
+	state->rcp.camera_x = 2 * x / (double)state->current_map->x_res - 1;
 	state->rcp.rc_dir_x = state->vec.dir_x +
 		state->vec.plane_x * state->rcp.camera_x;
 	state->rcp.rc_dir_y = state->vec.dir_y +
 		state->vec.plane_y * state->rcp.camera_x;
-	state->vec.map_x = state->vec.pos_x;
-	state->vec.map_y = state->vec.pos_y;
+	state->vec.map_x = (int)state->vec.pos_x;
+	state->vec.map_y = (int)state->vec.pos_y;
 	state->rcp.d_dist_x = fabs(1 / state->rcp.rc_dir_x);
 	state->rcp.d_dist_y = fabs(1 / state->rcp.rc_dir_y);
 }
