@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 20:17:28 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/20 17:53:58 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/20 22:01:49 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,21 @@ void	prerendercalc(t_game *state)
 		state->current_map->y_res / 2;
 	if (state->vis.line_end >= state->current_map->y_res)
 		state->vis.line_end = state->current_map->y_res - 1;
-	state->vis.texture = &state->current_map->texture_north;
+}
+
+void	wallx_calc(t_game *state)
+{
+	if (state->rcp.side == 0)
+	{
+		state->vis.wall_x = state->vec.pos_y + state->rcp.walldist
+			* state->rcp.rc_dir_y;
+		state->vis.texture = &state->current_map->texture_north;
+	}
+	else
+	{
+		state->vis.wall_x = state->vec.pos_x + state->rcp.walldist
+			* state->rcp.rc_dir_x;
+		state->vis.texture = &state->current_map->texture_west;
+	}
+	state->vis.wall_x -= floor(state->vis.wall_x);
 }

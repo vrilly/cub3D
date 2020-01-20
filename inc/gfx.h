@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 17:54:50 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/20 17:53:04 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/20 21:44:45 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct	s_draw_p
 	int			line_start;
 	int			line_end;
 	t_texture	*texture;
+	double		wall_x;
 }				t_draw_p;
 
 typedef struct	s_frame

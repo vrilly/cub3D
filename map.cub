@@ -1,4 +1,4 @@
-R 640 480
+R 1280 1024
 NO res/wall_n.xpm
 SO res/wall_s.xpm
 WE res/wall_w.xpm
