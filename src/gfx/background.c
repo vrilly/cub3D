@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/20 14:15:05 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/20 14:45:52 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/20 14:51:34 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	cast_line(t_frame *bg, unsigned int color, int y)
 
 	x = 0;
 	data_addr = bg->image_data + (y * bg->size_line);
-	while (x < (bg->size_line / 8))
+	while (x < (bg->size_line / 4))
 	{
 		*(unsigned int*)data_addr = color;
 		data_addr += 8;
