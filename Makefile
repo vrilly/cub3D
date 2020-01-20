@@ -6,7 +6,7 @@
 #    By: tjans <tjans@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/09 16:21:06 by tjans         #+#    #+#                  #
-#    Updated: 2020/01/20 14:28:00 by tjans         ########   odam.nl          #
+#    Updated: 2020/01/20 18:42:43 by tjans         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ LIBMLX_LIB	:= $(LIBMLX)/libmlx.dylib
 NAME	= cub3D
 VPATH	:= $(SRC_DIR)
 
-CFLAGS	:= -g -Wall -Wextra -I $(INC_DIR) -I $(LIBFT)/inc -I $(LIBMLX) -fsanitize=address
+CFLAGS	:= -g -Wall -Wextra -I $(INC_DIR) -I $(LIBFT)/inc -I $(LIBMLX)
 
 UNAME_S	:= $(shell uname -s)
 ifeq ($(UNAME_S), Darwin)
