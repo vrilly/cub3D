@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 16:37:53 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/20 13:49:38 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/20 13:55:10 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	kp_hook(int kc, t_game *state)
 		forwards(state);
 	if (kc == 125)
 		backwards(state);
+	return (1);
 }
 
 int main(void)
@@ -49,7 +50,5 @@ int main(void)
 		mlx_hook(state.window, KeyPress, KeyPressMask, &kp_hook, &state);
 		mlx_loop(state.mlx_ptr);
 	}
-	destroy_renderer_window(&state);
-	free(state.current_map);
-	return 0;
+	return (0);
 }

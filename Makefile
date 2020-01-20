@@ -6,7 +6,7 @@
 #    By: tjans <tjans@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/09 16:21:06 by tjans         #+#    #+#                  #
-#    Updated: 2020/01/17 18:58:14 by tjans         ########   odam.nl          #
+#    Updated: 2020/01/20 13:54:22 by tjans         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,15 +61,17 @@ $(NAME): $(addprefix $(OBJ_DIR)/, $(OBJS)) | $(LIBFT_LIB) $(LIBMLX_LIB)
 	@echo ---DONE---
 
 clean:
-	@$(MAKE) -C $(LIBFT) clean
 	@$(RM) -r $(OBJ_DIR)
 
 fclean: clean
-	@$(MAKE) -C $(LIBFT) fclean
-	@$(MAKE) -C $(LIBMLX) clean
 	@$(RM) $(NAME)
 
 re: fclean all
+
+nuke:
+	@$(MAKE) -C $(LIBFT) fclean
+	@$(MAKE) -C $(LIBMLX) clean
+	@$(MAKE) re
 
 dirs:
 	@echo Compiling $(NAME)...
@@ -79,4 +81,4 @@ dirs:
 	@echo ---Start---
 	@mkdir -p $(OBJ_DIR)
 
-.PHONY: dirs re fclean clean all
+.PHONY: dirs re fclean clean all nuke
