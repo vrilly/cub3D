@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 16:37:53 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/20 13:55:10 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/20 14:08:21 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,17 @@
 
 int	kp_hook(int kc, t_game *state)
 {
-	if (kc == 123)
+	if (kc == state->config.k_a)
 		rotate_left(state);
-	if (kc == 124)
+	if (kc == state->config.k_d)
 		rotate_right(state);
-	if (kc == 2)
-		state->debug = 1;
-	if (kc == 126)
+	if (kc == state->config.k_w)
 		forwards(state);
-	if (kc == 125)
+	if (kc == state->config.k_s)
 		backwards(state);
+	if (kc == state->config.k_esc)
+		exit(0);
+	printf("%d\n", kc);
 	return (1);
 }
 
@@ -33,6 +34,7 @@ int main(void)
 	t_game	state;
 
 	ft_bzero(&state, sizeof(t_game));
+	default_config(&state.config);
 	state.mlx_ptr = mlx_init();
 	if (!state.mlx_ptr)
 		return (0);
