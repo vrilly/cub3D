@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 16:55:04 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/20 14:27:50 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/20 21:38:59 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void			precalc(t_game *state, int x);
 void			calc_step(t_game *state);
 void			calc_dda(t_game *state);
 void			prerendercalc(t_game *state);
+void			wallx_calc(t_game *state);
 
 void			start_frame(t_game *state);
 void			end_frame(t_game *state);
