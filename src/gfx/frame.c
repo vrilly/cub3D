@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 17:28:40 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/15 18:05:43 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/20 13:48:46 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	start_frame(t_game *state)
 	state->frame.image_ptr = mlx_new_image(state->mlx_ptr,
 			state->current_map->x_res, state->current_map->y_res);
 	state->frame.image_data = mlx_get_data_addr(state->frame.image_ptr,
-			&state->frame.bpp, &state->frame.size_line, &state->frame.endian); 
+			&state->frame.bpp, &state->frame.size_line, &state->frame.endian);
 }
 
 void	end_frame(t_game *state)
