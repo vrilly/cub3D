@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 20:17:28 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/20 22:01:49 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/20 22:34:34 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,13 +107,19 @@ void	wallx_calc(t_game *state)
 	{
 		state->vis.wall_x = state->vec.pos_y + state->rcp.walldist
 			* state->rcp.rc_dir_y;
-		state->vis.texture = &state->current_map->texture_north;
+		if (state->rcp.rc_dir_x > 0)
+			state->vis.texture = &state->current_map->texture_north;
+		else
+			state->vis.texture = &state->current_map->texture_south;
 	}
 	else
 	{
 		state->vis.wall_x = state->vec.pos_x + state->rcp.walldist
 			* state->rcp.rc_dir_x;
-		state->vis.texture = &state->current_map->texture_west;
+		if (state->rcp.rc_dir_y > 0)
+			state->vis.texture = &state->current_map->texture_west;
+		else
+			state->vis.texture = &state->current_map->texture_east;
 	}
 	state->vis.wall_x -= floor(state->vis.wall_x);
 }
