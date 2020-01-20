@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 17:54:50 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/15 18:03:11 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/20 17:53:04 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,10 @@ typedef struct	s_rc_params
 
 typedef struct	s_draw_p
 {
-	int		line_height;
-	int		line_start;
-	int		line_end;
+	int			line_height;
+	int			line_start;
+	int			line_end;
+	t_texture	*texture;
 }				t_draw_p;
 
 typedef struct	s_frame

@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 18:03:50 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/20 17:59:09 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/20 18:07:04 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	load_texture(const char *ti, t_fdstream *fs, t_texture *dst, void *mlx)
 		return (0);
 	line++;
 	dst->img_ptr = mlx_xpm_file_to_image(mlx, line, &dst->width, &dst->height);
-	dst->data_ptr = mlx_get_data_addr(mlx, &dst->bpp, &dst->size_line,
+	dst->data_ptr = mlx_get_data_addr(dst->img_ptr, &dst->bpp, &dst->size_line,
 			&dst->endian);
 	free(line_org);
 	return (dst->img_ptr != NULL);

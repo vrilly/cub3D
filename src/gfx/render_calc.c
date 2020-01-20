@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 20:17:28 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/17 21:18:09 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/20 17:53:58 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,5 @@ void	prerendercalc(t_game *state)
 		state->current_map->y_res / 2;
 	if (state->vis.line_end >= state->current_map->y_res)
 		state->vis.line_end = state->current_map->y_res - 1;
+	state->vis.texture = &state->current_map->texture_north;
 }
