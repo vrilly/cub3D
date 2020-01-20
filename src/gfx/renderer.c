@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 18:08:12 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/17 21:08:15 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/20 14:38:32 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static void	vert_line(int x, t_game *state, t_draw_p *params)
 			+ (i * state->frame.size_line)
 			+ (x * (state->frame.bpp / 8));
 		if (state->rcp.side)
-			*(unsigned int*)data_addr = 0x000000FF;
+			*(unsigned int*)data_addr = 0xFF;
 		else
-			*(unsigned int*)data_addr = 0x000000FF / 2;
+			*(unsigned int*)data_addr = 0xFF / 2;
 		i++;
 	}
 }

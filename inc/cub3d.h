@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 16:55:04 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/20 14:07:00 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/20 14:27:50 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef struct	s_game
 	void		*mlx_ptr;
 	void		*window;
 	t_frame		frame;
+	t_frame		background;
 
 	t_vectors	vec;
 	t_rc_params	rcp;
@@ -78,6 +79,7 @@ typedef struct	s_game
 }				t_game;
 
 t_map			*read_map_from_file(char *path, t_game *state);
+void			init_background(t_game *state);
 int				create_renderer_window(t_game *state);
 int				destroy_renderer_window(t_game *state);
 int				render_frame(t_game *state);

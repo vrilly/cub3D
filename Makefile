@@ -6,7 +6,7 @@
 #    By: tjans <tjans@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/09 16:21:06 by tjans         #+#    #+#                  #
-#    Updated: 2020/01/20 13:54:22 by tjans         ########   odam.nl          #
+#    Updated: 2020/01/20 14:28:00 by tjans         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,13 +34,13 @@ else
 				-lXext -lX11 -lbsd
 endif
 
-S_CUB3D	= cub3d.c
+S_CUB3D	= cub3d.c config.c
 S_MAP	= map_reader.c map_reader_seq.c map_texloader.c map_color.c \
 		  map_parser.c
-S_GFX	= window.c renderer.c render_calc.c frame.c camera.c
+S_GFX	= window.c renderer.c render_calc.c frame.c camera.c background.c
 
 SRCS	:= $(S_CUB3D) $(S_MAP) $(S_GFX)
-HDRS	:= cub3d.h texture.h map_seq.h gfx.h
+HDRS	:= cub3d.h texture.h map_seq.h gfx.h config.h
 OBJS	:= $(SRCS:.c=.o)
 
 $(OBJ_DIR)/%.o : %.c $(addprefix $(INC_DIR)/, $(HDRS)) | dirs

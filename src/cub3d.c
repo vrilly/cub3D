@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 16:37:53 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/20 14:08:21 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/20 14:49:34 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	kp_hook(int kc, t_game *state)
 		backwards(state);
 	if (kc == state->config.k_esc)
 		exit(0);
-	printf("%d\n", kc);
 	return (1);
 }
 
@@ -41,6 +40,7 @@ int main(void)
 	state.current_map = read_map_from_file("map.cub", &state);
 	if (!state.current_map)
 		return -1;
+	init_background(&state);
 	create_renderer_window(&state);
 	state.vec.dir_x = -1;
 	state.vec.dir_y = 0;
@@ -50,6 +50,7 @@ int main(void)
 	{
 		mlx_loop_hook(state.mlx_ptr, &render_frame, &state);
 		mlx_hook(state.window, KeyPress, KeyPressMask, &kp_hook, &state);
+		mlx_hook(state.window, DestroyNotify, 0, (int (*)())&exit, 0);
 		mlx_loop(state.mlx_ptr);
 	}
 	return (0);
