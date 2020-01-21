@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 18:08:12 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/20 22:00:37 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/21 19:32:52 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int			render_frame(t_game *state)
 	int	x;
 
 	x = 0;
+	movement_loop(state);
 	start_frame(state);
 	while (x < state->current_map->x_res)
 	{

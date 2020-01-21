@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 16:55:04 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/20 21:38:59 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/21 19:33:32 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,17 @@ typedef struct	s_vectors
 	int		map_y;
 }				t_vectors;
 
+typedef struct	s_state
+{
+	int	walking;
+	int	rotating;
+}				t_state;
+
 typedef struct	s_game
 {
 	t_map		*current_map;
 	t_config	config;
+	t_state		state;
 
 	void		*mlx_ptr;
 	void		*window;
@@ -83,6 +90,7 @@ void			init_background(t_game *state);
 int				create_renderer_window(t_game *state);
 int				destroy_renderer_window(t_game *state);
 int				render_frame(t_game *state);
+void			movement_loop(t_game *state);
 
 void			precalc(t_game *state, int x);
 void			calc_step(t_game *state);
@@ -97,5 +105,8 @@ void			rotate_left(t_game *state);
 void			rotate_right(t_game *state);
 void			forwards(t_game *state);
 void			backwards(t_game *state);
+
+int				hook_keyup(int kc, t_game *state);
+int				hook_keydown(int kc, t_game *state);
 
 #endif

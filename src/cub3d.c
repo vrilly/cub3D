@@ -6,27 +6,12 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 16:37:53 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/20 14:49:34 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/21 19:27:41 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <X11/X.h>
 #include "cub3d.h"
-
-int	kp_hook(int kc, t_game *state)
-{
-	if (kc == state->config.k_a)
-		rotate_left(state);
-	if (kc == state->config.k_d)
-		rotate_right(state);
-	if (kc == state->config.k_w)
-		forwards(state);
-	if (kc == state->config.k_s)
-		backwards(state);
-	if (kc == state->config.k_esc)
-		exit(0);
-	return (1);
-}
 
 int main(void)
 {
@@ -49,7 +34,9 @@ int main(void)
 	while (1)
 	{
 		mlx_loop_hook(state.mlx_ptr, &render_frame, &state);
-		mlx_hook(state.window, KeyPress, KeyPressMask, &kp_hook, &state);
+		mlx_hook(state.window, KeyPress, KeyPressMask, &hook_keydown, &state);
+		mlx_hook(state.window, KeyRelease, KeyReleaseMask, &hook_keyup,
+				&state);
 		mlx_hook(state.window, DestroyNotify, 0, (int (*)())&exit, 0);
 		mlx_loop(state.mlx_ptr);
 	}
