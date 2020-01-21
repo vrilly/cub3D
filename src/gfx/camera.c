@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 19:42:49 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/20 13:51:15 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/21 20:27:18 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	forwards(t_game *state)
 {
-	state->vec.pos_x += state->vec.dir_x * 0.5;
-	state->vec.pos_y += state->vec.dir_y * 0.5;
+	state->vec.pos_x += state->vec.dir_x * 0.20;
+	state->vec.pos_y += state->vec.dir_y * 0.20;
 }
 
 void	backwards(t_game *state)
 {
-	state->vec.pos_x -= state->vec.dir_x * 0.5;
-	state->vec.pos_y -= state->vec.dir_y * 0.5;
+	state->vec.pos_x -= state->vec.dir_x * 0.20;
+	state->vec.pos_y -= state->vec.dir_y * 0.20;
 }
 
 void	rotate_left(t_game *state)
