@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 13:37:55 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/15 16:24:36 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/22 18:11:19 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,24 @@ static int	is_pdir(char c)
 
 static void	set_spawn(char direction, unsigned int cl, int x, t_game *map)
 {
-	(void)direction;
+	int i;
+
 	map->vec.pos_x = x;
 	map->vec.pos_y = cl;
+	map->vec.dir_x = -1;
+	map->vec.dir_y = 0;
+	map->vec.plane_x = 0;
+	map->vec.plane_y = 0.66;
+	i = (direction == 'S');
+	if (direction == 'W')
+		i = 2;
+	if (direction == 'N')
+		i = 3;
+	while (i > 0)
+	{
+		shit_rotate(map);
+		i--;
+	}
 }
 
 static int	parse_line(char *line, enum e_map_tile_type *mapdata,

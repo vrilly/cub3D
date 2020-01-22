@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 16:37:53 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/21 19:27:41 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/22 18:06:13 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,6 @@ int main(void)
 		return -1;
 	init_background(&state);
 	create_renderer_window(&state);
-	state.vec.dir_x = -1;
-	state.vec.dir_y = 0;
-	state.vec.plane_x = 0;
-	state.vec.plane_y = 0.66;
 	while (1)
 	{
 		mlx_loop_hook(state.mlx_ptr, &render_frame, &state);
