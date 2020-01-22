@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 17:28:40 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/15 18:13:44 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/15 18:05:43 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,7 @@ void	start_frame(t_game *state)
 
 void	end_frame(t_game *state)
 {
-	static int frame = 0;
 	mlx_put_image_to_window(state->mlx_ptr, state->window,
 			state->frame.image_ptr, 0, 0);
 	mlx_destroy_image(state->mlx_ptr, state->frame.image_ptr);
-	frame++;
-	if (frame % 60 == 0)
-		printf("F %d\n", frame);
 }

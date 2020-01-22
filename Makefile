@@ -33,7 +33,7 @@ else
 				-lXext -lX11 -lbsd
 endif
 
-S_CUB3D	= cub3d.c debug.c
+S_CUB3D	= cub3d.c
 S_MAP	= map_reader.c map_reader_seq.c map_texloader.c map_color.c \
 		  map_parser.c
 S_GFX	= window.c renderer.c render_calc.c frame.c camera.c
