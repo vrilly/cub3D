@@ -6,18 +6,12 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 16:37:53 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/15 18:39:21 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/15 16:18:14 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "cub3d.h"
-
-int	key_hook(int kc, t_game *state)
-{
-	dump_gamestate(state);
-	return (1);
-}
 
 int main(void)
 {
@@ -39,7 +33,6 @@ int main(void)
 	while (1)
 	{
 		mlx_loop_hook(state.mlx_ptr, &render_frame, &state);
-		mlx_key_hook(state.window, &key_hook, &state);
 		mlx_loop(state.mlx_ptr);
 	}
 	destroy_renderer_window(&state);
