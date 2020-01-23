@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 19:29:29 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/22 17:39:58 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/23 18:06:14 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ void	movement_loop(t_game *state)
 		rotate_left(state);
 	if (state->state.rotating == 2)
 		rotate_right(state);
+	if (state->state.strafing == 1)
+		left(state);
+	if (state->state.strafing == 2)
+		right(state);
 }
 
 void	dbg_loop(t_game *state)

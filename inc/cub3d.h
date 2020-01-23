@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 16:55:04 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/22 18:11:35 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/23 18:05:34 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct	s_state
 {
 	int	walking;
 	int	rotating;
+	int	strafing;
 }				t_state;
 
 typedef struct	s_game
@@ -106,6 +107,8 @@ void			rotate_right(t_game *state);
 void			shit_rotate(t_game *state);
 void			forwards(t_game *state);
 void			backwards(t_game *state);
+void			left(t_game	*state);
+void			right(t_game	*state);
 
 int				hook_keyup(int kc, t_game *state);
 int				hook_keydown(int kc, t_game *state);
