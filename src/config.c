@@ -14,11 +14,11 @@
 
 void	default_config(t_config *config)
 {
-	config->k_w = 13;
-	config->k_a = 0;
-	config->k_s = 1;
-	config->k_d = 2;
-	config->k_esc = 53;
-	config->k_left = 123;
-	config->k_right = 124;
+	config->k_w = 119;
+	config->k_a = 97;
+	config->k_s = 115;
+	config->k_d = 100;
+	config->k_esc = 65307;
+	config->k_left = 65361;
+	config->k_right = 65363;
 }
