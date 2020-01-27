@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 16:55:04 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/23 18:05:34 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/27 19:24:29 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,18 +72,19 @@ typedef struct	s_state
 
 typedef struct	s_game
 {
-	t_map		*current_map;
-	t_config	config;
-	t_state		state;
+	t_map			*current_map;
+	t_config		config;
+	t_state			state;
 
-	void		*mlx_ptr;
-	void		*window;
-	t_frame		frame;
-	t_frame		background;
+	void			*mlx_ptr;
+	void			*window;
+	t_frame			frame;
+	t_frame			background;
 
-	t_vectors	vec;
-	t_rc_params	rcp;
-	t_draw_p	vis;
+	t_vectors		vec;
+	t_rc_params		rcp;
+	t_draw_p		vis;
+	t_sprite_engine	spr;
 }				t_game;
 
 t_map			*read_map_from_file(char *path, t_game *state);

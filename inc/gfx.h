@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 17:54:50 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/20 21:44:45 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/24 22:53:28 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,25 @@ typedef struct	s_frame
 	int		size_line;
 	int		endian;
 }				t_frame;
+
+typedef struct	s_sprite
+{
+	double		x_pos;
+	double		y_pos;
+
+	double		distance;
+
+	t_texture	*texture;
+}				t_sprite;
+
+typedef struct	s_sprite_engine
+{
+	double		*zbuffer;
+	t_sprite	**sprites;
+
+	int			num_sprites;
+	int			sprites_size;
+	int			sprite_order[64];
+}				t_sprite_engine;
 
 #endif
