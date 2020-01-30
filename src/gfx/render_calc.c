@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 20:17:28 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/21 18:29:03 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/30 18:25:29 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	calc_dda(t_game *state)
 		}
 		mapdata_l_offset = state->vec.map_y * state->current_map->map_width;
 		if (state->current_map->mapdata
-				[mapdata_l_offset + state->vec.map_x] > 0)
+				[mapdata_l_offset + state->vec.map_x] == 1)
 			state->rcp.hit = 1;
 	}
 }
