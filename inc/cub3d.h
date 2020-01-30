@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 16:55:04 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/27 19:24:29 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/30 18:15:18 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,9 @@ void			wallx_calc(t_game *state);
 
 void			start_frame(t_game *state);
 void			end_frame(t_game *state);
+
+void			sort_sprites(t_sprite_engine *eng);
+void			render_sprites(t_game *state);
 
 void			rotate_left(t_game *state);
 void			rotate_right(t_game *state);

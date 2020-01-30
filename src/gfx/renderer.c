@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 18:08:12 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/21 19:32:52 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/30 17:57:05 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int			render_frame(t_game *state)
 		vert_line(x, state, &state->vis);
 		x++;
 	}
+	render_sprites(state);
 	end_frame(state);
 	mlx_do_sync(state->mlx_ptr);
 	return (1);

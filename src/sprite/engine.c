@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 19:43:56 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/23 20:03:55 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/30 18:15:59 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,16 @@ void	init_sprite_engine(t_game *state)
 
 void	add_sprite(t_game *state, t_texture *tex, double x, double y)
 {
-	static t_sprite_engine	*engine = &state->spr;
+	t_sprite_engine	*engine;
 
+	engine = &state->spr;
 	engine->sprites[engine->num_sprites]->x_pos = x;
 	engine->sprites[engine->num_sprites]->y_pos = y;
 	engine->sprites[engine->num_sprites]->texture = tex;
 	engine->num_sprites++;
+}
+
+void	render_sprites(t_game *state)
+{
+	sort_sprites(&state->spr);
 }

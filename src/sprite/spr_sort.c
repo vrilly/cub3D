@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 20:55:43 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/27 22:58:03 by tjans         ########   odam.nl         */
+/*   Updated: 2020/01/30 17:21:14 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	sort_sprites(t_sprite_engine *eng)
 	{
 		ii = 0;
 		low = 0;
-		while (ii < eng_num_sprites)
+		while (ii < eng->num_sprites)
 		{
 			if (eng->sprites[low]->distance < 0 ||
 				eng->sprites[ii]->distance < eng->sprites[low]->distance)
