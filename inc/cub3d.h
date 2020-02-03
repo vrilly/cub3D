@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 16:55:04 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/03 22:26:40 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/03 22:58:59 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,10 @@ void			wallx_calc(t_game *state);
 void			start_frame(t_game *state);
 void			end_frame(t_game *state);
 
+void			init_sprite_engine(t_game *state, t_map *map);
 void			sort_sprites(t_sprite_engine *eng);
 void			render_sprites(t_game *state);
+void			add_sprite(t_game *state, double x, double y);
 
 void			rotate_left(t_game *state);
 void			rotate_right(t_game *state);
@@ -112,7 +114,7 @@ void			shit_rotate(t_game *state);
 void			forwards(t_game *state);
 void			backwards(t_game *state);
 void			left(t_game	*state);
-void			right(t_game	*state);
+void			right(t_game *state);
 
 int				hook_keyup(int kc, t_game *state);
 int				hook_keydown(int kc, t_game *state);

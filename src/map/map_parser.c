@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 13:37:55 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/22 18:11:19 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/03 22:59:14 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ static int	parse_line(char *line, enum e_map_tile_type *mapdata,
 			return (0);
 		if (is_pdir(line[i]))
 			set_spawn(line[i], cl, i, state);
+		else if (line_c == 2)
+			add_sprite(state, i, cl);
 		else
 			*mapdata = line_c;
 		mapdata++;
@@ -84,6 +86,7 @@ int			map_reader_seq_mapdata(t_fdstream *fs, t_map *map, t_game *state)
 	int				ret;
 
 	curr_line = 0;
+	init_sprite_engine(state, map);
 	ret = fd_readline(fs, &line);
 	if (ret != 1)
 		return (0);
