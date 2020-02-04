@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 19:43:56 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/03 23:02:54 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/04 03:49:44 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		init_sprite_engine(t_game *state, t_map *map)
 	state->spr.sprites = ft_calloc(sizeof(t_sprite *), 64);
 }
 
-void	add_sprite(t_game *state, double x, double y)
+void		add_sprite(t_game *state, double x, double y)
 {
 	t_sprite_engine	*engine;
 
@@ -32,7 +32,27 @@ void	add_sprite(t_game *state, double x, double y)
 	engine->num_sprites++;
 }
 
+static void	calc_sprite_distance(t_game *state)
+{
+	int			i;
+	t_vectors	*vec;
+	t_sprite	*spr;
+
+	i = 0;
+	vec = &state->vec;
+	while (i < state->spr.num_sprites)
+	{
+		spr = state->spr.sprites[i];
+		state->spr.sprite_order[i] = i;
+		spr->distance = ((vec->pos_x - spr->x_pos) * (vec->pos_x - spr->x_pos)
+				+ (vec->pos_y - spr->y_pos) * (vec->pos_y - spr->y_pos));
+		i++;
+	}
+}
+
 void		render_sprites(t_game *state)
 {
+	calc_sprite_distance(state);
 	sort_sprites(&state->spr);
+	cast_sprites(state);
 }
