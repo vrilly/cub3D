@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 16:55:04 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/04 06:38:39 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/04 08:15:12 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,8 @@ typedef struct	s_game
 
 void			*reterr(t_game *state, char *err);
 
-t_map			*read_map_from_file(char *path, t_game *state);
+int				read_map_from_file(char *path, t_game *state);
+int				verify_map(t_map *map);
 void			init_background(t_game *state);
 int				create_renderer_window(t_game *state);
 int				destroy_renderer_window(t_game *state);

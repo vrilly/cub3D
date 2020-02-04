@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 19:13:58 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/04 06:50:23 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/04 08:06:26 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,7 @@ int	map_reader_seq_textures(t_fdstream *fs, t_map *map, t_game *state)
 	success += load_texture("WE", fs, &map->texture_west, state->mlx_ptr);
 	success += load_texture("EA", fs, &map->texture_east, state->mlx_ptr);
 	success += load_texture("S", fs, &map->texture_sprite, state->mlx_ptr);
-	if (success == 5)
-		return (1);
-	return ((int)reterror(state, "Failed to load one of the textures"));
+	return (success == 5);
 }
 
 int	map_reader_seq_colors(t_fdstream *fs, t_map *map, t_game *state)

@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 16:37:53 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/04 06:29:23 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/04 08:14:20 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ static enum e_cub_error	game_init(t_game *state)
 	state->mlx_ptr = mlx_init();
 	if (!state->mlx_ptr)
 		return (MLX_INIT_FAIL);
-	state->current_map = read_map_from_file("map.cub", state);
-	if (!state->current_map)
+	if (!read_map_from_file("map.cub", state))
 		return (MAP_READ_FAIL);
 	init_background(state);
 	create_renderer_window(state);
