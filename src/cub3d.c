@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 16:37:53 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/04 06:18:02 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/04 06:20:42 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,13 @@ int						main(void)
 	t_game				state;
 	enum e_cub_error	ret;
 
+	ftlog_init(1);
 	ret = game_init(&state);
 	if (ret == NO_ERROR)
 		return (0);
 	else
 	{
-		ft_printf("ERROR: %s\n", g_errmsg[ret]);
+		ftlog(LOG_ERROR, g_errmsg[ret]);
 		return (ret);
 	}
 }
