@@ -6,7 +6,7 @@
 #    By: tjans <tjans@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/09 16:21:06 by tjans         #+#    #+#                  #
-#    Updated: 2020/02/04 03:24:13 by tjans         ########   odam.nl          #
+#    Updated: 2020/02/04 05:37:38 by tjans         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ LIBMLX_LIB	:= $(LIBMLX)/libmlx.dylib
 NAME	= cub3D
 VPATH	:= $(SRC_DIR)
 
-CFLAGS	:= -g -Wall -Wextra -I $(INC_DIR) -I $(LIBFT)/inc -I $(LIBMLX)
+CFLAGS	:= -g -Wall -Wextra -I $(INC_DIR) -I $(LIBFT)/out -I $(LIBMLX)
 
 UNAME_S	:= $(shell uname -s)
 ifeq ($(UNAME_S), Darwin)
@@ -49,7 +49,7 @@ $(OBJ_DIR)/%.o : %.c $(addprefix $(INC_DIR)/, $(HDRS)) | dirs
 	@echo CC $<
 	@$(CC) $(CFLAGS) -c -o $@ $<
 
-all: $(NAME)
+all: $(LIBMLX_LIB) $(LIBFT_LIB) $(NAME)
 
 $(LIBFT_LIB) : $(LIBFT)
 	@DEBUG=1 $(MAKE) -C $<
@@ -57,7 +57,7 @@ $(LIBFT_LIB) : $(LIBFT)
 $(LIBMLX_LIB) : $(LIBMLX)
 	$(MAKE) -C $<
 
-$(NAME): $(addprefix $(OBJ_DIR)/, $(OBJS)) | $(LIBFT_LIB) $(LIBMLX_LIB)
+$(NAME): $(addprefix $(OBJ_DIR)/, $(OBJS))
 	@echo Linking $(NAME)
 	@$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 	@echo ---DONE---
