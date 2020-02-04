@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 19:43:56 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/04 03:49:44 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/04 08:08:31 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void		add_sprite(t_game *state, double x, double y)
 
 	engine = &state->spr;
 	engine->sprites[engine->num_sprites] = malloc(sizeof(t_sprite));
-	engine->sprites[engine->num_sprites]->x_pos = x;
-	engine->sprites[engine->num_sprites]->y_pos = y;
+	engine->sprites[engine->num_sprites]->x_pos = x + 0.5;
+	engine->sprites[engine->num_sprites]->y_pos = y + 0.5;
 	engine->sprites[engine->num_sprites]->texture =
 		&state->current_map->texture_sprite;
 	engine->num_sprites++;
