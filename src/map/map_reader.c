@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 17:33:47 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/04 08:15:40 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/04 10:51:22 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,5 @@ int			read_map_from_file(char *path, t_game *state)
 	fd_close(fs);
 	free(fs);
 	ft_strlcpy(map->map_name, path, 32);
-	return (verify_map(map));
+	return (verify_map(map, state));
 }

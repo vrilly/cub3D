@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 16:55:04 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/04 10:33:37 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/04 10:51:31 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void			*reterr(t_game *state, char *err);
 int				fd_readline_sb(t_fdstream *file, char **line);
 
 int				read_map_from_file(char *path, t_game *state);
-int				verify_map(t_map *map);
+int				verify_map(t_map *map, t_game *state);
 void			init_background(t_game *state);
 int				create_renderer_window(t_game *state);
 int				destroy_renderer_window(t_game *state);
