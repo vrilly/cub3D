@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 16:55:04 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/04 05:54:34 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/04 06:07:19 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "texture.h"
 # include "gfx.h"
 # include "config.h"
+# include "cub3d_error.h"
 
 enum			e_map_tile_type {
 	TILE_EMPTY = 0,
