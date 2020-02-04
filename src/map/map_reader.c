@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 17:33:47 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/03 23:51:06 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/04 06:43:06 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,17 @@ t_map		*read_map_from_file(char *path, t_game *state)
 	i = 0;
 	fs = fd_open(path, O_RDONLY);
 	if (!fs)
-		return (NULL);
+		return ((t_map*)reterr(state, strerror(errno)));
 	map = ft_calloc(1, sizeof(t_map));
 	if (!map)
-		return (NULL);
+		return ((t_map*)reterr(state, strerror(errno)));
 	state->current_map = map;
 	while (i < 4)
 	{
 		if (!g_read_seq[i](fs, map, state))
 		{
 			free(map);
-			return (NULL);
+			return ((t_map*)reterr(state, "malformed map"));
 		}
 		i++;
 	}

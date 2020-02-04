@@ -6,13 +6,15 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 16:55:04 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/04 06:22:17 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/04 06:38:39 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 # include <stdlib.h>
+# include <string.h>
+# include <sys/errno.h>
 # include <fcntl.h>
 # include <mlx.h>
 # include <libft.h>
@@ -88,7 +90,11 @@ typedef struct	s_game
 	t_rc_params		rcp;
 	t_draw_p		vis;
 	t_sprite_engine	spr;
+
+	char			*error;
 }				t_game;
+
+void			*reterr(t_game *state, char *err);
 
 t_map			*read_map_from_file(char *path, t_game *state);
 void			init_background(t_game *state);

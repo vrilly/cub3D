@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 16:37:53 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/04 06:20:42 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/04 06:29:23 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int						main(void)
 	else
 	{
 		ftlog(LOG_ERROR, g_errmsg[ret]);
+		if (state.error)
+			ftlog(LOG_ERROR, state.error);
 		return (ret);
 	}
 }
