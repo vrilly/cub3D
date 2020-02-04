@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/04 02:04:49 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/04 04:06:02 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/04 05:48:42 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	bnd(int calc, int max)
 	return (calc);
 }
 
-static void cast_sprite(t_calc c, t_frame *frame, t_texture *tex, double *zbuf)
+static void	cast_sprite(t_calc c, t_frame *frame, t_texture *tex, double *zbuf)
 {
 	t_cast	cc;
 

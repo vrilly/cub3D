@@ -6,42 +6,39 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 18:08:12 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/03 23:43:56 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/04 05:51:15 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "renderer.h"
 
 static void	vert_line(int x, t_game *state, t_draw_p *params)
 {
-	int		i;
-	char	*tex_pixel;
-	char	*data_addr;
-	double	step;
-	double	t_y;
-	int		t_x;
+	t_vertline	c;
 
-	i = params->line_start;
-	step = 1.0 * params->texture->height / params->line_height;
-	t_y = (params->line_start - state->current_map->y_res / 2 +
-			params->line_height / 2) * step;
-	t_x = state->vis.wall_x * (double)params->texture->width;
+	c.i = params->line_start;
+	c.step = 1.0 * params->texture->height / params->line_height;
+	c.t_y = (params->line_start - state->current_map->y_res / 2 +
+			params->line_height / 2) * c.step;
+	c.t_x = state->vis.wall_x * (double)params->texture->width;
 	if ((state->rcp.side == 0 && state->rcp.rc_dir_x > 0) ||
 			(state->rcp.side == 1 && state->rcp.rc_dir_y < 0))
-		t_x = params->texture->width - t_x - 1;
-	while (i < params->line_end)
+		c.t_x = params->texture->width - c.t_x - 1;
+	while (c.i < params->line_end)
 	{
-		tex_pixel = params->texture->data_ptr + t_x * 4 + (((int)t_y & (params->texture->
-					height - 1)) * params->texture->size_line);
-		data_addr = state->frame.image_data
-			+ (i * state->frame.size_line)
+		c.tex_pixel = params->texture->data_ptr + c.t_x * 4 + (((int)c.t_y &
+				(params->texture->height - 1)) *
+				params->texture->size_line);
+		c.data_addr = state->frame.image_data
+			+ (c.i * state->frame.size_line)
 			+ (x * (state->frame.bpp / 8));
 		if (state->rcp.side)
-			*(unsigned int*)data_addr = *(unsigned int*)tex_pixel;
+			*(unsigned int*)c.data_addr = *(unsigned int*)c.tex_pixel;
 		else
-			*(unsigned int*)data_addr = *(unsigned int*)tex_pixel;
-		t_y += step;
-		i++;
+			*(unsigned int*)c.data_addr = *(unsigned int*)c.tex_pixel;
+		c.t_y += c.step;
+		c.i++;
 	}
 }
 

@@ -6,7 +6,7 @@
 #    By: tjans <tjans@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/09 16:21:06 by tjans         #+#    #+#                  #
-#    Updated: 2020/02/04 05:37:38 by tjans         ########   odam.nl          #
+#    Updated: 2020/02/04 05:49:11 by tjans         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,8 @@ S_GFX		= window.c renderer.c render_calc.c frame.c camera.c background.c \
 S_SPRITE	= engine.c spr_sort.c spr_cast.c
 
 SRCS	:= $(S_CUB3D) $(S_MAP) $(S_GFX) $(S_SPRITE)
-HDRS	:= cub3d.h texture.h map_seq.h gfx.h config.h spr_cast.h
+HDRS	:= cub3d.h texture.h map_seq.h gfx.h config.h spr_cast.h \
+	renderer.h
 OBJS	:= $(SRCS:.c=.o)
 
 $(OBJ_DIR)/%.o : %.c $(addprefix $(INC_DIR)/, $(HDRS)) | dirs

@@ -6,9 +6,12 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/04 02:15:06 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/04 03:44:31 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/04 05:44:26 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef SPR_CAST_H
+# define SPR_CAST_H
 
 /*
 ** pos:		relative position to camera
@@ -53,3 +56,5 @@ typedef struct	s_cast
 	char	*tex_pixel;
 	char	*data_addr;
 }				t_cast;
+
+#endif

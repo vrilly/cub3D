@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 17:24:54 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/23 18:32:26 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/04 05:44:54 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	backwards(t_game *state)
 	state->vec.pos_y -= state->vec.dir_y * 0.20;
 }
 
-void	left(t_game	*state)
+void	left(t_game *state)
 {
 	state->vec.pos_x -= state->vec.plane_x * 0.20;
 	state->vec.pos_y -= state->vec.plane_y * 0.20;
