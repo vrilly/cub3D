@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 13:37:55 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/03 23:50:22 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/04 10:36:15 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int			map_reader_seq_mapdata(t_fdstream *fs, t_map *map, t_game *state)
 
 	curr_line = 0;
 	init_sprite_engine(state, map);
-	ret = fd_readline(fs, &line);
+	ret = fd_readline_sb(fs, &line);
 	if (ret != 1)
 		return (0);
 	map->map_width = calc_map_width(line);
@@ -100,7 +100,7 @@ int			map_reader_seq_mapdata(t_fdstream *fs, t_map *map, t_game *state)
 					curr_line, state))
 			return (0);
 		free(line);
-		ret = fd_readline(fs, &line);
+		ret = fd_readline_sb(fs, &line);
 		curr_line++;
 	}
 	free(line);

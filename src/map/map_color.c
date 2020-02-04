@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 18:31:43 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/20 14:35:16 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/04 10:35:15 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int					get_color_val(const char ti,
 	char	*line_i;
 	int		rgbval[3];
 
-	if (fd_readline(fs, &line) != 1)
+	if (fd_readline_sb(fs, &line) != 1)
 		return (0);
 	line_i = line;
 	if (*line_i != ti)
