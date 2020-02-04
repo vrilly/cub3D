@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 16:55:04 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/04 03:50:02 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/04 05:54:34 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <fcntl.h>
 # include <mlx.h>
 # include <libft.h>
+# include <printf.h>
 # include <math.h>
 # include "texture.h"
 # include "gfx.h"
