@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 13:37:55 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/04 10:36:15 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/04 11:38:05 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static int	parse_line(char *line, enum e_map_tile_type *mapdata,
 	int	i;
 
 	i = 0;
-	while (line[i])
+	while (i < (int)state->current_map->map_width)
 	{
 		while (line[i] == ' ' && line[i + 1] != '\0')
 			i++;
