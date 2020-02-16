@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 16:55:04 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/04 10:51:31 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/16 23:32:34 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,6 @@ void			cast_sprites(t_game *state);
 
 void			rotate_left(t_game *state);
 void			rotate_right(t_game *state);
-void			shit_rotate(t_game *state);
 void			forwards(t_game *state);
 void			backwards(t_game *state);
 void			left(t_game	*state);

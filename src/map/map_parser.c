@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 13:37:55 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/04 11:38:05 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/16 23:30:38 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,19 @@ static void	set_spawn(char direction, unsigned int cl, int x, t_game *map)
 
 	map->vec.pos_x = x;
 	map->vec.pos_y = cl;
-	map->vec.dir_x = -1;
-	map->vec.dir_y = 0;
-	map->vec.plane_x = 0;
-	map->vec.plane_y = 0.66;
-	i = (direction == 'S');
-	if (direction == 'W')
-		i = 2;
-	if (direction == 'N')
-		i = 3;
-	while (i > 0)
+	if (direction == 'N' || direction == 'S')
 	{
-		shit_rotate(map);
-		i--;
+		map->vec.dir_x = 0;
+		map->vec.dir_y = (direction == 'N') ? -1 : 1;
+		map->vec.plane_x = (direction == 'N') ? -0.66 : 0.66;
+		map->vec.plane_y = 0;
+	}
+	if (direction == 'E' || direction == 'W')
+	{
+		map->vec.dir_x = (direction == 'W') ? -1 : 1;
+		map->vec.dir_y = 0;
+		map->vec.plane_x = 0;
+		map->vec.plane_y = (direction == 'W') ? 0.66 : -0.66;
 	}
 }
 
