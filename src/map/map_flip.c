@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/17 01:09:20 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/17 01:48:42 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/17 20:50:50 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ static void	write_line(int x, int *dst, t_map *map, t_game *state)
 		*(dst + (map->map_width * i)) = *(src + (map->map_width * i));
 		if (is_pdir(*(dst + (map->map_width * i))))
 			set_spawn(*(dst + (map->map_width * i)), i, x, state);
+		else if (*(dst + (map->map_width * i)) == 2)
+			add_sprite(state, x, i);
 		i++;
 	}
 }

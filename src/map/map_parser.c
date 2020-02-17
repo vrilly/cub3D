@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 13:37:55 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/17 01:44:34 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/17 20:47:39 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	is_pdir(char c)
 }
 
 static int	parse_line(char *line, enum e_map_tile_type *mapdata,
-		unsigned int cl, t_game *state)
+		t_game *state)
 {
 	int	line_c;
 	int	i;
@@ -47,8 +47,6 @@ static int	parse_line(char *line, enum e_map_tile_type *mapdata,
 			return (0);
 		if (is_pdir(line[i]))
 			*mapdata = line[i];
-		else if (line_c == 2)
-			add_sprite(state, i, cl);
 		else
 			*mapdata = line_c;
 		mapdata++;
@@ -75,7 +73,7 @@ int			map_reader_seq_mapdata(t_fdstream *fs, t_map *map, t_game *state)
 			curr_line * map->map_width * sizeof(enum e_map_tile_type),
 			(curr_line + 1) * map->map_width * sizeof(enum e_map_tile_type));
 		if (!parse_line(line, map->mapdata + (curr_line * map->map_width),
-					curr_line, state))
+					state))
 			return (0);
 		free(line);
 		ret = fd_readline_sb(fs, &line);
