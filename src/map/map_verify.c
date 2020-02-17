@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/04 08:10:09 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/04 11:18:59 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/17 01:49:12 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ static int	map_leaktest(t_map *map, enum e_map_tile_type *mapdata,
 	if (mapdata[offset] == TILE_WALL)
 		return (1);
 	if (pos_x <= 0 || pos_y <= 0 ||
-			pos_x >= (int)map->map_width - 1 || pos_y >= (int)map->map_height - 1)
+			pos_x >= (int)map->map_width - 1 ||
+			pos_y >= (int)map->map_height - 1)
 		return (0);
 	if (mapdata[offset] == 3)
 		return (1);
@@ -34,7 +35,7 @@ static int	map_leaktest(t_map *map, enum e_map_tile_type *mapdata,
 	return (1);
 }
 
-int	verify_map(t_map *map, t_game *state)
+int			verify_map(t_map *map, t_game *state)
 {
 	enum e_map_tile_type	*mapdata;
 

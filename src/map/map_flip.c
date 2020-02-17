@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/17 01:09:20 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/17 01:42:23 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/17 01:48:42 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,13 @@ static void	set_spawn(char direction, unsigned int cl, int x, t_game *map)
 	}
 }
 
-static void	write_line(int x, int *dst, int *src, t_map *map, t_game *state)
+static void	write_line(int x, int *dst, t_map *map, t_game *state)
 {
 	unsigned int	i;
+	int				*src;
 
 	i = 0;
+	src = (int*)map->mapdata + map->map_width - 1 - x;
 	while (i < map->map_height)
 	{
 		*(dst + (map->map_width * i)) = *(src + (map->map_width * i));
@@ -54,7 +56,6 @@ static void	write_line(int x, int *dst, int *src, t_map *map, t_game *state)
 int			map_flip(t_fdstream *fs, t_map *map, t_game *state)
 {
 	unsigned int			x;
-	enum e_map_tile_type	*old;
 	enum e_map_tile_type	*new;
 
 	(void)fs;
@@ -62,8 +63,7 @@ int			map_flip(t_fdstream *fs, t_map *map, t_game *state)
 	new = malloc(sizeof(int) * map->map_width * map->map_height);
 	while (x < map->map_width)
 	{
-		old = map->mapdata + map->map_width - 1 - x;
-		write_line(x, (int*)new + x, (int*)old, map, state);
+		write_line(x, (int*)new + x, map, state);
 		x++;
 	}
 	free(map->mapdata);

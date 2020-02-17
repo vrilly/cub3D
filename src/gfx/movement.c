@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 17:24:54 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/04 12:04:49 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/17 01:47:23 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	forwards(t_game *state)
 	if (state->current_map->mapdata[((int)ny *
 		state->current_map->map_width) + (int)nx]
 			== TILE_WALL)
-		return;
+		return ;
 	state->vec.pos_x = nx;
 	state->vec.pos_y = ny;
 }
@@ -37,7 +37,7 @@ void	backwards(t_game *state)
 	if (state->current_map->mapdata[((int)ny *
 		state->current_map->map_width) + (int)nx]
 			== TILE_WALL)
-		return;
+		return ;
 	state->vec.pos_x = nx;
 	state->vec.pos_y = ny;
 }
@@ -52,7 +52,7 @@ void	left(t_game *state)
 	if (state->current_map->mapdata[((int)ny *
 		state->current_map->map_width) + (int)nx]
 			== TILE_WALL)
-		return;
+		return ;
 	state->vec.pos_x = nx;
 	state->vec.pos_y = ny;
 }
@@ -67,7 +67,7 @@ void	right(t_game *state)
 	if (state->current_map->mapdata[((int)ny *
 		state->current_map->map_width) + (int)nx]
 			== TILE_WALL)
-		return;
+		return ;
 	state->vec.pos_x = nx;
 	state->vec.pos_y = ny;
 }
