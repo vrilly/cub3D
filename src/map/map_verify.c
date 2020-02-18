@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/04 08:10:09 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/17 01:49:12 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/18 19:10:52 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int			verify_map(t_map *map, t_game *state)
 		map->x_res = 3200;
 	if (map->y_res > 1800)
 		map->y_res = 1800;
+	if (!(int)state->vec.pos_x || !(int)state->vec.pos_y)
+		return ((int)reterr(state, "Missing spawn location"));
 	if (!map_leaktest(map, mapdata,
 				(int)state->vec.pos_x, (int)state->vec.pos_y))
 	{
