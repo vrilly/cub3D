@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/04 06:01:28 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/04 06:14:59 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/18 16:21:10 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@
 enum	e_cub_error {
 	NO_ERROR,
 	MLX_INIT_FAIL,
-	MAP_READ_FAIL
+	MAP_READ_FAIL,
+	ARGS_INCOMPLETE,
+	ARGS_INVALID
 };
 
-char	g_errmsg[3][64];
+char	g_errmsg[5][64];
 #endif
