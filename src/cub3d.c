@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 16:37:53 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/18 18:45:58 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/18 19:05:53 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,13 @@ static enum e_cub_error	parse_args(int argc, char **argv, t_game *state)
 {
 	if (argc < 2)
 		return (ARGS_INCOMPLETE);
+	if (argc == 3)
+	{
+		if (ft_strncmp(argv[1], "--save", 6) == 0)
+			state->screenshot = 1;
+		else
+			return (ARGS_INVALID);
+	}
 	state->map_path = argv[argc - 1];
 	return (NO_ERROR);
 }
@@ -49,7 +56,6 @@ int						main(int argc, char **argv)
 	enum e_cub_error	ret;
 
 	ftlog_init(1);
-	state.screenshot = 1;
 	ret = parse_args(argc, argv, &state);
 	if (ret != NO_ERROR)
 	{
