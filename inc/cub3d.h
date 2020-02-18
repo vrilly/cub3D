@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 16:55:04 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/17 20:18:34 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/18 16:17:57 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ typedef struct	s_game
 	t_sprite_engine	spr;
 
 	char			*error;
+	char			*map_path;
 	int				screenshot;
 }				t_game;
 
