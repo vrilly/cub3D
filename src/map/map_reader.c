@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map_seq.h"
+#include "map.h"
 
 static int	(*g_read_seq[5])(t_fdstream *, t_map *, t_game *) =
 {

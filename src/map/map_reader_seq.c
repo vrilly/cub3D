@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map_seq.h"
+#include "map.h"
 
 int	map_reader_seq_resolution(t_fdstream *fs, t_map *map, t_game *state)
 {

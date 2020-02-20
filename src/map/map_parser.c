@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map_seq.h"
+#include "map.h"
 
 static int	calc_map_width(char *line)
 {

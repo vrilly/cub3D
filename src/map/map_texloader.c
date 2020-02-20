@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map_seq.h"
+#include "map.h"
 
 int	load_texture(const char *ti, t_fdstream *fs, t_texture *dst, void *mlx)
 {
