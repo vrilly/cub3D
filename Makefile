@@ -6,7 +6,7 @@
 #    By: tjans <tjans@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/09 16:21:06 by tjans         #+#    #+#                  #
-#    Updated: 2020/02/17 04:02:27 by tjans         ########   odam.nl          #
+#    Updated: 2020/02/20 16:36:03 by tjans         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,7 @@ $(LIBFT_LIB) : $(LIBFT)
 
 $(LIBMLX_LIB) : $(LIBMLX)
 	$(MAKE) -C $<
+	@cp $@ .
 
 $(NAME): $(addprefix $(OBJ_DIR)/, $(OBJS))
 	@echo Linking $(NAME)
