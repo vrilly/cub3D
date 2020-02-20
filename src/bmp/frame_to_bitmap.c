@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/17 03:50:30 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/17 20:38:56 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/20 16:40:02 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		frame_to_bitmap(t_frame *frame, t_bitmap *bmp)
 	y = bmp->info.height - 1;
 	i = 0;
 	pixelarray = ft_calloc(sizeof(int), bmp->info.width * bmp->info.height);
-	while (y)
+	while (y >= 0)
 	{
 		ft_memcpy(
 				pixelarray + (i * bmp->info.width * 4),
