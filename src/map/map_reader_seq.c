@@ -6,11 +6,11 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 19:13:58 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/13 14:04:41 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/04 10:36:30 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map_seq.h"
+#include "map.h"
 
 int	map_reader_seq_resolution(t_fdstream *fs, t_map *map, t_game *state)
 {
@@ -19,7 +19,7 @@ int	map_reader_seq_resolution(t_fdstream *fs, t_map *map, t_game *state)
 	int		res;
 
 	(void)state;
-	if (fd_readline(fs, &res_line) != 1)
+	if (fd_readline_sb(fs, &res_line) != 1)
 		return (0);
 	if (*res_line != 'R')
 		return (0);

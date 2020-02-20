@@ -6,21 +6,22 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 17:33:47 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/11 21:21:54 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/17 01:36:41 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map_seq.h"
+#include "map.h"
 
-static int	(*g_read_seq[4])(t_fdstream *, t_map *, t_game *) =
+static int	(*g_read_seq[5])(t_fdstream *, t_map *, t_game *) =
 {
 	&map_reader_seq_resolution,
 	&map_reader_seq_textures,
 	&map_reader_seq_colors,
-	&map_reader_seq_mapdata
+	&map_reader_seq_mapdata,
+	&map_flip
 };
 
-t_map		*read_map_from_file(char *path, t_game *state)
+int			read_map_from_file(char *path, t_game *state)
 {
 	t_map		*map;
 	t_fdstream	*fs;
@@ -29,21 +30,22 @@ t_map		*read_map_from_file(char *path, t_game *state)
 	i = 0;
 	fs = fd_open(path, O_RDONLY);
 	if (!fs)
-		return (NULL);
+		return ((int)reterr(state, strerror(errno)));
 	map = ft_calloc(1, sizeof(t_map));
 	if (!map)
-		return (NULL);
-	while (i < 4)
+		return ((int)reterr(state, strerror(errno)));
+	state->current_map = map;
+	while (i < 5)
 	{
 		if (!g_read_seq[i](fs, map, state))
 		{
 			free(map);
-			return (NULL);
+			return ((int)reterr(state, "malformed map"));
 		}
 		i++;
 	}
 	fd_close(fs);
 	free(fs);
 	ft_strlcpy(map->map_name, path, 32);
-	return (map);
+	return (verify_map(map, state));
 }

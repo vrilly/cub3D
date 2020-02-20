@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 20:17:28 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/21 18:29:03 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/04 11:51:25 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	calc_dda(t_game *state)
 		}
 		mapdata_l_offset = state->vec.map_y * state->current_map->map_width;
 		if (state->current_map->mapdata
-				[mapdata_l_offset + state->vec.map_x] > 0)
+				[mapdata_l_offset + state->vec.map_x] == 1)
 			state->rcp.hit = 1;
 	}
 }
@@ -108,18 +108,18 @@ void	wallx_calc(t_game *state)
 		state->vis.wall_x = state->vec.pos_y + state->rcp.walldist
 			* state->rcp.rc_dir_y;
 		if (state->rcp.rc_dir_x > 0)
-			state->vis.texture = &state->current_map->texture_west;
-		else
 			state->vis.texture = &state->current_map->texture_east;
+		else
+			state->vis.texture = &state->current_map->texture_west;
 	}
 	else
 	{
 		state->vis.wall_x = state->vec.pos_x + state->rcp.walldist
 			* state->rcp.rc_dir_x;
 		if (state->rcp.rc_dir_y > 0)
-			state->vis.texture = &state->current_map->texture_south;
-		else
 			state->vis.texture = &state->current_map->texture_north;
+		else
+			state->vis.texture = &state->current_map->texture_south;
 	}
 	state->vis.wall_x -= floor(state->vis.wall_x);
 }

@@ -6,20 +6,25 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 16:55:04 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/23 18:05:34 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/18 16:17:57 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 # include <stdlib.h>
+# include <string.h>
+# include <sys/errno.h>
 # include <fcntl.h>
 # include <mlx.h>
 # include <libft.h>
+# include <printf.h>
 # include <math.h>
 # include "texture.h"
 # include "gfx.h"
 # include "config.h"
+# include "ftlog.h"
+# include "cub3d_error.h"
 
 enum			e_map_tile_type {
 	TILE_EMPTY = 0,
@@ -72,21 +77,30 @@ typedef struct	s_state
 
 typedef struct	s_game
 {
-	t_map		*current_map;
-	t_config	config;
-	t_state		state;
+	t_map			*current_map;
+	t_config		config;
+	t_state			state;
 
-	void		*mlx_ptr;
-	void		*window;
-	t_frame		frame;
-	t_frame		background;
+	void			*mlx_ptr;
+	void			*window;
+	t_frame			frame;
+	t_frame			background;
 
-	t_vectors	vec;
-	t_rc_params	rcp;
-	t_draw_p	vis;
+	t_vectors		vec;
+	t_rc_params		rcp;
+	t_draw_p		vis;
+	t_sprite_engine	spr;
+
+	char			*error;
+	char			*map_path;
+	int				screenshot;
 }				t_game;
 
-t_map			*read_map_from_file(char *path, t_game *state);
+void			*reterr(t_game *state, char *err);
+int				fd_readline_sb(t_fdstream *file, char **line);
+
+int				read_map_from_file(char *path, t_game *state);
+int				verify_map(t_map *map, t_game *state);
 void			init_background(t_game *state);
 int				create_renderer_window(t_game *state);
 int				destroy_renderer_window(t_game *state);
@@ -102,13 +116,18 @@ void			wallx_calc(t_game *state);
 void			start_frame(t_game *state);
 void			end_frame(t_game *state);
 
+void			init_sprite_engine(t_game *state, t_map *map);
+void			sort_sprites(t_sprite_engine *eng);
+void			render_sprites(t_game *state);
+void			add_sprite(t_game *state, double x, double y);
+void			cast_sprites(t_game *state);
+
 void			rotate_left(t_game *state);
 void			rotate_right(t_game *state);
-void			shit_rotate(t_game *state);
 void			forwards(t_game *state);
 void			backwards(t_game *state);
 void			left(t_game	*state);
-void			right(t_game	*state);
+void			right(t_game *state);
 
 int				hook_keyup(int kc, t_game *state);
 int				hook_keydown(int kc, t_game *state);
