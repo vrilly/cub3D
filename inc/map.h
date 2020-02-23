@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 19:15:01 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/23 17:56:48 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/23 18:01:29 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct			s_mapbuffer
 }						t_mapbuffer;
 
 t_mapbuffer				*mbuf_create(char *line, int line_size);
-void					*mbuf_append(t_mapbuffer *root, t_mapbuffer *new);
+void					mbuf_append(t_mapbuffer *root, t_mapbuffer *new);
 enum e_map_tile_type	*mbuf_finalize(t_mapbuffer *root, int *map_height);
 void					mbuf_destroy(t_mapbuffer *root);
 int						map_reader_seq_resolution(t_fdstream *fs,

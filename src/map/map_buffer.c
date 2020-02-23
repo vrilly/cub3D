@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/21 20:18:43 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/23 17:54:47 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/23 18:01:45 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_mapbuffer				*mbuf_create(char *line, int line_size)
 	return (buff);
 }
 
-void					*mbuf_append(t_mapbuffer *root, t_mapbuffer *new)
+void					mbuf_append(t_mapbuffer *root, t_mapbuffer *new)
 {
 	root->lines++;
 	if (new->line_size > root->line_size_max)
