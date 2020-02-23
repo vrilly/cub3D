@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 13:37:55 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/23 18:08:02 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/23 18:08:15 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int			map_reader_seq_mapdata(t_fdstream *fs, t_map *map, t_game *state)
 		ret = fd_readline_sb(fs, &line);
 	}
 	map->mapdata = mbuf_finalize(buff, (int*)&map->map_height);
+	map->map_width = buff->line_size_max;
 	mbuf_destroy(buff);
 	return (1);
 }
