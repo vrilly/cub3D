@@ -6,7 +6,7 @@
 #    By: tjans <tjans@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/09 16:21:06 by tjans         #+#    #+#                  #
-#    Updated: 2020/02/20 16:36:03 by tjans         ########   odam.nl          #
+#    Updated: 2020/02/23 18:18:01 by tjans         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ S_SPRITE	= engine.c spr_sort.c spr_cast.c
 S_BMP		= bmp_hdr.c frame_to_bitmap.c save_bmp.c
 
 SRCS	:= $(S_CUB3D) $(S_MAP) $(S_GFX) $(S_SPRITE) $(S_BMP)
-HDRS	:= cub3d.h texture.h map_seq.h gfx.h config.h spr_cast.h \
+HDRS	:= cub3d.h texture.h map.h gfx.h config.h spr_cast.h \
 	renderer.h ftlog.h cub3d_error.h bitmap.h
 OBJS	:= $(SRCS:.c=.o)
 
