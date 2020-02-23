@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/21 20:18:43 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/23 17:54:24 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/23 17:54:47 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void					*mbuf_append(t_mapbuffer *root, t_mapbuffer *new)
 	root->next = new;
 }
 
-enum e_map_tile_type	*mbuf_finalize(t_mapbuffer *root)
+enum e_map_tile_type	*mbuf_finalize(t_mapbuffer *root, int *map_height)
 {
 	int						line_size;
 	int						lines;
@@ -71,6 +71,7 @@ enum e_map_tile_type	*mbuf_finalize(t_mapbuffer *root)
 		i++;
 		root = root->next;
 	}
+	*map_height = lines;
 	return (mapdata);
 }
 
