@@ -55,12 +55,11 @@ static void	write_line(int x, int *dst, t_map *map, t_game *state)
 	}
 }
 
-int			map_flip(t_fdstream *fs, t_map *map, t_game *state)
+int			map_flip(t_map *map, t_game *state)
 {
 	unsigned int			x;
 	enum e_map_tile_type	*new;
 
-	(void)fs;
 	x = 0;
 	new = malloc(sizeof(int) * map->map_width * map->map_height);
 	while (x < map->map_width)

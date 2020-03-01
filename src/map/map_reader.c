@@ -6,28 +6,85 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 17:33:47 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/17 01:36:41 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/01 17:49:44 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
 
-static int	(*g_read_seq[5])(t_fdstream *, t_map *, t_game *) =
+static int	read_mapdata(t_fdstream *fs, char *first_line, t_game *state)
 {
-	&map_reader_seq_resolution,
-	&map_reader_seq_textures,
-	&map_reader_seq_colors,
-	&map_reader_seq_mapdata,
-	&map_flip
-};
+	char		*line;
+	int			ret;
+	t_mapbuffer	*buff;
+
+	init_sprite_engine(state, state->current_map);
+	buff = mbuf_create(first_line, ft_strlen(first_line));
+	ret = fd_readline_sb(fs, &line);
+	while (ret == 1)
+	{
+		mbuf_append(buff, mbuf_create(line, ft_strlen(line)));
+		ret = fd_readline_sb(fs, &line);
+	}
+	state->current_map->mapdata = mbuf_finalize(buff,
+			(int*)&state->current_map->map_height);
+	state->current_map->map_width = buff->line_size_max;
+	mbuf_destroy(buff);
+	return (map_flip(state->current_map, state));
+}
+
+static int	process_line(char *line, t_game *state)
+{
+	char		*prefix;
+	char		*arg;
+	t_mplookup	*handler;
+
+	prefix = line;
+	while (*prefix && *prefix == ' ')
+		prefix++;
+	if (ft_isdigit(*prefix))
+		return (2);
+	arg = strchr(prefix, ' ');
+	if (!arg)
+		return ((int)reterr(state, "Unexpected end of line"));
+	arg++;
+	handler = find_func(prefix);
+	if (handler)
+		return (handler->func(arg, state));
+	else
+		ftlog(LOG_INFO, "Unsupported element ignored");
+	return (1);
+}
+
+static int	linereader(t_fdstream *fs, t_game *state)
+{
+	char	*line;
+	int		ret;
+	int		p_ret;
+
+	ret = fd_readline_sb(fs, &line);
+	while (ret == 1)
+	{
+		p_ret = process_line(line, state);
+		if (p_ret == 2)
+			read_mapdata(fs, line, state);
+		else
+			free(line);
+		if (!p_ret)
+			return (0);
+		if (p_ret == 2)
+			return (1);
+		ret = fd_readline_sb(fs, &line);
+	}
+	return (ret != -1);
+}
 
 int			read_map_from_file(char *path, t_game *state)
 {
 	t_map		*map;
 	t_fdstream	*fs;
-	int			i;
+	int			ret;
 
-	i = 0;
 	fs = fd_open(path, O_RDONLY);
 	if (!fs)
 		return ((int)reterr(state, strerror(errno)));
@@ -35,17 +92,11 @@ int			read_map_from_file(char *path, t_game *state)
 	if (!map)
 		return ((int)reterr(state, strerror(errno)));
 	state->current_map = map;
-	while (i < 5)
-	{
-		if (!g_read_seq[i](fs, map, state))
-		{
-			free(map);
-			return ((int)reterr(state, "malformed map"));
-		}
-		i++;
-	}
+	ret = linereader(fs, state);
 	fd_close(fs);
 	free(fs);
 	ft_strlcpy(map->map_name, path, 32);
+	if (!ret)
+		return ((int)reterr(state, "unknown error during map parsing"));
 	return (verify_map(map, state));
 }

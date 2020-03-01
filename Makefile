@@ -5,8 +5,7 @@
 #                                                      +:+                     #
 #    By: tjans <tjans@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
-#    Created: 2020/01/09 16:21:06 by tjans         #+#    #+#                  #
-#    Updated: 2020/02/23 18:18:01 by tjans         ########   odam.nl          #
+#    Created: 2020/01/09 16:21:06 by tjans         #+#    #+#    #   Updated: 2020/03/01 17:28:21 by tjans         ########   odam.nl         #odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +35,8 @@ endif
 
 S_CUB3D		= cub3d.c config.c hooks.c loop.c ftlog.c cub3d_error.c
 S_MAP		= map_reader.c map_reader_seq.c map_texloader.c map_color.c \
-			  map_parser.c map_verify.c map_fd.c map_flip.c map_buffer.c
+			  map_verify.c map_fd.c map_flip.c map_buffer.c \
+			  map_lookup.c map_reader_tex.c
 S_GFX		= window.c renderer.c render_calc.c frame.c camera.c background.c \
 			  movement.c
 S_SPRITE	= engine.c spr_sort.c spr_cast.c

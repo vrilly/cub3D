@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 18:31:43 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/04 10:35:15 by tjans         ########   odam.nl         */
+/*   Updated: 2020/02/27 18:45:45 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,22 +64,13 @@ static unsigned int	parse_rgbval(int *rgbval)
 	return (dst);
 }
 
-int					get_color_val(const char ti,
-		t_fdstream *fs, unsigned int *dst)
+int					get_color_val(char *arg,
+		unsigned int *dst)
 {
-	char	*line;
-	char	*line_i;
-	int		rgbval[3];
+	int	rgbval[3];
 
-	if (fd_readline_sb(fs, &line) != 1)
-		return (0);
-	line_i = line;
-	if (*line_i != ti)
-		return (0);
-	line_i++;
-	if (!atoi_rgbval(rgbval, line_i))
+	if (!atoi_rgbval(rgbval, arg))
 		return (0);
 	*dst = parse_rgbval(rgbval);
-	free(line);
 	return (1);
 }
