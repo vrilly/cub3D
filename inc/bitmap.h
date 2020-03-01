@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/17 03:18:54 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/17 19:35:21 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/01 18:58:01 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,15 @@
 
 # include "cub3d.h"
 
-typedef struct __attribute__((packed))	s_bmp_header
+typedef struct	s_bmp_header
 {
 	short	bmp_magic;
 	int		size;
-	short	resv_1;
-	short	resv_2;
+	int		reserved;
 	int		offset;
 }				t_bmp_header;
 
-typedef struct __attribute__((packed))	s_dib_header
+typedef struct	s_dib_header
 {
 	int		size;
 	int		width;
