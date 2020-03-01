@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 19:43:56 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/04 08:08:31 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/01 20:21:41 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void		init_sprite_engine(t_game *state, t_map *map)
 	state->spr.zbuffer = ft_calloc(sizeof(double), map->x_res);
 	state->spr.sprites_size = 64;
 	state->spr.sprites = ft_calloc(sizeof(t_sprite *), 64);
+	if (state->spr.zbuffer || state->spr.sprites)
+		safe_exit(state, -1, "malloc fail");
 }
 
 void		add_sprite(t_game *state, double x, double y)
@@ -25,6 +27,8 @@ void		add_sprite(t_game *state, double x, double y)
 
 	engine = &state->spr;
 	engine->sprites[engine->num_sprites] = malloc(sizeof(t_sprite));
+	if (!engine->sprites[engine->num_sprites])
+		safe_exit(state, -1, "malloc fail");
 	engine->sprites[engine->num_sprites]->x_pos = x + 0.5;
 	engine->sprites[engine->num_sprites]->y_pos = y + 0.5;
 	engine->sprites[engine->num_sprites]->texture =

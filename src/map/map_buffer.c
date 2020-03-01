@@ -64,6 +64,8 @@ enum e_map_tile_type	*mbuf_finalize(t_mapbuffer *root, int *map_height)
 	line_size = root->line_size_max;
 	lines = root->lines;
 	mapdata = ft_calloc(lines, line_size * sizeof(enum e_map_tile_type));
+	if (!mapdata)
+		return (NULL);
 	i = 0;
 	while (i < lines)
 	{

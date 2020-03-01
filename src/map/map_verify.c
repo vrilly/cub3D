@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/04 08:10:09 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/18 19:10:52 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/01 20:23:45 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int			verify_map(t_map *map, t_game *state)
 	enum e_map_tile_type	*mapdata;
 
 	mapdata = malloc(map->map_height * map->map_width * 4);
+	if (!mapdata)
+		safe_exit(state, -1, "malloc fail");
 	ft_memcpy(mapdata, map->mapdata, map->map_height * map->map_width * 4);
 	if (map->x_res > 3200)
 		map->x_res = 3200;

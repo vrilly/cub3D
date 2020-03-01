@@ -21,6 +21,8 @@ int		frame_to_bitmap(t_frame *frame, t_bitmap *bmp)
 	y = bmp->info.height - 1;
 	i = 0;
 	pixelarray = ft_calloc(sizeof(int), bmp->info.width * bmp->info.height);
+	if (!pixelarray)
+		return (0);
 	while (y >= 0)
 	{
 		ft_memcpy(

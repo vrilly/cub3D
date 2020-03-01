@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 17:33:47 by tjans         #+#    #+#                 */
-/*   Updated: 2020/03/01 17:49:44 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/01 20:30:33 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static int	read_mapdata(t_fdstream *fs, char *first_line, t_game *state)
 	}
 	state->current_map->mapdata = mbuf_finalize(buff,
 			(int*)&state->current_map->map_height);
+	if (!state->current_map->mapdata)
+		safe_exit(state, -1,"malloc fail");
 	state->current_map->map_width = buff->line_size_max;
 	mbuf_destroy(buff);
 	return (map_flip(state->current_map, state));

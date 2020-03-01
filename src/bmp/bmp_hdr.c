@@ -17,6 +17,8 @@ t_bitmap	*new_bitmap(int w, int h)
 	t_bitmap	*bmp;
 
 	bmp = ft_calloc(sizeof(t_bitmap), 1);
+	if (!bmp)
+		return (NULL);
 	bmp->header.bmp_magic = BM_MAGIC;
 	bmp->header.offset = 14 + 40;
 	bmp->info.size = 40;

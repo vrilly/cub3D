@@ -6,15 +6,17 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 16:37:53 by tjans         #+#    #+#                 */
-/*   Updated: 2020/03/01 19:59:56 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/01 20:03:34 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <X11/X.h>
 #include "cub3d.h"
 
-void					safe_exit(t_game *state, int ret)
+void					safe_exit(t_game *state, int ret, char *error)
 {
+	if (error)
+		ftlog(LOG_ERROR, error);
 	exit(ret);
 }
 

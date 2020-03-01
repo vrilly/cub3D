@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/17 01:09:20 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/17 20:50:50 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/01 17:45:56 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int			map_flip(t_map *map, t_game *state)
 
 	x = 0;
 	new = malloc(sizeof(int) * map->map_width * map->map_height);
+	if (!new)
+		safe_exit(state, -1, "malloc fail");
 	while (x < map->map_width)
 	{
 		write_line(x, (int*)new + x, map, state);
