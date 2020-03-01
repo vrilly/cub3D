@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/17 03:18:54 by tjans         #+#    #+#                 */
-/*   Updated: 2020/03/01 18:58:01 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/01 18:58:08 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@ typedef struct	s_bitmap
 
 t_bitmap		*new_bitmap(int w, int h);
 int				frame_to_bitmap(t_frame *frame, t_bitmap *bmp);
-void			write_bitmap_to_file(char *path, t_bitmap *bmp);
+int				write_bitmap_to_file(char *path, t_bitmap *bmp);
 
 #endif
