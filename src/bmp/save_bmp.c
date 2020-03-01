@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/17 03:56:22 by tjans         #+#    #+#                 */
-/*   Updated: 2020/03/01 19:54:55 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/01 19:55:01 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int			write_bitmap_to_file(char *path, t_bitmap *bmp)
 
 	ret = 1;
 	fd = open(path, O_WRONLY | O_CREAT, S_IRWXU | S_IRGRP | S_IROTH);
-	if (!write_bmp_header(fd, &bmp->header) ||
+	if (!fd || !write_bmp_header(fd, &bmp->header) ||
 	!write_dib_header(fd, &bmp->info))
 		ret = 0;
 	if (write(fd, bmp->bitmap, (bmp->info.width * bmp->info.height * 4)) !=

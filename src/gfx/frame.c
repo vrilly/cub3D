@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 17:28:40 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/17 20:24:19 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/01 20:00:43 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,18 @@ void	end_frame(t_game *state)
 {
 	t_bitmap	*bmp;
 
-	mlx_put_image_to_window(state->mlx_ptr, state->window,
-			state->frame.image_ptr, 0, 0);
+	if (state->window)
+		mlx_put_image_to_window(state->mlx_ptr, state->window,
+				state->frame.image_ptr, 0, 0);
 	if (state->screenshot)
 	{
 		bmp = new_bitmap(state->current_map->x_res,
 				state->current_map->y_res);
 		frame_to_bitmap(&state->frame, bmp);
-		write_bitmap_to_file("screencap.bmp", bmp);
+		if (!write_bitmap_to_file("screencap.bmp", bmp))
+			ftlog(LOG_ERROR, "Screenshot failed");
+		if (state->screenshot == 2)
+			safe_exit(state, 0);
 		state->screenshot = 0;
 	}
 	mlx_destroy_image(state->mlx_ptr, state->frame.image_ptr);

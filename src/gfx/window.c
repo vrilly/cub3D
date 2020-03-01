@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 16:08:44 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/13 16:20:34 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/01 20:02:17 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ int	create_renderer_window(t_game *state)
 {
 	void	*win_ptr;
 
+	if (state->screenshot == 2)
+	{
+		state->window = NULL;
+		return (1);
+	}
 	win_ptr = mlx_new_window(
 			state->mlx_ptr,
 			state->current_map->x_res,
