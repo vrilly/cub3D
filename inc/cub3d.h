@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 16:55:04 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/18 16:17:57 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/01 20:00:15 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ typedef struct	s_game
 
 void			*reterr(t_game *state, char *err);
 int				fd_readline_sb(t_fdstream *file, char **line);
+void			safe_exit(t_game *state, int ret);
 
 int				read_map_from_file(char *path, t_game *state);
 int				verify_map(t_map *map, t_game *state);

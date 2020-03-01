@@ -6,12 +6,17 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 16:37:53 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/18 19:05:53 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/01 19:59:56 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <X11/X.h>
 #include "cub3d.h"
+
+void					safe_exit(t_game *state, int ret)
+{
+	exit(ret);
+}
 
 static enum e_cub_error	game_init(t_game *state)
 {
@@ -23,15 +28,15 @@ static enum e_cub_error	game_init(t_game *state)
 		return (MAP_READ_FAIL);
 	init_background(state);
 	create_renderer_window(state);
-	while (1)
+	mlx_loop_hook(state->mlx_ptr, &render_frame, state);
+	if (state->window)
 	{
-		mlx_loop_hook(state->mlx_ptr, &render_frame, state);
 		mlx_hook(state->window, KeyPress, KeyPressMask, &hook_keydown, state);
 		mlx_hook(state->window, KeyRelease, KeyReleaseMask, &hook_keyup,
-				state);
-		mlx_hook(state->window, DestroyNotify, 0, (int (*)())&exit, 0);
-		mlx_loop(state->mlx_ptr);
+				 state);
+		mlx_hook(state->window, DestroyNotify, 0, (int (*)()) &exit, 0);
 	}
+	mlx_loop(state->mlx_ptr);
 	return (0);
 }
 
@@ -42,7 +47,7 @@ static enum e_cub_error	parse_args(int argc, char **argv, t_game *state)
 	if (argc == 3)
 	{
 		if (ft_strncmp(argv[1], "--save", 6) == 0)
-			state->screenshot = 1;
+			state->screenshot = 2;
 		else
 			return (ARGS_INVALID);
 	}
