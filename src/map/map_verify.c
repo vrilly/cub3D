@@ -30,7 +30,11 @@ static int	map_leaktest(t_map *map, enum e_map_tile_type *mapdata,
 	if (!map_leaktest(map, mapdata, pos_x + 1, pos_y) ||
 		!map_leaktest(map, mapdata, pos_x - 1, pos_y) ||
 		!map_leaktest(map, mapdata, pos_x, pos_y + 1) ||
-		!map_leaktest(map, mapdata, pos_x, pos_y - 1))
+		!map_leaktest(map, mapdata, pos_x, pos_y - 1) ||
+		!map_leaktest(map, mapdata, pos_x + 1, pos_y + 1) ||
+		!map_leaktest(map, mapdata, pos_x - 1, pos_y - 1) ||
+		!map_leaktest(map, mapdata, pos_x + 1, pos_y - 1) ||
+		!map_leaktest(map, mapdata, pos_x - 1, pos_y + 1))
 		return (0);
 	return (1);
 }
