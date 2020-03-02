@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 19:20:03 by tjans         #+#    #+#                 */
-/*   Updated: 2020/01/23 18:14:22 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/02 19:37:35 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ int	hook_keyup(int kc, t_game *state)
 	if (kc == state->config.k_left || kc == state->config.k_right)
 		state->state.rotating = 0;
 	if (kc == state->config.k_esc)
-		exit(0);
+		safe_exit(state, 0, NULL);
 	return (1);
 }
