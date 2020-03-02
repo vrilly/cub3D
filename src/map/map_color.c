@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 18:31:43 by tjans         #+#    #+#                 */
-/*   Updated: 2020/03/02 18:13:14 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/02 19:23:34 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static int			atoi_rgbval(int *rgbval, char *line)
 {
 	char	**arr;
 	int		i;
+	int		ii;
 
 	i = 0;
 	arr = ft_split(line, ',');
@@ -37,10 +38,13 @@ static int			atoi_rgbval(int *rgbval, char *line)
 		return (0);
 	while (i < 3)
 	{
+		ii = 0;
 		if (!arr[i])
 			return (0);
+		while (arr[i][ii] == ' ')
+			ii++;
 		rgbval[i] = ft_atoi(arr[i]);
-		if (rgbval[i] > 255 || rgbval[i] < 0 || !ft_isdigit(arr[i][0]))
+		if (rgbval[i] > 255 || rgbval[i] < 0 || !ft_isdigit(arr[i][ii]))
 			return (clean_mem(&arr));
 		i++;
 	}
