@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 18:31:43 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/27 18:45:45 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/02 18:13:14 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int			atoi_rgbval(int *rgbval, char *line)
 		if (!arr[i])
 			return (0);
 		rgbval[i] = ft_atoi(arr[i]);
-		if (rgbval[i] > 255 || rgbval[i] < 0)
+		if (rgbval[i] > 255 || rgbval[i] < 0 || !ft_isdigit(arr[i][0]))
 			return (clean_mem(&arr));
 		i++;
 	}
