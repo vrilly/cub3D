@@ -6,11 +6,27 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 17:33:47 by tjans         #+#    #+#                 */
-/*   Updated: 2020/03/01 20:30:33 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/02 18:30:16 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
+
+static int	maplen(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (*line)
+	{
+		if (ft_isdigit(*line))
+			i++;
+		if (*line == 'N' || *line == 'E' || *line == 'S' || *line == 'W')
+			i++;
+		line++;
+	}
+	return (i);
+}
 
 static int	read_mapdata(t_fdstream *fs, char *first_line, t_game *state)
 {
@@ -19,17 +35,17 @@ static int	read_mapdata(t_fdstream *fs, char *first_line, t_game *state)
 	t_mapbuffer	*buff;
 
 	init_sprite_engine(state, state->current_map);
-	buff = mbuf_create(first_line, ft_strlen(first_line));
+	buff = mbuf_create(first_line, maplen(first_line));
 	ret = fd_readline_sb(fs, &line);
 	while (ret == 1)
 	{
-		mbuf_append(buff, mbuf_create(line, ft_strlen(line)));
+		mbuf_append(buff, mbuf_create(line, maplen(line)));
 		ret = fd_readline_sb(fs, &line);
 	}
 	state->current_map->mapdata = mbuf_finalize(buff,
 			(int*)&state->current_map->map_height);
 	if (!state->current_map->mapdata)
-		safe_exit(state, -1,"malloc fail");
+		safe_exit(state, -1, "malloc fail");
 	state->current_map->map_width = buff->line_size_max;
 	mbuf_destroy(buff);
 	return (map_flip(state->current_map, state));

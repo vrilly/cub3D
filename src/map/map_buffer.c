@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/21 20:18:43 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/23 18:01:45 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/02 18:26:36 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,14 @@ static void				copy_line(t_mapbuffer *node,
 	char	c;
 
 	i = 0;
-	while (i < node->line_size)
+	while (i < node->str_size)
 	{
 		c = node->line[i];
 		while (c == ' ' && node->line[i + 1] != '\0')
+		{
 			i++;
+			c = node->line[i];
+		}
 		*mapdata = c -
 				((c == 'N' || c == 'S' || c == 'E' || c == 'W') ? 0 : '0');
 		mapdata++;
@@ -40,6 +43,7 @@ t_mapbuffer				*mbuf_create(char *line, int line_size)
 		return (NULL);
 	buff->line = line;
 	buff->line_size = line_size;
+	buff->str_size = ft_strlen(line);
 	buff->lines = 1;
 	return (buff);
 }

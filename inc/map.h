@@ -18,6 +18,7 @@ typedef struct			s_mapbuffer
 {
 	char				*line;
 	int					line_size;
+	int					str_size;
 	int					line_size_max;
 	int					lines;
 	struct s_mapbuffer	*next;
