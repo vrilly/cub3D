@@ -19,8 +19,8 @@ static int	is_pdir(char c)
 
 static void	set_spawn(char direction, unsigned int cl, int x, t_game *map)
 {
-	map->vec.pos_x = x;
-	map->vec.pos_y = cl;
+	map->vec.pos_x = x + 0.5;
+	map->vec.pos_y = cl + 0.5;
 	if (direction == 'N' || direction == 'S')
 	{
 		map->vec.dir_x = 0;
