@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/04 08:10:09 by tjans         #+#    #+#                 */
-/*   Updated: 2020/03/01 20:23:45 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/02 18:00:21 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,33 @@ static int	map_leaktest(t_map *map, enum e_map_tile_type *mapdata,
 	return (1);
 }
 
+static void	check_resolution(t_game *state)
+{
+	int	max_x;
+	int	max_y;
+	int	changed;
+
+	changed = 0;
+	if (state->current_map->x_res > 16384 || state->current_map->y_res > 16384)
+		changed = 1;
+	if (state->current_map->x_res > 16384)
+		state->current_map->x_res = 16384;
+	if (state->current_map->y_res > 16384)
+		state->current_map->y_res = 16384;
+	if (state->screenshot == 2)
+		return ;
+	mlx_get_screen_size(state->mlx_ptr, &max_x, &max_y);
+	if (state->current_map->x_res > max_x ||
+	state->current_map->y_res > max_y)
+		changed = 1;
+	if (state->current_map->x_res > max_x)
+		state->current_map->x_res = max_x;
+	if (state->current_map->y_res > max_y)
+		state->current_map->y_res = max_y;
+	if (changed)
+		ftlog(LOG_WARN, "Resolution corrected to max value");
+}
+
 int			verify_map(t_map *map, t_game *state)
 {
 	enum e_map_tile_type	*mapdata;
@@ -47,10 +74,7 @@ int			verify_map(t_map *map, t_game *state)
 	if (!mapdata)
 		safe_exit(state, -1, "malloc fail");
 	ft_memcpy(mapdata, map->mapdata, map->map_height * map->map_width * 4);
-	if (map->x_res > 3200)
-		map->x_res = 3200;
-	if (map->y_res > 1800)
-		map->y_res = 1800;
+	check_resolution(state);
 	if (!(int)state->vec.pos_x || !(int)state->vec.pos_y)
 		return ((int)reterr(state, "Missing spawn location"));
 	if (!map_leaktest(map, mapdata,
