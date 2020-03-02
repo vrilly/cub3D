@@ -5,7 +5,8 @@
 #                                                      +:+                     #
 #    By: tjans <tjans@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
-#    Created: 2020/01/09 16:21:06 by tjans         #+#    #+#    #   Updated: 2020/03/01 17:28:21 by tjans         ########   odam.nl         #odam.nl          #
+#    Created: 2020/03/02 19:01:43 by tjans         #+#    #+#                  #
+#    Updated: 2020/03/02 19:01:44 by tjans         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,15 +24,9 @@ VPATH	:= $(SRC_DIR)
 
 CFLAGS	:= -g -Wall -Wextra -I $(INC_DIR) -I $(LIBFT)/out -I $(LIBMLX)
 
-UNAME_S	:= $(shell uname -s)
-ifeq ($(UNAME_S), Darwin)
-	LDFLAGS	:= -L $(LIBFT)/out -L $(LIBMLX) -lft -lmlx -lm \
-				-framework OpenGL -framework AppKit
-	CFLAGS	:= $(CFLAGS) -I /usr/X11/include
-else
-	LDFLAGS	:= -L $(LIBFT)/out -L $(LIBMLX) -lft -lmlx -lm \
-				-lXext -lX11 -lbsd
-endif
+LDFLAGS	:= -L $(LIBFT)/out -L $(LIBMLX) -lft -lmlx -lm \
+			-framework OpenGL -framework AppKit
+CFLAGS	:= $(CFLAGS) -I /usr/X11/include
 
 S_CUB3D		= cub3d.c config.c hooks.c loop.c ftlog.c cub3d_error.c
 S_MAP		= map_reader.c map_reader_seq.c map_texloader.c map_color.c \
