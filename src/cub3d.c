@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 16:37:53 by tjans         #+#    #+#                 */
-/*   Updated: 2020/03/01 20:03:34 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/02 17:44:39 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,13 @@ void					safe_exit(t_game *state, int ret, char *error)
 {
 	if (error)
 		ftlog(LOG_ERROR, error);
+	if (error && errno)
+		ftlog(LOG_ERROR, strerror(errno));
+	else if (errno)
+	{
+		ftlog(LOG_WARN, "Unhandled errno!");
+		ftlog(LOG_WARN, strerror(errno));
+	}
 	exit(ret);
 }
 
@@ -73,12 +80,10 @@ int						main(int argc, char **argv)
 	}
 	ret = game_init(&state);
 	if (ret == NO_ERROR)
-		return (0);
+		safe_exit(&state, 0, NULL);
 	else
 	{
 		ftlog(LOG_ERROR, g_errmsg[ret]);
-		if (state.error)
-			ftlog(LOG_ERROR, state.error);
-		return (ret);
+		safe_exit(&state, ret, state.error);
 	}
 }
