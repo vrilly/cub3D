@@ -33,10 +33,7 @@ static void	vert_line(int x, t_game *state, t_draw_p *params)
 		c.data_addr = state->frame.image_data
 			+ (c.i * state->frame.size_line)
 			+ (x * (state->frame.bpp / 8));
-		if (state->rcp.side)
-			*(unsigned int*)c.data_addr = *(unsigned int*)c.tex_pixel;
-		else
-			*(unsigned int*)c.data_addr = *(unsigned int*)c.tex_pixel;
+		*(unsigned int*)c.data_addr = *(unsigned int*)c.tex_pixel;
 		c.t_y += c.step;
 		c.i++;
 	}

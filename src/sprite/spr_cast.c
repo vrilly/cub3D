@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/04 02:04:49 by tjans         #+#    #+#                 */
-/*   Updated: 2020/02/04 08:06:58 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/02 19:28:18 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	cast_sprite(t_calc c, t_frame *frame, t_texture *tex, double *zbuf)
 	cc.x = c.draw_s_x;
 	while (cc.x < c.draw_e_x)
 	{
-		cc.tx = (int)(256 * (cc.x - (-c.width / 2 + c.screen_x)) *
+		cc.tx = (256 * (cc.x - (-c.width / 2 + c.screen_x)) *
 				tex->width / c.width) / 256;
 		cc.y = c.draw_s_y;
 		if (c.tr_y > 0 && cc.x > 0 && cc.x < c.res_x && c.tr_y < zbuf[cc.x])
@@ -37,7 +37,7 @@ static void	cast_sprite(t_calc c, t_frame *frame, t_texture *tex, double *zbuf)
 			{
 				cc.d = cc.y * 256 - c.res_y * 128 + c.height * 128;
 				cc.ty = ((cc.d * tex->height) / c.height) / 256;
-				cc.tex_pixel = tex->data_ptr + cc.tx * 4 + (((int)cc.ty
+				cc.tex_pixel = tex->data_ptr + cc.tx * 4 + ((cc.ty
 							& (tex->height - 1)) * tex->size_line);
 				cc.data_addr = frame->image_data +
 					(cc.y * frame->size_line) +

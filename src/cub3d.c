@@ -46,7 +46,7 @@ static enum e_cub_error	game_init(t_game *state)
 		mlx_hook(state->window, DestroyNotify, 0, (int (*)()) &exit, 0);
 	}
 	mlx_loop(state->mlx_ptr);
-	return (0);
+	return (NO_ERROR);
 }
 
 static enum e_cub_error	parse_args(int argc, char **argv, t_game *state)
