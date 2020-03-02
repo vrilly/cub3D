@@ -109,6 +109,8 @@ int			read_map_from_file(char *path, t_game *state)
 	map = ft_calloc(1, sizeof(t_map));
 	if (!map)
 		return ((int)reterr(state, strerror(errno)));
+	map->color_floor = 0xFFFFFFFF;
+	map->color_ceiling = 0xFFFFFFFF;
 	state->current_map = map;
 	ret = linereader(fs, state);
 	fd_close(fs);

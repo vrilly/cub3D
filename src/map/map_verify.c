@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/04 08:10:09 by tjans         #+#    #+#                 */
-/*   Updated: 2020/03/02 18:00:21 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/02 19:19:21 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,25 @@ static void	check_resolution(t_game *state)
 		ftlog(LOG_WARN, "Resolution corrected to max value");
 }
 
+static int	check_mandatory_elems(t_map *map)
+{
+	if (!map->texture_east.img_ptr ||
+	!map->texture_north.img_ptr ||
+	!map->texture_south.img_ptr ||
+	!map->texture_west.img_ptr ||
+	!map->texture_sprite.img_ptr)
+		return (0);
+	if (map->color_ceiling == 0xFFFFFFFF || map->color_floor == 0xFFFFFFFF)
+		return (0);
+	return (1);
+}
+
 int			verify_map(t_map *map, t_game *state)
 {
 	enum e_map_tile_type	*mapdata;
+	int						ret;
 
+	ret = 1;
 	mapdata = malloc(map->map_height * map->map_width * 4);
 	if (!mapdata)
 		safe_exit(state, -1, "malloc fail");
@@ -79,10 +94,9 @@ int			verify_map(t_map *map, t_game *state)
 		return ((int)reterr(state, "Missing spawn location"));
 	if (!map_leaktest(map, mapdata,
 				(int)state->vec.pos_x, (int)state->vec.pos_y))
-	{
-		free(mapdata);
-		return ((int)reterr(state, "Map is not enclosed."));
-	}
+		ret = (int)reterr(state, "Map is not enclosed.");
+	if (!check_mandatory_elems(map))
+		ret = (int)reterr(state, "Mandantory map elements are missing");
 	free(mapdata);
-	return (1);
+	return (ret);
 }
