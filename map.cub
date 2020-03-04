@@ -5,7 +5,7 @@ SO res/wall_s.xpm
 WE res/wall_w.xpm
 EA res/wall_e.xpm
 
-S res/sprite.xpm
+S     res/sprite.xpm
 
 F 127,127,255
 C 100,100,100

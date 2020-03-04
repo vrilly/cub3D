@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/04 10:29:18 by tjans         #+#    #+#                 */
-/*   Updated: 2020/03/02 19:55:48 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/04 18:43:07 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	fd_readline_sb(t_fdstream *file, char **line)
 		free(newline);
 	if (ret != 1)
 		return (ret);
-	if (!*newline)
+	while (!*newline && ret == 1)
 	{
 		free(newline);
 		ret = fd_readline(file, &newline);

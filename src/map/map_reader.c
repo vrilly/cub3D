@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 17:33:47 by tjans         #+#    #+#                 */
-/*   Updated: 2020/03/02 18:30:16 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/04 18:39:18 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	maplen(char *line)
 	i = 0;
 	while (*line)
 	{
-		if (ft_isdigit(*line))
+		if (ft_isdigit(*line) || *line == ' ')
 			i++;
 		if (*line == 'N' || *line == 'E' || *line == 'S' || *line == 'W')
 			i++;
@@ -36,11 +36,11 @@ static int	read_mapdata(t_fdstream *fs, char *first_line, t_game *state)
 
 	init_sprite_engine(state, state->current_map);
 	buff = mbuf_create(first_line, maplen(first_line));
-	ret = fd_readline_sb(fs, &line);
+	ret = fd_readline(fs, &line);
 	while (ret == 1)
 	{
 		mbuf_append(buff, mbuf_create(line, maplen(line)));
-		ret = fd_readline_sb(fs, &line);
+		ret = fd_readline(fs, &line);
 	}
 	state->current_map->mapdata = mbuf_finalize(buff,
 			(int*)&state->current_map->map_height);
@@ -58,9 +58,7 @@ static int	process_line(char *line, t_game *state)
 	t_mplookup	*handler;
 
 	prefix = line;
-	while (*prefix && *prefix == ' ')
-		prefix++;
-	if (ft_isdigit(*prefix))
+	if (ft_isdigit(*prefix) || *prefix == ' ')
 		return (2);
 	arg = strchr(prefix, ' ');
 	if (!arg)
@@ -68,7 +66,11 @@ static int	process_line(char *line, t_game *state)
 	arg++;
 	handler = find_func(prefix);
 	if (handler)
+	{
+		while (*arg == ' ' && *(arg + 1))
+			arg++;
 		return (handler->func(arg, state));
+	}
 	else
 		ftlog(LOG_INFO, "Unsupported element ignored");
 	return (1);
