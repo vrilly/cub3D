@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 16:37:53 by tjans         #+#    #+#                 */
-/*   Updated: 2020/03/02 17:44:39 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/02 19:36:55 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static enum e_cub_error	game_init(t_game *state)
 	{
 		mlx_hook(state->window, KeyPress, KeyPressMask, &hook_keydown, state);
 		mlx_hook(state->window, KeyRelease, KeyReleaseMask, &hook_keyup,
-				 state);
+				state);
 		mlx_hook(state->window, DestroyNotify, 0, (int (*)()) &exit, 0);
 	}
 	mlx_loop(state->mlx_ptr);

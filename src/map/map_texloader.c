@@ -30,7 +30,7 @@ static int	verify_file(char *arg)
 	return (ret);
 }
 
-int	load_texture(char *arg, t_texture *dst, void *mlx)
+int			load_texture(char *arg, t_texture *dst, void *mlx)
 {
 	if (!verify_file(arg))
 		return (0);
