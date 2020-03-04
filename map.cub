@@ -1,11 +1,11 @@
 ..
-..                                                           ::::::::
-..      map.cub                                            :+:    :+:
-..                                                        +:+
-..      By: tjans <tjans@student.codam.nl>               +#+
-..                                                      +#+
-..      Created: 2020/03/04 13:37:00 by tjans         #+#    #+#
-..      Updated: 2020/03/04 13:37:00 by tjans         ########   odam.nl
+..                                                         ::::::::
+..    map.cub                                            :+:    :+:
+..                                                      +:+
+..    By: tjans <tjans@student.codam.nl>               +#+
+..                                                    +#+
+..    Created: 2020/03/04 13:37:00 by tjans         #+#    #+#
+..    Updated: 2020/03/04 13:37:00 by tjans         ########   odam.nl
 ..
 
 ..    Elements that are not defined by the subject:
@@ -19,7 +19,6 @@
 
 R     5000 5000
 WE    res/wall_w.xpm
-
 
 NO    res/wall_n.xpm
 EA    res/wall_e.xpm
