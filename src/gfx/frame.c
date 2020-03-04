@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 17:28:40 by tjans         #+#    #+#                 */
-/*   Updated: 2020/03/01 20:27:06 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/04 19:28:28 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,14 @@
 
 void	start_frame(t_game *state)
 {
-	state->frame.image_ptr = mlx_new_image(state->mlx_ptr,
-			state->current_map->x_res, state->current_map->y_res);
-	state->frame.image_data = mlx_get_data_addr(state->frame.image_ptr,
-			&state->frame.bpp, &state->frame.size_line, &state->frame.endian);
+	if (!state->frame.image_ptr)
+	{
+		state->frame.image_ptr = mlx_new_image(state->mlx_ptr,
+				state->current_map->x_res, state->current_map->y_res);
+		state->frame.image_data = mlx_get_data_addr(state->frame.image_ptr,
+				&state->frame.bpp, &state->frame.size_line,
+				&state->frame.endian);
+	}
 	ft_memcpy(state->frame.image_data, state->background.image_data,
 			state->background.size_line * state->current_map->y_res);
 }
@@ -44,5 +48,4 @@ void	end_frame(t_game *state)
 			safe_exit(state, 0, NULL);
 		state->screenshot = 0;
 	}
-	mlx_destroy_image(state->mlx_ptr, state->frame.image_ptr);
 }
