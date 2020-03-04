@@ -21,4 +21,5 @@ void	default_config(t_config *config)
 	config->k_esc = 53;
 	config->k_left = 123;
 	config->k_right = 124;
+	config->k_prtscr = 105;
 }

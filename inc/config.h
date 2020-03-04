@@ -22,6 +22,7 @@ typedef struct	s_config
 	int	k_esc;
 	int	k_left;
 	int	k_right;
+	int	k_prtscr;
 }				t_config;
 
 void			default_config(t_config *config);

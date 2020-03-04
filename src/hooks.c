@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 19:20:03 by tjans         #+#    #+#                 */
-/*   Updated: 2020/03/02 19:37:35 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/04 19:20:02 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,7 @@ int	hook_keyup(int kc, t_game *state)
 		state->state.rotating = 0;
 	if (kc == state->config.k_esc)
 		safe_exit(state, 0, NULL);
+	if (kc == state->config.k_prtscr)
+		state->screenshot = 1;
 	return (1);
 }
