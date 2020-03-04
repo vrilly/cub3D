@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 19:13:58 by tjans         #+#    #+#                 */
-/*   Updated: 2020/03/04 18:51:55 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/04 19:22:06 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	map_reader_seq_resolution(char *arg, t_game *state)
 	res = ft_atoi(arg);
 	state->current_map->x_res = res;
 	arg = ft_strchr(arg, ' ');
+	if (!arg)
+		return (0);
 	res = ft_atoi(arg);
 	state->current_map->y_res = res;
 	if (state->current_map->x_res < 1 || state->current_map->y_res < 1)
