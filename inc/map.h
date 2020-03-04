@@ -48,5 +48,6 @@ int						get_color_val(char *arg,
 int						map_reader_seq_ceiling_colour(char *arg, t_game *state);
 int						map_reader_seq_floor_colour(char *arg, t_game *state);
 int						map_flip(t_map *map, t_game *state);
+int						map_comment(char *arg);
 
 #endif

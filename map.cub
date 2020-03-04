@@ -1,3 +1,7 @@
+..    Map made for tjans implementation of cub3D
+.!    Showcase map for tom's awesome version of cub3D
+.!    :partyparrot:
+
 R     500 500
 WE    res/wall_w.xpm
 
@@ -11,7 +15,11 @@ C     255,255,255
 F     127,127,255
 SO    res/wall_s.xpm
 
+..    Start of map data
+
  111111
  1    1
  100N01
  111111
+
+..    End of map data

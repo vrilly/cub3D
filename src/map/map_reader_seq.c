@@ -12,6 +12,18 @@
 
 #include "map.h"
 
+int	map_comment(char *arg)
+{
+	static int	first_comment = 1;
+
+	if (first_comment)
+	{
+		first_comment = 0;
+		ftlog(LOG_INFO, "Map info!");
+	}
+	ftlog(LOG_INFO, arg);
+}
+
 int	map_reader_seq_resolution(char *arg, t_game *state)
 {
 	int	res;
