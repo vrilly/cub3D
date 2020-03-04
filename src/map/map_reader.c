@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 17:33:47 by tjans         #+#    #+#                 */
-/*   Updated: 2020/03/04 18:39:18 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/04 18:55:50 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ static int	read_mapdata(t_fdstream *fs, char *first_line, t_game *state)
 	{
 		mbuf_append(buff, mbuf_create(line, maplen(line)));
 		ret = fd_readline(fs, &line);
+		if (!*line)
+		{
+			ret = 0;
+			free(line);
+		}
 	}
 	state->current_map->mapdata = mbuf_finalize(buff,
 			(int*)&state->current_map->map_height);
