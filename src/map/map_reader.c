@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 17:33:47 by tjans         #+#    #+#                 */
-/*   Updated: 2020/03/04 18:55:50 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/04 18:57:02 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,9 @@ static int	process_line(char *line, t_game *state)
 		return (2);
 	arg = strchr(prefix, ' ');
 	if (!arg)
-		return ((int)reterr(state, "Unexpected end of line"));
-	arg++;
+		arg = prefix;
+	else
+		arg++;
 	handler = find_func(prefix);
 	if (handler)
 	{
