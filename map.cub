@@ -1,6 +1,13 @@
 ..    Map made for tjans implementation of cub3D
+
+..    Elements that are not defined by the subject:
+..    .. - Silent comment
+..    .! - Map comment that gets written into terminal output
+
 .!    Showcase map for tom's awesome version of cub3D
 .!    :partyparrot:
+
+..    Start of metadata
 
 R     500 500
 WE    res/wall_w.xpm
@@ -17,9 +24,15 @@ SO    res/wall_s.xpm
 
 ..    Start of map data
 
- 111111
- 1    1
- 100N01
- 111111
+11111
+ 1001
+ 1001111111111
+ 1    00 00001
+ 100N01111   1
+ 111111  11111
+ 1   1
+ 1   1
+ 1   1
+111111
 
 ..    End of map data
