@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 17:33:47 by tjans         #+#    #+#                 */
-/*   Updated: 2020/03/04 19:34:33 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/04 18:57:02 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ static int	process_line(char *line, t_game *state)
 	{
 		while (*arg == ' ' && *(arg + 1))
 			arg++;
-		ft_printf("Parsing %s\n", handler->name);
 		return (handler->func(arg, state));
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 19:15:01 by tjans         #+#    #+#                 */
-/*   Updated: 2020/03/04 18:52:29 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/01 17:50:21 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ typedef struct			s_mapbuffer
 typedef struct			s_mplookup
 {
 	char	*prefix;
-	char	*name;
 	int		(*func)(char *arg, t_game *state);
 }						t_mplookup;
 

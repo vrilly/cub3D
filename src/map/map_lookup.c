@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/27 18:57:08 by tjans         #+#    #+#                 */
-/*   Updated: 2020/03/04 18:52:49 by tjans         ########   odam.nl         */
+/*   Updated: 2020/03/04 18:50:34 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,16 @@ static int			return_true(void)
 
 static t_mplookup	g_mplookup[MPLOOKUP_SIZE] =
 {
-	{"R", "Resolution", &map_reader_seq_resolution},
-	{"NO", "North tex", &map_reader_seq_tno},
-	{"SO", "South tex", &map_reader_seq_tso},
-	{"WE", "West tex", &map_reader_seq_twe},
-	{"EA", "East tex", &map_reader_seq_tea},
-	{"S", "Sprite tex", &map_reader_seq_ts},
-	{"F", "Floor colour", &map_reader_seq_floor_colour},
-	{"C", "Ceiling colour", &map_reader_seq_ceiling_colour},
-	{".!", "Map comment", (int (*)(char*, t_game*))&map_comment},
-	{"..", "Silent comment", (int (*)(char*, t_game*))&return_true}
+	{"R", &map_reader_seq_resolution},
+	{"NO", &map_reader_seq_tno},
+	{"SO", &map_reader_seq_tso},
+	{"WE", &map_reader_seq_twe},
+	{"EA", &map_reader_seq_tea},
+	{"S", &map_reader_seq_ts},
+	{"F", &map_reader_seq_floor_colour},
+	{"C", &map_reader_seq_ceiling_colour},
+	{".!", (int (*)(char*, t_game*))&map_comment},
+	{"..", (int (*)(char*, t_game*))&return_true}
 };
 
 t_mplookup			*find_func(char *prefix)
