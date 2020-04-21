@@ -1,0 +1,3 @@
+[submodule "ext/printf"]
+	path = ext/printf
+	url = git@github.com:vrilly/ft_printf.git
