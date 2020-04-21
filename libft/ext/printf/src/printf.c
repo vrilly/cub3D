@@ -13,13 +13,24 @@
 #include <stdarg.h>
 #include "printf.h"
 
+int		ft_fprintf(int fd, const char *fmt, ...)
+{
+	va_list	args;
+	int		ret;
+
+	va_start(args, fmt);
+	ret = print_str(fd, fmt, args);
+	va_end(args);
+	return (ret);
+}
+
 int		ft_printf(const char *fmt, ...)
 {
 	va_list	args;
 	int		ret;
 
 	va_start(args, fmt);
-	ret = print_str(fmt, args);
+	ret = print_str(1, fmt, args);
 	va_end(args);
 	return (ret);
 }

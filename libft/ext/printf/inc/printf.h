@@ -39,7 +39,8 @@ char			*ltoa_base_unsigned(unsigned long n, int base);
 char			*ltoa_signed(long n);
 
 t_flags			*parse_flags(const char **fmt, va_list args);
-int				print_str(const char *fmt, va_list args);
+int				print_str(int fd, const char *fmt, va_list args);
 int				ft_printf(const char *fmt, ...);
+int				ft_fprintf(int fd, const char *fmt, ...);
 
 #endif
