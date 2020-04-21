@@ -19,11 +19,6 @@ void					safe_exit(t_game *state, int ret, char *error)
 		ftlog(LOG_ERROR, error);
 	if (error && errno)
 		ftlog(LOG_ERROR, strerror(errno));
-	else if (errno)
-	{
-		ftlog(LOG_WARN, "Unhandled errno!");
-		ftlog(LOG_WARN, strerror(errno));
-	}
 	exit(ret);
 }
 
