@@ -42,7 +42,8 @@ static void	cast_sprite(t_calc c, t_frame *frame, t_texture *tex, double *zbuf)
 				cc.data_addr = frame->image_data +
 					(cc.y * frame->size_line) +
 					(cc.x * (frame->bpp / 8));
-				if (*(unsigned int*)cc.tex_pixel != 0xFF000000)
+				if (*(unsigned int*)cc.tex_pixel != 0xFF000000 &&
+					*(unsigned int*)cc.tex_pixel)
 					*(unsigned int*)cc.data_addr = *(unsigned int*)cc.tex_pixel;
 				cc.y++;
 			}

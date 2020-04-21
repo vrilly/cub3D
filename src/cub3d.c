@@ -69,6 +69,7 @@ int						main(int argc, char **argv)
 	t_game				state;
 	enum e_cub_error	ret;
 
+	ft_bzero(&state, sizeof(t_game));
 	ftlog_init(1);
 	ret = parse_args(argc, argv, &state);
 	if (ret != NO_ERROR)
