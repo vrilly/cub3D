@@ -10,16 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <X11/keysymdef.h>
 #include "config.h"
 
 void	default_config(t_config *config)
 {
-	config->k_w = 13;
-	config->k_a = 0;
-	config->k_s = 1;
-	config->k_d = 2;
-	config->k_esc = 53;
-	config->k_left = 123;
-	config->k_right = 124;
-	config->k_prtscr = 105;
+	config->k_w = XK_w;
+	config->k_a = XK_a;
+	config->k_s = XK_s;
+	config->k_d = XK_d;
+	config->k_esc = XK_Escape;
+	config->k_left = XK_Left;
+	config->k_right = XK_Right;
+	config->k_prtscr = XK_Print;
 }
