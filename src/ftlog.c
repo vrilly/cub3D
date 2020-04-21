@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "printf.h"
 #include "ftlog.h"
 
@@ -24,7 +25,10 @@ void	ftlog_init(int logger_enabled)
 
 void	ftlog(enum e_loglevel log_level, char *logmessage)
 {
+	int	log_output;
+
+	log_output = (log_level != LOG_ERROR) ? 1 : 2;
 	if (!g_logger_enabled && log_level != LOG_ERROR)
 		return ;
-	ft_printf(g_fmt_str, g_log_level_str[log_level], logmessage);
+	ft_fprintf(log_output, g_fmt_str, g_log_level_str[log_level], logmessage);
 }
