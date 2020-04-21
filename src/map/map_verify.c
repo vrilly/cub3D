@@ -24,7 +24,7 @@ static int	map_leaktest(t_map *map, enum e_map_tile_type *mapdata,
 			pos_x >= (int)map->map_width - 1 ||
 			pos_y >= (int)map->map_height - 1)
 	{
-		ft_printf("Map not enclosed x:%d y:%d\n", pos_x, pos_y);
+		ft_fprintf(2, "Map not enclosed x:%d y:%d\n", pos_x, pos_y);
 		return (0);
 	}
 	if (mapdata[offset] == 3)
