@@ -35,7 +35,7 @@ static int	cleanup(int retval, int elements, ...)
 	return (retval);
 }
 
-static int	prt_str(const char **str)
+static int	prt_str(int fd, const char **str)
 {
 	char	*ex;
 	int		s_len;
@@ -46,12 +46,12 @@ static int	prt_str(const char **str)
 		return (0);
 	ft_strlcpy(ex, *str, s_len + 1);
 	*str += s_len;
-	write(1, ex, s_len);
+	write(fd, ex, s_len);
 	free(ex);
 	return (s_len);
 }
 
-static int	eval_conv(const char **fmt, va_list args)
+static int	eval_conv(int fd, const char **fmt, va_list args)
 {
 	t_flags		*flags;
 	t_ctable	*converter;
@@ -59,7 +59,7 @@ static int	eval_conv(const char **fmt, va_list args)
 	int			ret_len;
 
 	if (**fmt != '%')
-		return (prt_str(fmt));
+		return (prt_str(fd, fmt));
 	flags = parse_flags(fmt, args);
 	converter = find_conv(**fmt);
 	while (!converter && **fmt != '\0')
@@ -76,16 +76,16 @@ static int	eval_conv(const char **fmt, va_list args)
 	ret_len = apply_field_width(&ret, flags);
 	if (**fmt)
 		(*fmt)++;
-	write(1, ret, ret_len);
+	write(fd, ret, ret_len);
 	return (cleanup(ret_len, 2, flags, ret));
 }
 
-int			print_str(const char *fmt, va_list args)
+int			print_str(int fd, const char *fmt, va_list args)
 {
 	int	ret;
 
 	ret = 0;
 	while (*fmt)
-		ret += eval_conv(&fmt, args);
+		ret += eval_conv(fd, &fmt, args);
 	return (ret);
 }
