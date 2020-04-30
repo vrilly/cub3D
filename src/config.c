@@ -22,4 +22,6 @@ void	default_config(t_config *config)
 	config->k_left = 123;
 	config->k_right = 124;
 	config->k_prtscr = 105;
+	config->mov_speed = 0.25;
+	config->cam_speed = 0.0835;
 }
