@@ -68,9 +68,11 @@ fclean: clean
 
 re: fclean all
 
-nuke:
+nuke: fclean
 	@$(MAKE) -C $(LIBFT) fclean
 	@$(MAKE) -C $(LIBMLX) clean
+
+nuke_re: nuke
 	@$(MAKE) re
 
 dirs:
