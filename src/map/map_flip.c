@@ -41,14 +41,20 @@ static void	write_line(int x, int *dst, t_map *map, t_game *state)
 {
 	unsigned int	i;
 	int				*src;
+	static int		spawnset = 0;
 
 	i = 0;
 	src = (int*)map->mapdata + map->map_width - 1 - x;
 	while (i < map->map_height)
 	{
 		*(dst + (map->map_width * i)) = *(src + (map->map_width * i));
-		if (is_pdir(*(dst + (map->map_width * i))))
+		if (is_pdir(*(dst + (map->map_width * i))) && !spawnset)
+		{
 			set_spawn(*(dst + (map->map_width * i)), i, x, state);
+			spawnset++;
+		}
+		else if (is_pdir(*(dst + (map->map_width * i))) && spawnset)
+			safe_exit(state, -1, "Multiple spawn locations!");
 		else if (*(dst + (map->map_width * i)) == 2)
 			add_sprite(state, x, i);
 		i++;
