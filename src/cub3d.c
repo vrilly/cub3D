@@ -10,20 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <X11/X.h>
 #include "cub3d.h"
-
-/*
-** I really hate to do this, but this function takes a unused variable
-** So we void it out :>
-**
-** Also this function is only used during initialization of the game engine
-** It will not be called when the game exits peacefully
-*/
 
 void					safe_exit(t_game *state, int ret, char *error)
 {
-	(void)state;
+	if (state->window)
+		destroy_renderer_window(state);
 	if (error)
 		ftlog(LOG_ERROR, error);
 	if (error && errno)
@@ -42,12 +34,7 @@ static enum e_cub_error	game_init(t_game *state)
 	create_renderer_window(state);
 	mlx_loop_hook(state->mlx_ptr, &render_frame, state);
 	if (state->window)
-	{
-		mlx_hook(state->window, KeyPress, KeyPressMask, &hook_keydown, state);
-		mlx_hook(state->window, KeyRelease, KeyReleaseMask, &hook_keyup,
-				state);
-		mlx_hook(state->window, DestroyNotify, 0, (int (*)()) &exit, 0);
-	}
+		init_window_hooks(state->window, state);
 	mlx_loop(state->mlx_ptr);
 	return (NO_ERROR);
 }

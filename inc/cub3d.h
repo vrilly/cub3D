@@ -105,6 +105,7 @@ int				verify_map(t_map *map, t_game *state);
 void			init_background(t_game *state);
 int				create_renderer_window(t_game *state);
 int				destroy_renderer_window(t_game *state);
+int				init_window_hooks(void *window, t_game *state);
 int				render_frame(t_game *state);
 void			movement_loop(t_game *state);
 

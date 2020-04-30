@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <X11/X.h>
 #include "cub3d.h"
 
 int	hook_keydown(int kc, t_game *state)
@@ -42,4 +43,11 @@ int	hook_keyup(int kc, t_game *state)
 	if (kc == state->config.k_prtscr)
 		state->screenshot = 1;
 	return (1);
+}
+
+int	init_window_hooks(void *window, t_game *state)
+{
+	mlx_hook(window, KeyPress, KeyPressMask, &hook_keydown, state);
+	mlx_hook(window, KeyRelease, KeyReleaseMask, &hook_keyup, state);
+	mlx_hook(state->window, DestroyNotify, 0, (int (*)()) &exit, 0);
 }
