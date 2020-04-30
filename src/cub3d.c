@@ -13,8 +13,17 @@
 #include <X11/X.h>
 #include "cub3d.h"
 
+/*
+** I really hate to do this, but this function takes a unused variable
+** So we void it out :>
+**
+** Also this function is only used during initialization of the game engine
+** It will not be called when the game exits peacefully
+*/
+
 void					safe_exit(t_game *state, int ret, char *error)
 {
+	(void)state;
 	if (error)
 		ftlog(LOG_ERROR, error);
 	if (error && errno)
