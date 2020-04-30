@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-int	hook_keydown(int kc, t_game *state)
+int		hook_keydown(int kc, t_game *state)
 {
 	if (kc == state->config.k_a)
 		state->state.strafing = 1;
@@ -29,7 +29,7 @@ int	hook_keydown(int kc, t_game *state)
 	return (1);
 }
 
-int	hook_keyup(int kc, t_game *state)
+int		hook_keyup(int kc, t_game *state)
 {
 	if (kc == state->config.k_a || kc == state->config.k_d)
 		state->state.strafing = 0;
@@ -48,6 +48,7 @@ int	hook_keyup(int kc, t_game *state)
 ** I hardcoded X11 defines to save the evaluator the effort of having to
 ** install XQuartz through msc before evaluating.
 */
+
 void	init_window_hooks(void *window, t_game *state)
 {
 	mlx_hook(window, 2, (1L << 0), &hook_keydown, state);

@@ -13,6 +13,13 @@
 #include <sys/stat.h>
 #include "bitmap.h"
 
+/*
+** These functions write the structs to the file
+** With most compilers you can also create PACKED structs and
+** write the struct itself as bitmap with one write call
+** But here we do it Norme proof
+*/
+
 static int	write_bmp_header(int fd, t_bmp_header *hdr)
 {
 	ssize_t	written;

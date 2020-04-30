@@ -12,6 +12,10 @@
 
 #include "bitmap.h"
 
+/*
+** This initializes a new bitmap struct and populates the header
+*/
+
 t_bitmap	*new_bitmap(int w, int h)
 {
 	t_bitmap	*bmp;

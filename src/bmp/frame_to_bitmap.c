@@ -12,6 +12,13 @@
 
 #include "bitmap.h"
 
+/*
+** Here the magic happens!
+** The framebuffer of libmlx uses the same pixel format as bitmaps do
+** Only difference is bitmaps render updown so we copy the framebuffer
+** line-by-line in reverse
+*/
+
 int		frame_to_bitmap(t_frame *frame, t_bitmap *bmp)
 {
 	void	*pixelarray;

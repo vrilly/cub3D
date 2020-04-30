@@ -12,6 +12,12 @@
 
 #include "cub3d.h"
 
+/*
+** The cub3D Error handler
+** It could've been used in a better fashion
+** But i did not. So sadly it's rarely used
+*/
+
 char	g_errmsg[5][64] = {
 	"",
 	"MLX Failed to initialize",

@@ -28,17 +28,3 @@ void	movement_loop(t_game *state)
 	if (state->state.strafing == 2)
 		right(state);
 }
-
-void	dbg_loop(t_game *state)
-{
-	char	dbg_line[512];
-
-	sprintf(dbg_line, "dirx: %.4f diry: %.4f",
-			state->vec.dir_x, state->vec.dir_y);
-	mlx_string_put(state->mlx_ptr, state->window, 0, 16,
-			0x00FFFFFF, dbg_line);
-	sprintf(dbg_line, "planex: %.4f planey: %.4f",
-			state->vec.plane_x, state->vec.plane_y);
-	mlx_string_put(state->mlx_ptr, state->window, 0, 32,
-			0x00FFFFFF, dbg_line);
-}
