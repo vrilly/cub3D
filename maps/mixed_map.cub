@@ -3,6 +3,11 @@
 
 R 800 600
 
+
+.. Multiple linebreaks!
+
+
+
 NO res/wall_n.xpm
 SO res/wall_s.xpm
 WE res/wall_w.xpm
