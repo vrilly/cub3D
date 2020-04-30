@@ -12,7 +12,7 @@
 
 #include "map.h"
 
-static int	verify_file(char *arg)
+static int	verify_file(char *arg, t_game *state)
 {
 	int		fd;
 	int		ret;
@@ -20,19 +20,24 @@ static int	verify_file(char *arg)
 
 	fd = open(arg, O_RDONLY);
 	ret = 1;
-	if (!fd)
+	if (fd <= 0)
+	{
+		state->error = "File does not exist.";
 		return (0);
+	}
 	if (read(fd, magic, 9) != 9)
 		ret = 0;
 	if (ft_strncmp(magic, "/* XPM */", 9) != 0)
 		ret = 0;
+	if (!ret)
+		state->error = "Texture is not a valid XPM file";
 	close(fd);
 	return (ret);
 }
 
-int			load_texture(char *arg, t_texture *dst, void *mlx)
+int			load_texture(t_game *state, char *arg, t_texture *dst, void *mlx)
 {
-	if (!verify_file(arg))
+	if (!verify_file(arg, state))
 		return (0);
 	dst->img_ptr = mlx_xpm_file_to_image(mlx, arg, &dst->width, &dst->height);
 	dst->data_ptr = mlx_get_data_addr(dst->img_ptr, &dst->bpp, &dst->size_line,

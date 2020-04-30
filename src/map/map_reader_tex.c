@@ -14,30 +14,30 @@
 
 int	map_reader_seq_tno(char *arg, t_game *state)
 {
-	return (load_texture(arg, &state->current_map->texture_north,
+	return (load_texture(state, arg, &state->current_map->texture_north,
 			state->mlx_ptr));
 }
 
 int	map_reader_seq_tso(char *arg, t_game *state)
 {
-	return (load_texture(arg, &state->current_map->texture_south,
+	return (load_texture(state, arg, &state->current_map->texture_south,
 			state->mlx_ptr));
 }
 
 int	map_reader_seq_twe(char *arg, t_game *state)
 {
-	return (load_texture(arg, &state->current_map->texture_west,
+	return (load_texture(state, arg, &state->current_map->texture_west,
 			state->mlx_ptr));
 }
 
 int	map_reader_seq_tea(char *arg, t_game *state)
 {
-	return (load_texture(arg, &state->current_map->texture_east,
+	return (load_texture(state, arg, &state->current_map->texture_east,
 			state->mlx_ptr));
 }
 
 int	map_reader_seq_ts(char *arg, t_game *state)
 {
-	return (load_texture(arg, &state->current_map->texture_sprite,
+	return (load_texture(state, arg, &state->current_map->texture_sprite,
 			state->mlx_ptr));
 }

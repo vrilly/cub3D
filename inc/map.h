@@ -42,7 +42,8 @@ int						map_reader_seq_tso(char *arg, t_game *state);
 int						map_reader_seq_twe(char *arg, t_game *state);
 int						map_reader_seq_tea(char *arg, t_game *state);
 int						map_reader_seq_ts(char *arg, t_game *state);
-int						load_texture(char *arg, t_texture *dst, void *mlx);
+int						load_texture(t_game *state,
+		char *arg, t_texture *dst, void *mlx);
 int						get_color_val(char *arg,
 		unsigned int *dst);
 int						map_reader_seq_ceiling_colour(char *arg, t_game *state);
