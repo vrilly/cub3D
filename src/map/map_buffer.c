@@ -40,7 +40,7 @@ t_mapbuffer				*mbuf_create(char *line, int line_size)
 		return (NULL);
 	buff->line = line;
 	buff->line_size = line_size;
-	buff->str_size = ft_strlen(line);
+	buff->str_size = (int)ft_strlen(line);
 	buff->lines = 1;
 	return (buff);
 }

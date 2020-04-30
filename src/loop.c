@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include <stdio.h>
 
 void	movement_loop(t_game *state)
 {

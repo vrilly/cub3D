@@ -72,7 +72,6 @@ typedef struct	s_sprite_engine
 	t_sprite	**sprites;
 
 	int			num_sprites;
-	int			sprites_size;
 	int			sprite_order[64];
 }				t_sprite_engine;
 
