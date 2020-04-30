@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <X11/X.h>
 #include "cub3d.h"
 
 int	hook_keydown(int kc, t_game *state)
@@ -45,9 +44,13 @@ int	hook_keyup(int kc, t_game *state)
 	return (1);
 }
 
+/*
+** I hardcoded X11 defines to save the evaluator the effort of having to
+** install XQuartz through msc before evaluating.
+*/
 int	init_window_hooks(void *window, t_game *state)
 {
-	mlx_hook(window, KeyPress, KeyPressMask, &hook_keydown, state);
-	mlx_hook(window, KeyRelease, KeyReleaseMask, &hook_keyup, state);
-	mlx_hook(state->window, DestroyNotify, 0, (int (*)()) &exit, 0);
+	mlx_hook(window, 2, (1L << 0), &hook_keydown, state);
+	mlx_hook(window, 3, (1L << 1), &hook_keyup, state);
+	mlx_hook(state->window, 17, 0, (int (*)()) &exit, 0);
 }
