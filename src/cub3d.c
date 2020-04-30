@@ -33,7 +33,6 @@ void					safe_exit(t_game *state, int ret, char *error)
 
 static enum e_cub_error	game_init(t_game *state)
 {
-	default_config(&state->config);
 	state->mlx_ptr = mlx_init();
 	if (!state->mlx_ptr)
 		return (MLX_INIT_FAIL);
@@ -53,6 +52,14 @@ static enum e_cub_error	game_init(t_game *state)
 	return (NO_ERROR);
 }
 
+/*
+** There's a --nosync option here
+** The movement speed and camera speed are based on the framerate.
+** The macOS libmlx does vsync and does not exceed 60fps.
+** The linux one i use doesn't and runs at 200fps, so i have to reduce the
+** speed to make it playable when the fps is high.
+*/
+
 static enum e_cub_error	parse_args(int argc, char **argv, t_game *state)
 {
 	if (argc < 2)
@@ -61,6 +68,11 @@ static enum e_cub_error	parse_args(int argc, char **argv, t_game *state)
 	{
 		if (ft_strncmp(argv[1], "--save", 6) == 0)
 			state->screenshot = 2;
+		else if (ft_strncmp(argv[1], "--nosync", 15) == 0)
+		{
+			state->config.mov_speed /= 3;
+			state->config.cam_speed /= 3;
+		}
 		else
 			return (ARGS_INVALID);
 	}
@@ -75,6 +87,7 @@ int						main(int argc, char **argv)
 
 	ft_bzero(&state, sizeof(t_game));
 	ftlog_init(1);
+	default_config(&state.config);
 	ret = parse_args(argc, argv, &state);
 	if (ret != NO_ERROR)
 	{

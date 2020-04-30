@@ -15,14 +15,17 @@
 
 typedef struct	s_config
 {
-	int	k_w;
-	int	k_a;
-	int	k_s;
-	int	k_d;
-	int	k_esc;
-	int	k_left;
-	int	k_right;
-	int	k_prtscr;
+	int		k_w;
+	int		k_a;
+	int		k_s;
+	int		k_d;
+	int		k_esc;
+	int		k_left;
+	int		k_right;
+	int		k_prtscr;
+
+	float	mov_speed;
+	float	cam_speed;
 }				t_config;
 
 void			default_config(t_config *config);

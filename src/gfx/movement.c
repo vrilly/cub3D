@@ -17,8 +17,8 @@ void	forwards(t_game *state)
 	double	nx;
 	double	ny;
 
-	nx = state->vec.pos_x + state->vec.dir_x * 0.20;
-	ny = state->vec.pos_y + state->vec.dir_y * 0.20;
+	nx = state->vec.pos_x + state->vec.dir_x * state->config.mov_speed;
+	ny = state->vec.pos_y + state->vec.dir_y * state->config.mov_speed;
 	if (state->current_map->mapdata[((int)ny *
 		state->current_map->map_width) + (int)nx]
 			== TILE_WALL)
@@ -32,8 +32,8 @@ void	backwards(t_game *state)
 	double	nx;
 	double	ny;
 
-	nx = state->vec.pos_x - state->vec.dir_x * 0.20;
-	ny = state->vec.pos_y - state->vec.dir_y * 0.20;
+	nx = state->vec.pos_x - state->vec.dir_x * state->config.mov_speed;
+	ny = state->vec.pos_y - state->vec.dir_y * state->config.mov_speed;
 	if (state->current_map->mapdata[((int)ny *
 		state->current_map->map_width) + (int)nx]
 			== TILE_WALL)
@@ -47,8 +47,8 @@ void	left(t_game *state)
 	double	nx;
 	double	ny;
 
-	nx = state->vec.pos_x - state->vec.plane_x * 0.20;
-	ny = state->vec.pos_y - state->vec.plane_y * 0.20;
+	nx = state->vec.pos_x - state->vec.plane_x * state->config.mov_speed;
+	ny = state->vec.pos_y - state->vec.plane_y * state->config.mov_speed;
 	if (state->current_map->mapdata[((int)ny *
 		state->current_map->map_width) + (int)nx]
 			== TILE_WALL)
@@ -62,8 +62,8 @@ void	right(t_game *state)
 	double	nx;
 	double	ny;
 
-	nx = state->vec.pos_x + state->vec.plane_x * 0.20;
-	ny = state->vec.pos_y + state->vec.plane_y * 0.20;
+	nx = state->vec.pos_x + state->vec.plane_x * state->config.mov_speed;
+	ny = state->vec.pos_y + state->vec.plane_y * state->config.mov_speed;
 	if (state->current_map->mapdata[((int)ny *
 		state->current_map->map_width) + (int)nx]
 			== TILE_WALL)

@@ -19,14 +19,14 @@ void	rotate_left(t_game *state)
 
 	olddirx = state->vec.dir_x;
 	oldplanex = state->vec.plane_x;
-	state->vec.dir_x = olddirx * cos(0.0835) -
-		state->vec.dir_y * sin(0.0835);
-	state->vec.dir_y = olddirx * sin(0.0835) +
-		state->vec.dir_y * cos(0.0835);
-	state->vec.plane_x = oldplanex * cos(0.0835) -
-		state->vec.plane_y * sin(0.0835);
-	state->vec.plane_y = oldplanex * sin(0.0835) +
-		state->vec.plane_y * cos(0.0835);
+	state->vec.dir_x = olddirx * cos(state->config.cam_speed) -
+		state->vec.dir_y * sin(state->config.cam_speed);
+	state->vec.dir_y = olddirx * sin(state->config.cam_speed) +
+		state->vec.dir_y * cos(state->config.cam_speed);
+	state->vec.plane_x = oldplanex * cos(state->config.cam_speed) -
+		state->vec.plane_y * sin(state->config.cam_speed);
+	state->vec.plane_y = oldplanex * sin(state->config.cam_speed) +
+		state->vec.plane_y * cos(state->config.cam_speed);
 }
 
 void	rotate_right(t_game *state)
@@ -36,12 +36,12 @@ void	rotate_right(t_game *state)
 
 	olddirx = state->vec.dir_x;
 	oldplanex = state->vec.plane_x;
-	state->vec.dir_x = olddirx * cos(-0.0835) -
-		state->vec.dir_y * sin(-0.0835);
-	state->vec.dir_y = olddirx * sin(-0.0835) +
-		state->vec.dir_y * cos(-0.0835);
-	state->vec.plane_x = oldplanex * cos(-0.0835) -
-		state->vec.plane_y * sin(-0.0835);
-	state->vec.plane_y = oldplanex * sin(-0.0835) +
-		state->vec.plane_y * cos(-0.0835);
+	state->vec.dir_x = olddirx * cos(-state->config.cam_speed) -
+		state->vec.dir_y * sin(-state->config.cam_speed);
+	state->vec.dir_y = olddirx * sin(-state->config.cam_speed) +
+		state->vec.dir_y * cos(-state->config.cam_speed);
+	state->vec.plane_x = oldplanex * cos(-state->config.cam_speed) -
+		state->vec.plane_y * sin(-state->config.cam_speed);
+	state->vec.plane_y = oldplanex * sin(-state->config.cam_speed) +
+		state->vec.plane_y * cos(-state->config.cam_speed);
 }
