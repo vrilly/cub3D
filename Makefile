@@ -22,7 +22,7 @@ LIBMLX_LIB	:= $(LIBMLX)/libmlx.dylib
 NAME	= cub3D
 VPATH	:= $(SRC_DIR)
 
-CFLAGS	:= -g -Wall -Wextra -I $(INC_DIR) -I $(LIBFT)/out -I $(LIBMLX)
+CFLAGS	:= -Wall -Wextra -I $(INC_DIR) -I $(LIBFT)/out -I $(LIBMLX)
 
 LDFLAGS	:= -L $(LIBFT)/out -L $(LIBMLX) -lft -lmlx -lm \
 			-framework OpenGL -framework AppKit
