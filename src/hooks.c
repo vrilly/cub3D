@@ -48,7 +48,7 @@ int	hook_keyup(int kc, t_game *state)
 ** I hardcoded X11 defines to save the evaluator the effort of having to
 ** install XQuartz through msc before evaluating.
 */
-int	init_window_hooks(void *window, t_game *state)
+void	init_window_hooks(void *window, t_game *state)
 {
 	mlx_hook(window, 2, (1L << 0), &hook_keydown, state);
 	mlx_hook(window, 3, (1L << 1), &hook_keyup, state);
