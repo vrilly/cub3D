@@ -42,14 +42,14 @@ HDRS	:= cub3d.h texture.h map.h gfx.h config.h spr_cast.h \
 	renderer.h ftlog.h cub3d_error.h bitmap.h
 OBJS	:= $(SRCS:.c=.o)
 
-$(OBJ_DIR)/%.o : %.c $(addprefix $(INC_DIR)/, $(HDRS)) | dirs
+$(OBJ_DIR)/%.o : %.c $(addprefix $(INC_DIR)/, $(HDRS)) | $(OBJ_DIR)
 	@echo CC $<
 	@$(CC) $(CFLAGS) -c -o $@ $<
 
 all: $(LIBMLX_LIB) $(LIBFT_LIB) $(NAME)
 
 $(LIBFT_LIB) : $(LIBFT)
-	@DEBUG=1 $(MAKE) -C $<
+	$(MAKE) -C $<
 
 $(LIBMLX_LIB) : $(LIBMLX)
 	$(MAKE) -C $<
@@ -75,7 +75,7 @@ nuke: fclean
 nuke_re: nuke
 	@$(MAKE) re
 
-dirs:
+$(OBJ_DIR):
 	@echo Compiling $(NAME)...
 	@echo Host: $$(uname -rms)
 	@echo CFLAGS: $(CFLAGS)
