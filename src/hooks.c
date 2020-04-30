@@ -47,7 +47,6 @@ int	hook_keyup(int kc, t_game *state)
 
 int	init_window_hooks(void *window, t_game *state)
 {
-	mlx_loop_hook(state->mlx_ptr, &render_frame, state);
 	mlx_hook(window, KeyPress, KeyPressMask, &hook_keydown, state);
 	mlx_hook(window, KeyRelease, KeyReleaseMask, &hook_keyup, state);
 	mlx_hook(state->window, DestroyNotify, 0, (int (*)()) &exit, 0);
