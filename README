@@ -6,6 +6,9 @@ For quick testing of the faulty maps you can use this command:
 All the err* maps should give errors and not launch the cub3D game.
 	If it does it will not pass eval :)
 
+For testing of mapleaks i recommend you to use mixed_map.cub and edit
+the map on the fly with different test cases
+
 Arguments you can use:
 	--nosync:	Reduce movement speed
 	--save:		Render screenshot offscreen and save it as bitmap
