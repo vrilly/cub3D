@@ -53,10 +53,12 @@ ft_printf:
 clean:
 	@echo Removed intermediates
 	@$(RM) -r $(OBJ_DIR)
+	@$(MAKE) -C ext/printf clean
 
 fclean: clean
 	@echo Removed output
 	@$(RM) -r $(OUT_DIR)
+	@$(MAKE) -C ext/printf fclean
 
 re: fclean all
 
