@@ -1,4 +1,16 @@
-cub3D Project!
+The magical cube drawing program
 
-Trello board for project progress: https://trello.com/b/ZtDxaUKr
-42 intra deadline is set to Feb, 21. I hope to get it to pass by then
+Included are some maps for you to use.
+For quick testing of the faulty maps you can use this command:
+	`find maps/err* -exec echo \; -exec echo {} \; -exec ./cub3D {} \;`
+All the err* maps should give errors and not launch the cub3D game.
+	If it does it will not pass eval :)
+
+Arguments you can use:
+	--nosync:	Reduce movement speed
+	--save:		Render screenshot offscreen and save it as bitmap
+	--conf:		Configure keymapping
+
+Limitations:
+	Max resolution for offscreen rendering is 16384*16384, minilibx can't
+		handle higher due to the hardware limitations
