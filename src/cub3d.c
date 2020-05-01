@@ -49,13 +49,18 @@ static enum e_cub_error	game_init(t_game *state)
 
 static enum e_cub_error	parse_args(int argc, char **argv, t_game *state)
 {
+	int	arg_pos;
+
+	arg_pos = 1;
 	if (argc < 2)
 		return (ARGS_INCOMPLETE);
 	if (argc == 3)
 	{
-		if (ft_strncmp(argv[1], "--save", 6) == 0)
+		if (ft_strncmp(argv[arg_pos], "--", 2) != 0)
+			arg_pos++;
+		if (ft_strncmp(argv[arg_pos], "--save", 6) == 0)
 			state->screenshot = 2;
-		else if (ft_strncmp(argv[1], "--nosync", 15) == 0)
+		else if (ft_strncmp(argv[arg_pos], "--nosync", 15) == 0)
 		{
 			state->config.mov_speed /= 3;
 			state->config.cam_speed /= 3;
@@ -63,7 +68,7 @@ static enum e_cub_error	parse_args(int argc, char **argv, t_game *state)
 		else
 			return (ARGS_INVALID);
 	}
-	state->map_path = argv[argc - 1];
+	state->map_path = argv[(arg_pos == 1) ? argc - 1 : argc - 2];
 	return (NO_ERROR);
 }
 

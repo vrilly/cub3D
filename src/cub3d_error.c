@@ -22,8 +22,8 @@ char	g_errmsg[5][64] = {
 	"",
 	"MLX Failed to initialize",
 	"Couldn't read map",
-	"usage: ./cub3D [--save] \033[4;mmapfile\033[0m",
-	"Invalid arguments.\nusage: ./cub3D [--save] \033[4;mmapfile\033[0m"
+	"usage: ./cub3D mapfile [--save|--nosync]",
+	"Invalid arguments.\nusage: ./cub3D mapfile [--save|--nosync]"
 };
 
 void	*reterr(t_game *state, char *err)
