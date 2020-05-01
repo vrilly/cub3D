@@ -28,7 +28,8 @@ LDFLAGS	:= -L $(LIBFT)/out -L $(LIBMLX) -lft -lmlx -lm \
 			-framework OpenGL -framework AppKit
 CFLAGS	:= $(CFLAGS) -I /usr/X11/include
 
-S_CUB3D		= cub3d.c config.c hooks.c loop.c ftlog.c cub3d_error.c
+S_CUB3D		= cub3d.c config.c hooks.c loop.c ftlog.c cub3d_error.c \
+			  reconf.c
 S_MAP		= map_reader.c map_reader_seq.c map_texloader.c map_color.c \
 			  map_verify.c map_fd.c map_flip.c map_buffer.c \
 			  map_lookup.c map_reader_tex.c

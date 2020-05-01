@@ -28,6 +28,12 @@ typedef struct	s_config
 	float	cam_speed;
 }				t_config;
 
+typedef struct	s_reconf
+{
+	int		*dst;
+	char	*keyname;
+}				t_reconf;
+
 void			default_config(t_config *config);
 
 #endif

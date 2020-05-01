@@ -108,6 +108,7 @@ int				destroy_renderer_window(t_game *state);
 void			init_window_hooks(void *window, t_game *state);
 int				render_frame(t_game *state);
 void			movement_loop(t_game *state);
+int				start_reconf(t_game *state);
 
 void			precalc(t_game *state, int x);
 void			calc_step(t_game *state);
