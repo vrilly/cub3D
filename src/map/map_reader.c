@@ -65,7 +65,7 @@ static int	process_line(char *line, t_game *state)
 	prefix = line;
 	if (ft_isdigit(*prefix) || *prefix == ' ')
 		return (2);
-	arg = strchr(prefix, ' ');
+	arg = ft_strchr(prefix, ' ');
 	if (!arg)
 		arg = prefix;
 	else
