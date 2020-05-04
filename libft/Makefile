@@ -37,7 +37,7 @@ $(OBJ_DIR)/%.o : %.c $(HDRS) | dirs
 	@echo CC $<
 	@$(CC) $(CFLAGS) -o $@ $<
 
-all: NAME
+all: $(NAME)
 
 $(NAME): $(addprefix $(OBJ_DIR)/,$(OBJS)) | ft_printf
 	@echo Linking $(NAME)
