@@ -39,10 +39,10 @@ void		default_config(t_config *config)
 	int	ext_cfg;
 
 	ext_cfg = load_config(config);
-	config->mov_speed = 0.25;
-	config->cam_speed = 0.0835;
 	config->k_esc = 53;
 	config->k_prtscr = 105;
+	config->mov_speed = 0.125;
+	config->cam_speed = 0.0418;
 	if (ext_cfg)
 		return ;
 	config->k_w = 13;

@@ -62,8 +62,8 @@ static enum e_cub_error	parse_args(int argc, char **argv, t_game *state)
 			state->screenshot = 2;
 		else if (ft_strncmp(argv[arg_pos], "--nosync", 15) == 0)
 		{
-			state->config.mov_speed /= 3;
-			state->config.cam_speed /= 3;
+			state->config.mov_speed /= 2;
+			state->config.cam_speed /= 2;
 		}
 		else
 			return (ARGS_INVALID);
