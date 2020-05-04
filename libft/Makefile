@@ -15,7 +15,7 @@ INC_DIR	:= inc
 OUT_DIR	:= out
 OBJ_DIR	:= obj
 
-TARGET = $(OUT_DIR)/libft.a
+NAME = $(OUT_DIR)/libft.a
 VPATH := $(SRC_DIR)
 
 CFLAGS		:= -c -Wall -Wextra -Werror -I $(INC_DIR)
@@ -37,10 +37,10 @@ $(OBJ_DIR)/%.o : %.c $(HDRS) | dirs
 	@echo CC $<
 	@$(CC) $(CFLAGS) -o $@ $<
 
-all: $(TARGET)
+all: NAME
 
-$(TARGET): $(addprefix $(OBJ_DIR)/,$(OBJS)) | ft_printf
-	@echo Linking $(TARGET)
+$(NAME): $(addprefix $(OBJ_DIR)/,$(OBJS)) | ft_printf
+	@echo Linking $(NAME)
 	@$(AR) rcs $@ $^ ext/printf/obj/*
 	@echo Copying headers..
 	@cp -r $(INC_DIR)/* out/
@@ -63,7 +63,7 @@ fclean: clean
 re: fclean all
 
 dirs:
-	@echo Compiling $(TARGET)...
+	@echo Compiling $(NAME)...
 	@echo Host: $$(uname -rms)
 	@echo CFLAGS: $(CFLAGS)
 	@echo ---Start---
