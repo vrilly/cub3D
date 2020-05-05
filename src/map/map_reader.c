@@ -41,10 +41,11 @@ static int	read_mapdata(t_fdstream *fs, char *first_line, t_game *state)
 	{
 		mbuf_append(buff, mbuf_create(line, maplen(line)));
 		ret = fd_readline(fs, &line);
-		if (!*line)
+		if (ret <= 0 || !*line)
 		{
 			ret = 0;
-			free(line);
+			if (ret != -1)
+				free(line);
 		}
 	}
 	state->current_map->mapdata = mbuf_finalize(buff,
