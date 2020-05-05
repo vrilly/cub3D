@@ -56,7 +56,7 @@ static int		find_line(t_fdstream *file, char **line)
 			read_buffer(file);
 	}
 	(*line)[i] = '\0';
-	return (1);
+	return (i > 0);
 }
 
 int				fd_readline(t_fdstream *file, char **line)
@@ -67,7 +67,8 @@ int				fd_readline(t_fdstream *file, char **line)
 	*line = ft_calloc(1, 512);
 	if (!*line)
 		return (-1);
-	read_buffer(file);
+	if (!read_buffer(file))
+		return (0);
 	ret = find_line(file, line);
 	if (file->b_read < 0)
 	{
