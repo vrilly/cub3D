@@ -15,10 +15,19 @@ INC_DIR	:= inc
 OUT_DIR	:= out
 OBJ_DIR	:= obj
 
-NAME = $(OUT_DIR)/libft.a
+TARGET	:= $(shell uname -s)
+
+ifeq ($(TARGET),Linux)
+	NAME	:= $(OUT_DIR)/libft.so
+	PF_LIB	:= ext/printf/libftprintf.so
+else
+	NAME	:= $(OUT_DIR)/libft.dylib
+	PF_LIB	:= ext/printf/libftprintf.dylib
+endif
+
 VPATH := $(SRC_DIR)
 
-CFLAGS		:= -c -Wall -Wextra -Werror -I $(INC_DIR)
+CFLAGS		:= -Wall -Wextra -Werror -fPIC -I $(INC_DIR)
 ifeq ($(DEBUG), 1)
 	CFLAGS	:= $(CFLAGS) -g
 endif
@@ -35,20 +44,21 @@ OBJS		:= $(SRCS:.c=.o)
 
 $(OBJ_DIR)/%.o : %.c $(HDRS) | dirs
 	@echo CC $<
-	@$(CC) $(CFLAGS) -o $@ $<
+	@$(CC) $(CFLAGS) -c -o $@ $<
 
 all: $(NAME)
 
-$(NAME): $(addprefix $(OBJ_DIR)/,$(OBJS)) | ft_printf
+$(NAME): $(addprefix $(OBJ_DIR)/,$(OBJS)) | $(PF_LIB)
 	@echo Linking $(NAME)
-	@$(AR) rcs $@ $^ ext/printf/obj/*
+	@$(CC) -shared -o $@ $^
 	@echo Copying headers..
 	@cp -r $(INC_DIR)/* out/
 	@cp ext/printf/inc/printf.h out/
 	@echo ---DONE---
 
-ft_printf:
+$(PF_LIB):
 	@$(MAKE) -C ext/printf
+	@cp $@ out/
 
 clean:
 	@echo Removed intermediates

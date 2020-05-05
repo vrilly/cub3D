@@ -14,10 +14,17 @@ SRC_DIR	:= src conversions formatters utils
 INC_DIR	:= inc
 OBJ_DIR := obj
 
-NAME	:= libftprintf.a
+TARGET	:= $(shell uname -s)
+
+ifeq ($(TARGET),Linux)
+	NAME = libftprintf.so
+else
+	NAME = libftprintf.dylib
+endif
+
 VPATH	:= $(SRC_DIR)
 
-CFLAGS	:= -c -Wall -Wextra -Werror -I $(INC_DIR)
+CFLAGS	:= -c -Wall -Wextra -Werror -fPIC -I $(INC_DIR)
 
 S_PRINTF	:= printf.c parse_flag.c ctable.c nconv.c printer.c
 S_CONV		:= p_sign.c p_str.c p_int.c p_char.c p_uint.c p_ptr.c p_hex.c
@@ -38,7 +45,7 @@ all: $(NAME)
 
 $(NAME): $(addprefix $(OBJ_DIR)/,$(OBJS))
 	@echo Linking $(NAME)
-	@$(AR) rcs $@ $^
+	@$(CC) -shared -o $@ $^
 	@echo ---DONE---
 
 clean:

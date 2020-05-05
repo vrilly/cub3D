@@ -14,8 +14,16 @@ SRC_DIR	= src src/map src/gfx src/sprite src/bmp
 INC_DIR	= inc
 OBJ_DIR = obj
 
+TARGET	:= $(shell uname -s)
+ifeq ($(TARGET),Linux)
+	LIBEXT = so
+else
+	LIBEXT = dylib
+endif
+
 LIBFT		= libft
-LIBFT_LIB	:= $(LIBFT)/out/libft.a
+LIBFT_LIB	:= $(LIBFT)/out/libft.$(LIBEXT)
+LIBPF_LIB	:= $(LIBFT)/out/libftprintf.$(LIBEXT)
 LIBMLX		= libmlx
 LIBMLX_LIB	:= $(LIBMLX)/libmlx.dylib
 
@@ -51,6 +59,8 @@ all: $(LIBMLX_LIB) $(LIBFT_LIB) $(NAME)
 
 $(LIBFT_LIB) : $(LIBFT)
 	$(MAKE) -C $<
+	@cp $@ .
+	@cp $(LIBPF_LIB) .
 
 $(LIBMLX_LIB) : $(LIBMLX)
 	$(MAKE) -C $<

@@ -80,7 +80,7 @@ int						main(int argc, char **argv)
 	ft_bzero(&state, sizeof(t_game));
 	ftlog_init(1);
 	default_config(&state.config);
-	if (ft_strncmp(argv[1], "--conf", 6) == 0)
+	if (argc > 1 && ft_strncmp(argv[1], "--conf", 6) == 0)
 		return (start_reconf(&state));
 	ret = parse_args(argc, argv, &state);
 	if (ret != NO_ERROR)
