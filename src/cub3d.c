@@ -28,6 +28,8 @@ static enum e_cub_error	game_init(t_game *state)
 	state->mlx_ptr = mlx_init();
 	if (!state->mlx_ptr)
 		return (MLX_INIT_FAIL);
+	if (init_plugins(state))
+		return (PLUGIN_FAIL);
 	if (!read_map_from_file(state->map_path, state))
 		return (MAP_READ_FAIL);
 	init_background(state);

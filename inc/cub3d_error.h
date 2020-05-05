@@ -18,8 +18,9 @@ enum	e_cub_error {
 	MLX_INIT_FAIL,
 	MAP_READ_FAIL,
 	ARGS_INCOMPLETE,
-	ARGS_INVALID
+	ARGS_INVALID,
+	PLUGIN_FAIL
 };
 
-char	g_errmsg[5][64];
+char	g_errmsg[6][64];
 #endif

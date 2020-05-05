@@ -25,6 +25,9 @@
 # include "config.h"
 # include "ftlog.h"
 # include "cub3d_error.h"
+# ifdef BONUS
+#  include "plugin.h"
+# endif
 
 enum			e_map_tile_type {
 	TILE_EMPTY = 0,
@@ -90,6 +93,11 @@ typedef struct	s_game
 	t_rc_params		rcp;
 	t_draw_p		vis;
 	t_sprite_engine	spr;
+
+# ifdef BONUS
+
+	t_pluginlist	*plugins;
+# endif
 
 	char			*error;
 	char			*map_path;

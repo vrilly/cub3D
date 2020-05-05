@@ -45,8 +45,15 @@ S_GFX		= window.c renderer.c render_calc.c frame.c camera.c background.c \
 			  movement.c
 S_SPRITE	= engine.c spr_sort.c spr_cast.c
 S_BMP		= bmp_hdr.c frame_to_bitmap.c save_bmp.c
+S_BONUS		=
 
-SRCS	:= $(S_CUB3D) $(S_MAP) $(S_GFX) $(S_SPRITE) $(S_BMP)
+ifeq ($(BONUS),1)
+	S_BONUS = plugin.c
+	CFLAGS	:= $(CFLAGS) -D BONUS=1
+	LDFLAGS	:= $(LDFLAGS) -ldl -Wl,-rpath,./plugins
+endif
+
+SRCS	:= $(S_CUB3D) $(S_MAP) $(S_GFX) $(S_SPRITE) $(S_BMP) $(S_BONUS)
 HDRS	:= cub3d.h texture.h map.h gfx.h config.h spr_cast.h \
 	renderer.h ftlog.h cub3d_error.h bitmap.h
 OBJS	:= $(SRCS:.c=.o)
@@ -56,6 +63,9 @@ $(OBJ_DIR)/%.o : %.c $(addprefix $(INC_DIR)/, $(HDRS)) | $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -c -o $@ $<
 
 all: $(LIBMLX_LIB) $(LIBFT_LIB) $(NAME)
+
+bonus:
+	$(MAKE) BONUS=1
 
 $(LIBFT_LIB) : $(LIBFT)
 	$(MAKE) -C $<

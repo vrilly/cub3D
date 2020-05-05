@@ -18,12 +18,13 @@
 ** But i did not. So sadly it's rarely used
 */
 
-char	g_errmsg[5][64] = {
+char	g_errmsg[6][64] = {
 	"",
 	"MLX Failed to initialize",
 	"Couldn't read map",
 	"usage: ./cub3D mapfile [--save|--nosync]",
-	"Invalid arguments.\nusage: ./cub3D mapfile [--save|--nosync]"
+	"Invalid arguments.\nusage: ./cub3D mapfile [--save|--nosync]",
+	"Plugin loader failed."
 };
 
 void	*reterr(t_game *state, char *err)
