@@ -56,7 +56,7 @@ static int		find_line(t_fdstream *file, char **line)
 			read_buffer(file);
 	}
 	(*line)[i] = '\0';
-	return (0);
+	return (1);
 }
 
 int				fd_readline(t_fdstream *file, char **line)
