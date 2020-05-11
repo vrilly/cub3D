@@ -143,4 +143,6 @@ void			right(t_game *state);
 int				hook_keyup(int kc, t_game *state);
 int				hook_keydown(int kc, t_game *state);
 
+int				draw_tex(t_game *state, t_texture *tex, int x, int y);
+
 #endif

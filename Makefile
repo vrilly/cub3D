@@ -42,7 +42,7 @@ S_MAP		= map_reader.c map_reader_seq.c map_texloader.c map_color.c \
 			  map_verify.c map_fd.c map_flip.c map_buffer.c \
 			  map_lookup.c map_reader_tex.c
 S_GFX		= window.c renderer.c render_calc.c frame.c camera.c background.c \
-			  movement.c
+			  movement.c util.c
 S_SPRITE	= engine.c spr_sort.c spr_cast.c
 S_BMP		= bmp_hdr.c frame_to_bitmap.c save_bmp.c
 S_BONUS		=
