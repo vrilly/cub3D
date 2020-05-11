@@ -47,8 +47,10 @@ S_SPRITE	= engine.c spr_sort.c spr_cast.c
 S_BMP		= bmp_hdr.c frame_to_bitmap.c save_bmp.c
 S_BONUS		=
 
+B_PLUGINS	= $(addprefix plugins/, minimap.so)
+
 ifeq ($(BONUS),1)
-	S_BONUS = plugin.c
+	S_BONUS = plugin.c plugin_hooks.c
 	CFLAGS	:= $(CFLAGS) -D BONUS=1
 	LDFLAGS	:= $(LDFLAGS) -ldl -Wl,-rpath,./plugins
 endif
@@ -62,10 +64,16 @@ $(OBJ_DIR)/%.o : %.c $(addprefix $(INC_DIR)/, $(HDRS)) | $(OBJ_DIR)
 	@echo CC $<
 	@$(CC) $(CFLAGS) -c -o $@ $<
 
+plugins/%.so : plugins/%
+	@$(MAKE) -C $<
+
 all: $(LIBMLX_LIB) $(LIBFT_LIB) $(NAME)
+
+plugins: $(B_PLUGINS)
 
 bonus:
 	$(MAKE) BONUS=1
+	$(MAKE) plugins
 
 $(LIBFT_LIB) : $(LIBFT)
 	$(MAKE) -C $<
