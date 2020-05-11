@@ -34,6 +34,7 @@ static enum e_cub_error	game_init(t_game *state)
 		return (MAP_READ_FAIL);
 	init_background(state);
 	create_renderer_window(state);
+	execute_pregame_hook(state);
 	mlx_loop_hook(state->mlx_ptr, &render_frame, state);
 	if (state->window)
 		init_window_hooks(state->window, state);

@@ -29,9 +29,10 @@ typedef struct			s_plugin
 
 	t_plugininfo	*info;
 
-	int				(*setup_hook)(void *pl_state);
-	int				(*frame_hook)(t_game *state);
-	int				(*map_hook)(t_game *state);
+	int				(*setup_hook)(void **pl_state);
+	int				(*frame_hook)(t_game *state, void *pl_state);
+	int				(*map_hook)(t_game *state, void *pl_state);
+	int				(*pregame_hook)(t_game *state, void *pl_state);
 }						t_plugin;
 
 typedef struct			s_pluginlist
@@ -41,5 +42,7 @@ typedef struct			s_pluginlist
 }						t_pluginlist;
 
 enum e_cub_error		init_plugins(t_game *state);
+void					execute_frame_hook(t_game *state);
+void					execute_pregame_hook(t_game *state);
 
 #endif

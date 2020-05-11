@@ -13,7 +13,23 @@
 #include "cub3d.h"
 #include "bitmap.h"
 
-void	start_frame(t_game *state)
+#ifdef BONUS
+
+static void	frame_hook(t_game *state)
+{
+	execute_frame_hook(state);
+}
+
+#else
+
+static void	frame_hook(t_game *state)
+{
+	(void)state;
+}
+
+#endif
+
+void		start_frame(t_game *state)
 {
 	if (!state->frame.image_ptr)
 	{
@@ -27,10 +43,11 @@ void	start_frame(t_game *state)
 			state->background.size_line * state->current_map->y_res);
 }
 
-void	end_frame(t_game *state)
+void		end_frame(t_game *state)
 {
 	t_bitmap	*bmp;
 
+	frame_hook(state);
 	if (state->window)
 		mlx_put_image_to_window(state->mlx_ptr, state->window,
 				state->frame.image_ptr, 0, 0);
