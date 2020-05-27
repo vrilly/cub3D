@@ -54,7 +54,7 @@ B_PLUGINS	= $(addprefix plugins/, minimap.so)
 ifeq ($(BONUS),1)
 	S_BONUS = plugin_bonus.c plugin_hooks_bonus.c
 	CFLAGS	:= $(CFLAGS) -D BONUS=1
-	LDFLAGS	:= $(LDFLAGS) -ldl -Wl,-rpath,./plugins -Wl,--export-dynamic
+	LDFLAGS	:= $(LDFLAGS) -ldl -Wl,-rpath,./plugins
 endif
 
 SRCS	:= $(S_CUB3D) $(S_MAP) $(S_GFX) $(S_SPRITE) $(S_BMP) $(S_BONUS)
