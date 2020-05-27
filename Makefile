@@ -24,7 +24,7 @@ else
 endif
 
 LIBFT		= libft
-LIBFT_LIB	:= $(LIBFT)/out/libft.$(LIBEXT)
+LIBFT_LIB	:= $(LIBFT)/libft.$(LIBEXT)
 LIBPF_LIB	:= $(LIBFT)/out/libftprintf.$(LIBEXT)
 LIBMLX		= libmlx
 LIBMLX_LIB	:= $(LIBMLX)/libmlx.$(LIBEXT)

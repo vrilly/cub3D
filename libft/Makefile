@@ -18,10 +18,10 @@ OBJ_DIR	:= obj
 TARGET	:= $(shell uname -s)
 
 ifeq ($(TARGET),Linux)
-	NAME	:= $(OUT_DIR)/libft.so
+	NAME	:= libft.so
 	PF_LIB	:= ext/printf/libftprintf.so
 else
-	NAME	:= $(OUT_DIR)/libft.dylib
+	NAME	:= libft.dylib
 	PF_LIB	:= ext/printf/libftprintf.dylib
 endif
 
