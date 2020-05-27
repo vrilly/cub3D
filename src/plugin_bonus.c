@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   plugin.c                                           :+:    :+:            */
+/*   plugin_bonus.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <dlfcn.h>
 #include "cub3d.h"
 
 static void			messy_error(char *err)
@@ -79,5 +80,7 @@ enum e_cub_error	init_plugins(t_game *state)
 		free(line);
 	}
 	free(line);
+	fd_close(fd);
+	free(fd);
 	return (NO_ERROR);
 }

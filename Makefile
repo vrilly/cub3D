@@ -45,12 +45,12 @@ S_GFX		= window.c renderer.c render_calc.c frame.c camera.c background.c \
 			  movement.c util.c
 S_SPRITE	= engine.c spr_sort.c spr_cast.c
 S_BMP		= bmp_hdr.c frame_to_bitmap.c save_bmp.c
-S_BONUS		=
+S_BONUS		= plugin.c plugin_hooks_bonus.c
 
 B_PLUGINS	= $(addprefix plugins/, minimap.so)
 
 ifeq ($(BONUS),1)
-	S_BONUS = plugin.c plugin_hooks.c
+	S_BONUS = plugin_bonus.c plugin_hooks_bonus.c
 	CFLAGS	:= $(CFLAGS) -D BONUS=1
 	LDFLAGS	:= $(LDFLAGS) -ldl -Wl,-rpath,./plugins
 endif

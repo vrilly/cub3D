@@ -10,9 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLUGIN_H
-# define PLUGIN_H
-# include <dlfcn.h>
+#ifndef PLUGIN_BONUS_H
+# define PLUGIN_BONUS_H
 
 typedef struct s_game	t_game;
 

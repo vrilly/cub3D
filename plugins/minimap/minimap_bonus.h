@@ -13,7 +13,7 @@
 #ifndef MINIMAP_BONUS_H
 # define MINIMAP_BONUS_H
 # include "cub3d.h"
-# include "plugin.h"
+# include "plugin_bonus.h"
 
 # define COLOR_OOB		0xFF666666
 # define COLOR_EMPTY	0x00000000
