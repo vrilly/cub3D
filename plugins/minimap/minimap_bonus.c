@@ -42,8 +42,6 @@ int				pregame_hook(t_game *state, t_pluginstate *ps)
 		return (0);
 	if (state->current_map->x_res >= 300 && state->current_map->y_res >= 300)
 		ps->enabled = 1;
-	else
-		ftlog(LOG_WARN, "Minimap disabled, res too low.");
 	return (1);
 }
 
