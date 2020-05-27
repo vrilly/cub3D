@@ -28,6 +28,7 @@ typedef struct			s_mplookup
 {
 	char	*prefix;
 	int		(*func)(char *arg, t_game *state);
+	int		used;
 }						t_mplookup;
 
 t_mplookup				*find_func(char *prefix);
