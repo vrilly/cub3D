@@ -11,6 +11,23 @@
 
 #include "cub3d.h"
 
+/*
+** Memcpy which does not copy 0x00000000 pixels, these should be transparent
+** Later on i could use some blending algorithm for partial transparency
+*/
+
+static void	tex_memcpy(void *dst, void *src, size_t n)
+{
+	while (n)
+	{
+		if (*(unsigned int*)src)
+			*(unsigned int*)dst = *(unsigned int*)src;
+		src++;
+		dst++;
+		n--;
+	}
+}
+
 int	draw_tex(t_game *state, t_texture *tex, int x, int y)
 {
 	int	yp;
@@ -26,7 +43,7 @@ int	draw_tex(t_game *state, t_texture *tex, int x, int y)
 		offset = ((yp + y) * state->frame.size_line) +
 				(x * state->frame.bpp / 8);
 		t_offset = yp * tex->size_line;
-		ft_memcpy(state->frame.image_data + offset, tex->data_ptr + t_offset,
+		tex_memcpy(state->frame.image_data + offset, tex->data_ptr + t_offset,
 				tex->width * state->frame.bpp / 8);
 		yp++;
 	}
