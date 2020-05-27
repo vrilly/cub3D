@@ -20,6 +20,8 @@ void	execute_frame_hook(t_game *state)
 	list = state->plugins;
 	while (list)
 	{
+		if (list->plugin->update_hook != NULL)
+			(*list->plugin->update_hook)(state, list->plugin->pl_state);
 		if (list->plugin->frame_hook != NULL)
 			(*list->plugin->frame_hook)(state, list->plugin->pl_state);
 		list = list->next;

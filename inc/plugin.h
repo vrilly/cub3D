@@ -32,6 +32,7 @@ typedef struct			s_plugin
 	int				(*setup_hook)(void **pl_state);
 	int				(*frame_hook)(t_game *state, void *pl_state);
 	int				(*map_hook)(t_game *state, void *pl_state);
+	int				(*update_hook)(t_game *state, void *pl_state);
 	int				(*pregame_hook)(t_game *state, void *pl_state);
 }						t_plugin;
 

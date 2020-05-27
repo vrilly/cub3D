@@ -38,6 +38,7 @@ static t_plugin		*load_plugin(char *path)
 	plugin->frame_hook = dlsym(plugin->dl_handle, "frame_hook");
 	plugin->map_hook = dlsym(plugin->dl_handle, "map_hook");
 	plugin->pregame_hook = dlsym(plugin->dl_handle, "pregame_hook");
+	plugin->update_hook = dlsym(plugin->dl_handle, "update_hook");
 	if (!(*plugin->setup_hook)(&plugin->pl_state))
 		messy_error(plugin->info->name);
 	ft_printf("[INFO] Loaded plugin: %s\n", plugin->info->name);
