@@ -17,8 +17,10 @@ OBJ_DIR = obj
 TARGET	:= $(shell uname -s)
 ifeq ($(TARGET),Linux)
 	LIBEXT = so
+	LDFLAGS := -lXext -lX11
 else
 	LIBEXT = dylib
+	LDFLAGS := -framework OpenGL -framework AppKit
 endif
 
 LIBFT		= libft
@@ -32,8 +34,8 @@ VPATH	:= $(SRC_DIR)
 
 CFLAGS	:= -g -Wall -Wextra -I $(INC_DIR) -I $(LIBFT)/out -I $(LIBMLX)
 
-LDFLAGS	:= -L . -L $(LIBMLX) -lftprintf -lft -lmlx -lm -lXext -lX11 \
-		   -Wl,-rpath,. -Wl,--export-dynamic
+LDFLAGS	:= $(LDFLAGS) -L . -L $(LIBMLX) -lftprintf -lft -lmlx -lm \
+		   -Wl,-rpath,.
 CFLAGS	:= $(CFLAGS) -I /usr/X11/include
 
 S_CUB3D		= cub3d.c config.c hooks.c loop.c ftlog.c cub3d_error.c \
@@ -52,7 +54,7 @@ B_PLUGINS	= $(addprefix plugins/, minimap.so)
 ifeq ($(BONUS),1)
 	S_BONUS = plugin_bonus.c plugin_hooks_bonus.c
 	CFLAGS	:= $(CFLAGS) -D BONUS=1
-	LDFLAGS	:= $(LDFLAGS) -ldl -Wl,-rpath,./plugins
+	LDFLAGS	:= $(LDFLAGS) -ldl -Wl,-rpath,./plugins -Wl,--export-dynamic
 endif
 
 SRCS	:= $(S_CUB3D) $(S_MAP) $(S_GFX) $(S_SPRITE) $(S_BMP) $(S_BONUS)
