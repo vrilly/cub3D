@@ -13,7 +13,7 @@
 #ifndef CUB3D_ERROR_H
 # define CUB3D_ERROR_H
 
-enum	e_cub_error {
+enum		e_cub_error {
 	NO_ERROR,
 	MLX_INIT_FAIL,
 	MAP_READ_FAIL,
@@ -22,5 +22,5 @@ enum	e_cub_error {
 	PLUGIN_FAIL
 };
 
-char	g_errmsg[6][64];
+extern char	g_errmsg[6][64];
 #endif
