@@ -66,7 +66,7 @@ $(OBJ_DIR)/%.o : %.c $(addprefix $(INC_DIR)/, $(HDRS)) | $(OBJ_DIR)
 	@echo CC $<
 	@$(CC) $(CFLAGS) -c -o $@ $<
 
-plugins/%.so : plugins/%
+plugins/%.$(LIBEXT) : plugins/%
 	@$(MAKE) -C $<
 
 all: $(LIBMLX_LIB) $(LIBFT_LIB) $(NAME)
