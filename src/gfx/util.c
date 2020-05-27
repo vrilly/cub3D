@@ -6,7 +6,8 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/05 12:00:00 by tjans         #+#    #+#                 */
-/*   Updated: 2020/05/05 12:00:00 by tjans                                    */
+/*   Updated: 2020/05/05 12:00:00 by tjans         ########   odam.nl         */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
@@ -28,7 +29,7 @@ static void	tex_memcpy(void *dst, void *src, size_t n)
 	}
 }
 
-int	draw_tex(t_game *state, t_texture *tex, int x, int y)
+int			draw_tex(t_game *state, t_texture *tex, int x, int y)
 {
 	int	yp;
 	int	offset;
