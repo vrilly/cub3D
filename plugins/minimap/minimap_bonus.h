@@ -15,10 +15,10 @@
 # include "cub3d.h"
 # include "plugin_bonus.h"
 
-# define COLOR_OOB		0xFF666666
+# define COLOR_OOB		0x00666666
 # define COLOR_EMPTY	0x00000000
-# define COLOR_WALL		0xFFFFFFFF
-# define COLOR_ITEM		0xFFFF0000
+# define COLOR_WALL		0x00FFFFFF
+# define COLOR_ITEM		0x00FF0000
 
 typedef struct	s_pluginstate
 {
