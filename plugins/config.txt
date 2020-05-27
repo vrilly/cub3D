@@ -1,3 +1,8 @@
-# All plugins will be searched for in plugins/*.so
+# All plugins will be searched for in plugins/*
 # Add one plugin every line
-minimap.so
+# MacOS
+libplugin.dylib
+minimap.dylib
+# LINUX
+# libplugin.so
+# minimap.so
