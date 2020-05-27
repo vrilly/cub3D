@@ -35,5 +35,6 @@ typedef struct	s_reconf
 }				t_reconf;
 
 void			default_config(t_config *config);
+int				start_reconf(t_game *state);
 
 #endif

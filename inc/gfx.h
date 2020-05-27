@@ -18,7 +18,7 @@
 ** d_dist = length of ray from side to next side
 */
 
-typedef struct	s_rc_params
+typedef struct			s_rc_params
 {
 	double	camera_x;
 	double	rc_dir_x;
@@ -36,27 +36,27 @@ typedef struct	s_rc_params
 
 	int		hit;
 	int		side;
-}				t_rc_params;
+}						t_rc_params;
 
-typedef struct	s_draw_p
+typedef struct			s_draw_p
 {
 	int			line_height;
 	int			line_start;
 	int			line_end;
 	t_texture	*texture;
 	double		wall_x;
-}				t_draw_p;
+}						t_draw_p;
 
-typedef struct	s_frame
+typedef struct			s_frame
 {
 	void	*image_ptr;
 	char	*image_data;
 	int		bpp;
 	int		size_line;
 	int		endian;
-}				t_frame;
+}						t_frame;
 
-typedef struct	s_sprite
+typedef struct			s_sprite
 {
 	double		x_pos;
 	double		y_pos;
@@ -64,15 +64,30 @@ typedef struct	s_sprite
 	double		distance;
 
 	t_texture	*texture;
-}				t_sprite;
+}						t_sprite;
 
-typedef struct	s_sprite_engine
+typedef struct			s_sprite_engine
 {
 	double		*zbuffer;
 	t_sprite	**sprites;
 
 	int			num_sprites;
 	int			sprite_order[64];
-}				t_sprite_engine;
+}						t_sprite_engine;
+
+typedef struct s_game	t_game;
+typedef struct s_map	t_map;
+
+void					precalc(t_game *state, int x);
+void					calc_step(t_game *state);
+void					calc_dda(t_game *state);
+void					prerendercalc(t_game *state);
+void					wallx_calc(t_game *state);
+
+void					init_sprite_engine(t_game *state, t_map *map);
+void					sort_sprites(t_sprite_engine *eng);
+void					render_sprites(t_game *state);
+void					add_sprite(t_game *state, double x, double y);
+void					cast_sprites(t_game *state);
 
 #endif

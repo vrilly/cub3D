@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libplugin.h"
+#include "libplugin_bonus.h"
 
 t_plugininfo	g_plugininfo = {
 	.name = "Common utils",

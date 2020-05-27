@@ -10,8 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBPLUGIN_H
-# define LIBPLUGIN_H
+/*
+** This file is for the common utils plugin, only used for bonus
+** All plugins should include this
+*/
+
+#ifndef LIBPLUGIN_BONUS_H
+# define LIBPLUGIN_BONUS_H
 # include "cub3d.h"
 # include "plugin_bonus.h"
 

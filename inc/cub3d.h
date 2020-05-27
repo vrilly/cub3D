@@ -104,29 +104,15 @@ int				fd_readline_sb(t_fdstream *file, char **line);
 void			safe_exit(t_game *state, int ret, char *error);
 
 int				read_map_from_file(char *path, t_game *state);
-int				verify_map(t_map *map, t_game *state);
 void			init_background(t_game *state);
 int				create_renderer_window(t_game *state);
 int				destroy_renderer_window(t_game *state);
 void			init_window_hooks(void *window, t_game *state);
 int				render_frame(t_game *state);
 void			movement_loop(t_game *state);
-int				start_reconf(t_game *state);
-
-void			precalc(t_game *state, int x);
-void			calc_step(t_game *state);
-void			calc_dda(t_game *state);
-void			prerendercalc(t_game *state);
-void			wallx_calc(t_game *state);
 
 void			start_frame(t_game *state);
 void			end_frame(t_game *state);
-
-void			init_sprite_engine(t_game *state, t_map *map);
-void			sort_sprites(t_sprite_engine *eng);
-void			render_sprites(t_game *state);
-void			add_sprite(t_game *state, double x, double y);
-void			cast_sprites(t_game *state);
 
 void			rotate_left(t_game *state);
 void			rotate_right(t_game *state);
@@ -137,7 +123,5 @@ void			right(t_game *state);
 
 int				hook_keyup(int kc, t_game *state);
 int				hook_keydown(int kc, t_game *state);
-
-int				draw_tex(t_game *state, t_texture *tex, int x, int y);
 
 #endif

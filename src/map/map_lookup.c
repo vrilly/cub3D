@@ -14,6 +14,12 @@
 
 #define MPLOOKUP_SIZE 10
 
+/*
+** It does exactly what it says.
+** Reason? To pass it as a function which fits in the interface
+** for handlers
+*/
+
 static int			return_true(void)
 {
 	return (1);
@@ -29,8 +35,8 @@ static t_mplookup	g_mplookup[MPLOOKUP_SIZE] =
 	{"S", &map_reader_seq_ts, 0},
 	{"F", &map_reader_seq_floor_colour, 0},
 	{"C", &map_reader_seq_ceiling_colour, 0},
-	{".!", (int (*)(char*, t_game*))&map_comment, 0},
-	{"..", (int (*)(char*, t_game*))&return_true, 0}
+	{".!", (int (*)(char*, t_game*))&map_comment, -1},
+	{"..", (int (*)(char*, t_game*))&return_true, -1}
 };
 
 t_mplookup			*find_func(char *prefix)
@@ -45,7 +51,7 @@ t_mplookup			*find_func(char *prefix)
 		{
 			if (g_mplookup[i].used == 0)
 				g_mplookup[i].used = 1;
-			else
+			else if (g_mplookup[i].used == 1)
 			{
 				ftlog(LOG_ERROR, "Double map elements. Aborting!");
 				exit(MAP_READ_FAIL);
