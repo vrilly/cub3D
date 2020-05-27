@@ -62,6 +62,9 @@ HDRS	:= cub3d.h texture.h map.h gfx.h config.h spr_cast.h \
 	renderer.h ftlog.h cub3d_error.h bitmap.h plugin_bonus.h
 OBJS	:= $(SRCS:.c=.o)
 
+.PHONY: dirs re fclean clean all nuke plugins bonus compile_bonus \
+		plugins_clean plugins_fclean
+
 $(OBJ_DIR)/%.o : %.c $(addprefix $(INC_DIR)/, $(HDRS)) | $(OBJ_DIR)
 	@echo $(CC) $<
 	@$(CC) $(CFLAGS) -c -o $@ $<
@@ -72,6 +75,16 @@ plugins/%.$(LIBEXT) : plugins/%
 all: $(LIBMLX_LIB) $(LIBFT_LIB) $(NAME)
 
 plugins: $(B_PLUGINS)
+
+plugins_clean: $(basename $(B_PLUGINS))
+	@for dir in $^; do \
+  		$(MAKE) --no-print-directory -C $$dir clean; \
+  	done
+
+plugins_fclean: $(basename $(B_PLUGINS))
+	@for dir in $^; do \
+  		$(MAKE) --no-print-directory -C $$dir fclean; \
+  	done
 
 compile_bonus:
 	@$(MAKE) --no-print-directory BONUS=1
@@ -92,10 +105,10 @@ $(NAME): $(addprefix $(OBJ_DIR)/, $(OBJS))
 	@$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 	@echo ---DONE---
 
-clean:
+clean: plugins_clean
 	@$(RM) -r $(OBJ_DIR)
 
-fclean: clean
+fclean: clean plugins_fclean
 	@$(RM) $(NAME)
 
 re: fclean all
@@ -115,4 +128,3 @@ $(OBJ_DIR):
 	@echo ---Start---
 	@mkdir -p $(OBJ_DIR)
 
-.PHONY: dirs re fclean clean all nuke plugins bonus compile_bonus
