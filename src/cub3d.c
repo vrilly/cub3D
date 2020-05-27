@@ -23,6 +23,25 @@ void					safe_exit(t_game *state, int ret, char *error)
 	exit(ret);
 }
 
+/*
+** Yep, this function does not accept .CuB
+** Whoever would do that kind of horrible stuff?
+*/
+
+static int				check_filename_valid(char *filename)
+{
+	size_t	filename_len;
+
+	filename_len = ft_strlen(filename);
+	if (filename_len < 4)
+		return (0);
+	filename += filename_len - 4;
+	if (ft_strncmp(filename, ".cub", 4) == 0 ||
+	ft_strncmp(filename, ".CUB", 4) == 0)
+		return (1);
+	return (0);
+}
+
 static enum e_cub_error	game_init(t_game *state)
 {
 	state->mlx_ptr = mlx_init();
@@ -72,6 +91,8 @@ static enum e_cub_error	parse_args(int argc, char **argv, t_game *state)
 			return (ARGS_INVALID);
 	}
 	state->map_path = argv[(arg_pos == 1) ? argc - 1 : argc - 2];
+	if (!check_filename_valid(state->map_path))
+		return (INVALID_FILENAME);
 	return (NO_ERROR);
 }
 

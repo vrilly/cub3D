@@ -19,8 +19,9 @@ enum		e_cub_error {
 	MAP_READ_FAIL,
 	ARGS_INCOMPLETE,
 	ARGS_INVALID,
-	PLUGIN_FAIL
+	PLUGIN_FAIL,
+	INVALID_FILENAME
 };
 
-extern char	g_errmsg[6][64];
+extern char	g_errmsg[7][64];
 #endif
