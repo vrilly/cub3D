@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   update_bonus.c                                           :+:    :+:      */
+/*   update_bonus.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/05 12:00:00 by tjans         #+#    #+#                 */
-/*   Updated: 2020/05/05 12:00:00 by tjans                                    */
+/*   Updated: 2020/05/05 12:00:00 by tjans         ########   odam.nl         */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "minimap_bonus.h"
 
-static void	draw_tile(t_texture *fb, int x, int y, unsigned int color)
+static void			draw_tile(t_texture *fb, int x, int y, unsigned int color)
 {
 	void	*data_ptr;
 	int		i;
@@ -33,23 +34,23 @@ static void	draw_tile(t_texture *fb, int x, int y, unsigned int color)
 	}
 }
 
-unsigned int	get_tile_color(t_map *map, int x, int y)
+static unsigned int	get_tile_color(t_map *map, int x, int y)
 {
 	int	map_tile;
 
 	if (x < 0 || y < 0 || x > (int)map->map_width || y > (int)map->map_height)
-		return 0xFF666666;
+		return (COLOR_OOB);
 	map_tile = map->mapdata[y * map->map_width + x];
 	if (map_tile == TILE_EMPTY)
-		return 0x00000000;
+		return (COLOR_EMPTY);
 	if (map_tile == TILE_WALL)
-		return 0xFFFFFFFF;
+		return (COLOR_WALL);
 	if (map_tile == TILE_ITEM)
-		return 0xFFFF0000;
-	return 0x00000000;
+		return (COLOR_ITEM);
+	return (COLOR_OOB);
 }
 
-void		update(t_game *state, t_texture *fb)
+void				update(t_game *state, t_texture *fb)
 {
 	int	px;
 	int	py;

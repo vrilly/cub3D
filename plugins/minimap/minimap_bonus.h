@@ -15,6 +15,11 @@
 # include "cub3d.h"
 # include "plugin.h"
 
+# define COLOR_OOB		0xFF666666
+# define COLOR_EMPTY	0x00000000
+# define COLOR_WALL		0xFFFFFFFF
+# define COLOR_ITEM		0xFFFF0000
+
 typedef struct	s_pluginstate
 {
 	t_texture	*fb;
