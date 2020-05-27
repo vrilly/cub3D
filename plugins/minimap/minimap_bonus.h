@@ -18,6 +18,9 @@
 typedef struct	s_pluginstate
 {
 	t_texture	*fb;
+	int			enabled;
 }				t_pluginstate;
+
+void			update(t_game *map, t_texture *fb);
 
 #endif

@@ -13,11 +13,11 @@
 #include "minimap_bonus.h"
 
 t_plugininfo	g_plugininfo = {
-		.name = "Minimap",
-		.refresh_rate = 60,
+	.name = "Minimap",
+	.refresh_rate = 60,
 };
 
-int	setup(t_pluginstate **ps_ptr)
+int				setup(t_pluginstate **ps_ptr)
 {
 	t_pluginstate *state;
 
@@ -29,22 +29,36 @@ int	setup(t_pluginstate **ps_ptr)
 	return (1);
 }
 
-int	pregame_hook(t_game *state, t_pluginstate *ps)
+int				pregame_hook(t_game *state, t_pluginstate *ps)
 {
-	ps->fb->width = 200;
-	ps->fb->height = 200;
-	ps->fb->img_ptr = mlx_new_image(state->mlx_ptr, 200, 200);
+	ps->fb->width = 90;
+	ps->fb->height = 90;
+	ps->fb->img_ptr = mlx_new_image(state->mlx_ptr, 90, 90);
 	if (ps->fb->img_ptr == NULL)
 		return (0);
 	ps->fb->data_ptr = mlx_get_data_addr(ps->fb->img_ptr, &ps->fb->bpp,
 			&ps->fb->size_line, &ps->fb->endian);
 	if (ps->fb->data_ptr == NULL)
 		return (0);
+	if (state->current_map->x_res >= 300 && state->current_map->y_res >= 300)
+		ps->enabled = 1;
+	else
+		ftlog(LOG_WARN, "Minimap disabled, res too low.");
 	return (1);
 }
 
-int	frame_hook(t_game *state, t_pluginstate *ps)
+int				update_hook(t_game *state, t_pluginstate *ps)
 {
-	draw_tex(state, ps->fb, 0, 0);
+	if (!ps->enabled)
+		return (1);
+	update(state, ps->fb);
+	return (1);
+}
+
+int				frame_hook(t_game *state, t_pluginstate *ps)
+{
+	if (!ps->enabled)
+		return (1);
+	draw_tex(state, ps->fb, state->current_map->x_res - 90, 0);
 	return (1);
 }

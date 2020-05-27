@@ -25,15 +25,15 @@ LIBFT		= libft
 LIBFT_LIB	:= $(LIBFT)/out/libft.$(LIBEXT)
 LIBPF_LIB	:= $(LIBFT)/out/libftprintf.$(LIBEXT)
 LIBMLX		= libmlx
-LIBMLX_LIB	:= $(LIBMLX)/libmlx.dylib
+LIBMLX_LIB	:= $(LIBMLX)/libmlx.$(LIBEXT)
 
 NAME	= cub3D
 VPATH	:= $(SRC_DIR)
 
-CFLAGS	:= -Wall -Wextra -Werror -I $(INC_DIR) -I $(LIBFT)/out -I $(LIBMLX)
+CFLAGS	:= -g -Wall -Wextra -I $(INC_DIR) -I $(LIBFT)/out -I $(LIBMLX)
 
-LDFLAGS	:= -L $(LIBFT)/out -L $(LIBMLX) -lft -lmlx -lm \
-			-framework OpenGL -framework AppKit
+LDFLAGS	:= -L . -L $(LIBMLX) -lftprintf -lft -lmlx -lm -lXext -lX11 \
+		   -Wl,-rpath,. -Wl,--export-dynamic
 CFLAGS	:= $(CFLAGS) -I /usr/X11/include
 
 S_CUB3D		= cub3d.c config.c hooks.c loop.c ftlog.c cub3d_error.c \

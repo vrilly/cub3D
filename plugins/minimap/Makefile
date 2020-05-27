@@ -13,7 +13,7 @@
 CUB3D_BASE_PATH = ../../
 INCLUDES		:= -I $(CUB3D_BASE_PATH)/inc -I $(CUB3D_BASE_PATH)/libft/out
 
-SRCS	= minimap_bonus.c
+SRCS	= minimap_bonus.c update_bonus.c
 OBJS	:= $(SRCS:.c=.o)
 
 TARGET	:= $(shell uname -s)
