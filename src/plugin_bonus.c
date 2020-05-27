@@ -26,7 +26,7 @@ static t_plugin		*load_plugin(char *path)
 	plugin = malloc(sizeof(t_plugin));
 	if (plugin == NULL)
 		messy_error("malloc fail");
-	plugin->dl_handle = dlopen(path, RTLD_NOW);
+	plugin->dl_handle = dlopen(path, RTLD_NOW | RTLD_GLOBAL);
 	if (!plugin->dl_handle)
 	{
 		ft_fprintf(2, "dlopen result: %s\n", dlerror());
