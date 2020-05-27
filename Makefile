@@ -73,9 +73,10 @@ all: $(LIBMLX_LIB) $(LIBFT_LIB) $(NAME)
 
 plugins: $(B_PLUGINS)
 
-bonus:
-	$(MAKE) BONUS=1
-	$(MAKE) plugins
+compile_bonus:
+	@$(MAKE) --no-print-directory BONUS=1
+
+bonus: compile_bonus plugins
 
 $(LIBFT_LIB) : $(LIBFT)
 	$(MAKE) -C $<
@@ -114,4 +115,4 @@ $(OBJ_DIR):
 	@echo ---Start---
 	@mkdir -p $(OBJ_DIR)
 
-.PHONY: dirs re fclean clean all nuke
+.PHONY: dirs re fclean clean all nuke plugins bonus compile_bonus
