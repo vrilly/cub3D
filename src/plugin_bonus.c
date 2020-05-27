@@ -46,7 +46,7 @@ static t_plugin		*load_plugin(char *path)
 	return (plugin);
 }
 
-void				append_plugin(t_game *state, t_plugin *plugin)
+static void			append_plugin(t_game *state, t_plugin *plugin)
 {
 	t_pluginlist *lst;
 
