@@ -24,7 +24,7 @@ ifeq ($(TARGET),Linux)
 	LDFLAGS = -L ../../ -lmlx
 else
 	NAME = ../minimap.dylib
-	LDFLAGS = -L ../../ -lmlx -lft
+	LDFLAGS = -L ../../ -lmlx -lft -undefined dynamic_lookup
 endif
 
 CFLAGS	:= -Wall -Wextra -fPIC $(INCLUDES)

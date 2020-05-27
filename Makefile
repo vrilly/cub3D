@@ -63,7 +63,7 @@ HDRS	:= cub3d.h texture.h map.h gfx.h config.h spr_cast.h \
 OBJS	:= $(SRCS:.c=.o)
 
 $(OBJ_DIR)/%.o : %.c $(addprefix $(INC_DIR)/, $(HDRS)) | $(OBJ_DIR)
-	@echo CC $<
+	@echo $(CC) $<
 	@$(CC) $(CFLAGS) -c -o $@ $<
 
 plugins/%.$(LIBEXT) : plugins/%
