@@ -61,7 +61,13 @@ ifneq ("$(wildcard .bonus_compiled)", "")
 ifneq ($(MAKECMDGOALS), bonus)
 ifneq ($(BONUS),1)
 	DUMMY := $(shell $(RM) .bonus_compiled)
-	DUMMY := $(shell $(MAKE) fclean)
+	DUMMY := $(shell $(RM) $(NAME))
+endif
+endif
+else
+ifneq ($(wildcard obj/plugin.o), "")
+ifeq ($(BONUS), 1)
+	DUMMY := $(shell $(RM) $(NAME))
 endif
 endif
 endif
