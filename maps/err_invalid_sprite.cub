@@ -3,7 +3,7 @@
 R 800 600
 
 .. Here we load garbage into the program
-NO basic_level.cub
+NO maps/basic_level.cub
 
 SO res/wall_s.xpm
 WE res/wall_w.xpm
