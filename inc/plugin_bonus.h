@@ -18,7 +18,6 @@ typedef struct s_game	t_game;
 typedef struct			s_plugininfo
 {
 	char	*name;
-	int		refresh_rate;
 }						t_plugininfo;
 
 typedef struct			s_plugin

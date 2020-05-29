@@ -14,7 +14,6 @@
 
 t_plugininfo	g_plugininfo = {
 	.name = "Minimap",
-	.refresh_rate = 60,
 };
 
 int				setup(t_pluginstate **ps_ptr)
