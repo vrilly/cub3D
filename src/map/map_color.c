@@ -52,7 +52,7 @@ static int			atoi_rgbval(int *rgbval, char *line)
 	return (1);
 }
 
-static unsigned int	parse_rgbval(int *rgbval)
+static unsigned int	parse_rgbval(const int *rgbval)
 {
 	int				i;
 	unsigned int	dst;
@@ -61,11 +61,27 @@ static unsigned int	parse_rgbval(int *rgbval)
 	dst = 0;
 	while (i < 3)
 	{
-		dst <<= 8;
+		dst <<= 8u;
 		dst += rgbval[i];
 		i++;
 	}
 	return (dst);
+}
+
+/*
+** There are a few evaluators( Looking at you >:( ) who like to put
+** invalid colour values into map configuration.
+** This piece of code filters the invalid input out which the atoi does not
+** catch
+*/
+
+static int			check_for_dirty_tricks(const char *arg)
+{
+	if (*arg == ',' || arg[strlen(arg) - 1] == ',')
+		return (1);
+	if (strstr(arg, ",,"))
+		return (1);
+	return (0);
 }
 
 int					get_color_val(char *arg,
@@ -73,6 +89,8 @@ int					get_color_val(char *arg,
 {
 	int	rgbval[3];
 
+	if (check_for_dirty_tricks(arg))
+		return (0);
 	if (!atoi_rgbval(rgbval, arg))
 		return (0);
 	*dst = parse_rgbval(rgbval);
