@@ -57,6 +57,15 @@ ifeq ($(BONUS),1)
 	LDFLAGS	:= $(LDFLAGS) -ldl -Wl,-rpath,./plugins
 endif
 
+ifneq ("$(wildcard .bonus_compiled)", "")
+ifneq ($(MAKECMDGOALS), bonus)
+ifneq ($(BONUS),1)
+	DUMMY := $(shell $(RM) .bonus_compiled)
+	DUMMY := $(shell $(MAKE) fclean)
+endif
+endif
+endif
+
 SRCS	:= $(S_CUB3D) $(S_MAP) $(S_GFX) $(S_SPRITE) $(S_BMP) $(S_BONUS)
 HDRS	:= cub3d.h texture.h map.h gfx.h config.h spr_cast.h \
 	renderer.h ftlog.h cub3d_error.h bitmap.h plugin_bonus.h
@@ -88,6 +97,7 @@ plugins_fclean: $(basename $(B_PLUGINS))
 
 compile_bonus:
 	@$(MAKE) --no-print-directory BONUS=1
+	@touch .bonus_compiled
 
 bonus: compile_bonus plugins
 

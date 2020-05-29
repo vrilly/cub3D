@@ -13,21 +13,10 @@
 #include "cub3d.h"
 #include "bitmap.h"
 
-#ifdef BONUS
-
 static void	frame_hook(t_game *state)
 {
 	execute_frame_hook(state);
 }
-
-#else
-
-static void	frame_hook(t_game *state)
-{
-	(void)state;
-}
-
-#endif
 
 void		start_frame(t_game *state)
 {
