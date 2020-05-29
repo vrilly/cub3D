@@ -114,10 +114,10 @@ int			read_map_from_file(char *path, t_game *state)
 
 	fs = fd_open(path, O_RDONLY);
 	if (!fs)
-		return ((int)reterr(state, strerror(errno)));
+		return ((int)set_error(state, strerror(errno)));
 	map = ft_calloc(1, sizeof(t_map));
 	if (!map)
-		return ((int)reterr(state, strerror(errno)));
+		return ((int)set_error(state, strerror(errno)));
 	map->color_floor = 0xFFFFFFFF;
 	map->color_ceiling = 0xFFFFFFFF;
 	state->current_map = map;
@@ -126,6 +126,6 @@ int			read_map_from_file(char *path, t_game *state)
 	free(fs);
 	ft_strlcpy(map->map_name, path, 32);
 	if (!ret)
-		return ((int)reterr(state, "unknown error during map parsing"));
+		return ((int)set_error(state, "unknown error during map parsing"));
 	return (verify_map(map, state));
 }

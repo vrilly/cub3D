@@ -15,17 +15,17 @@
 int		hook_keydown(int kc, t_game *state)
 {
 	if (kc == state->config.k_a)
-		state->state.strafing = 1;
+		state->state.strafing = LEFT;
 	if (kc == state->config.k_d)
-		state->state.strafing = 2;
+		state->state.strafing = RIGHT;
 	if (kc == state->config.k_w)
-		state->state.walking = 1;
+		state->state.walking = FORWARDS;
 	if (kc == state->config.k_s)
-		state->state.walking = 2;
+		state->state.walking = BACKWARDS;
 	if (kc == state->config.k_left)
-		state->state.rotating = 1;
+		state->state.rotating = LEFT;
 	if (kc == state->config.k_right)
-		state->state.rotating = 2;
+		state->state.rotating = RIGHT;
 	return (1);
 }
 
@@ -40,7 +40,7 @@ int		hook_keyup(int kc, t_game *state)
 	if (kc == state->config.k_esc)
 		safe_exit(state, 0, NULL);
 	if (kc == state->config.k_prtscr)
-		state->screenshot = 1;
+		state->screenshot = SCREENSHOT;
 	return (1);
 }
 

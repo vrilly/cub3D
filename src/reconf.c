@@ -54,7 +54,7 @@ static int	key_hook(int key)
 	return (1);
 }
 
-int			start_reconf(t_game *state)
+int			start_config_wizard(t_game *state)
 {
 	void	*mlx_window;
 

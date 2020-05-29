@@ -16,7 +16,7 @@ int	create_renderer_window(t_game *state)
 {
 	void	*win_ptr;
 
-	if (state->screenshot == 2)
+	if (state->screenshot == OFFSCREEN_SCREENSHOT)
 	{
 		state->window = NULL;
 		return (1);

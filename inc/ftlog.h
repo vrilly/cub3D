@@ -10,6 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+** A shitty basic logging thingie which doesn't even take va_args
+** But i like using shitty stuff :)
+*/
+
 #ifndef FTLOG_H
 # define FTLOG_H
 

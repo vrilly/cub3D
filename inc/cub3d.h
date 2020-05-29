@@ -33,6 +33,29 @@ enum			e_map_tile_type {
 	TILE_ITEM = 2
 };
 
+typedef enum	e_direction {
+	NOT_MOVING = 0,
+
+	FORWARDS = 1,
+	BACKWARDS = 2,
+
+	LEFT = 1,
+	RIGHT = 2
+}				t_direction;
+
+typedef enum	e_ss_mode {
+	NO_SCREENSHOT,
+	SCREENSHOT,
+	OFFSCREEN_SCREENSHOT
+}				t_ss_mode;
+
+/*
+** Current map loaded into the game engine
+** Everything configured in the map file will be loaded into this struct
+** And stuff like textures will be loaded too by the appropriate file loader
+** for that filetype
+*/
+
 typedef struct	s_map
 {
 	char					map_name[32];
@@ -54,6 +77,10 @@ typedef struct	s_map
 	int						y_res;
 }				t_map;
 
+/*
+** Vectors for saving the player position, and viewport direction + FOV
+*/
+
 typedef struct	s_vectors
 {
 	double	pos_x;
@@ -69,12 +96,24 @@ typedef struct	s_vectors
 	int		map_y;
 }				t_vectors;
 
+/*
+** Input state.
+** Allows for multiple actions at the same time by listening to keydown and
+** keyup events. The enums have three states for every manipulation plane
+*/
+
 typedef struct	s_state
 {
-	int	walking;
-	int	rotating;
-	int	strafing;
+	t_direction	walking;
+	t_direction	rotating;
+	t_direction	strafing;
 }				t_state;
+
+/*
+** Main game struct. The complete state of the game engine is saved in here
+** Theoretically you could dump this to a file, reload it and continue exactly
+** Where you left off, but that is not a valid bonus worth points.
+*/
 
 typedef struct	s_game
 {
@@ -96,11 +135,14 @@ typedef struct	s_game
 
 	char			*error;
 	char			*map_path;
-	int				screenshot;
+	t_ss_mode		screenshot;
 }				t_game;
 
-void			*reterr(t_game *state, char *err);
-int				fd_readline_sb(t_fdstream *file, char **line);
+/*
+** Peacefully destroys the renderer window and closes the program
+** If error is set then it'll also log it before exiting
+*/
+
 void			safe_exit(t_game *state, int ret, char *error);
 
 int				read_map_from_file(char *path, t_game *state);
@@ -110,9 +152,6 @@ int				destroy_renderer_window(t_game *state);
 void			init_window_hooks(void *window, t_game *state);
 int				render_frame(t_game *state);
 void			movement_loop(t_game *state);
-
-void			start_frame(t_game *state);
-void			end_frame(t_game *state);
 
 void			rotate_left(t_game *state);
 void			rotate_right(t_game *state);

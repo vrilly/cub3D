@@ -61,8 +61,8 @@ void		end_frame(t_game *state)
 			safe_exit(state, -1, "malloc fail");
 		if (!write_bitmap_to_file("screencap.bmp", bmp))
 			ftlog(LOG_ERROR, "Screenshot failed");
-		if (state->screenshot == 2)
+		if (state->screenshot == OFFSCREEN_SCREENSHOT)
 			safe_exit(state, 0, NULL);
-		state->screenshot = 0;
+		state->screenshot = NO_SCREENSHOT;
 	}
 }

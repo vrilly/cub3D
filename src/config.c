@@ -34,7 +34,7 @@ static int	load_config(t_config *config)
 ** to default
 */
 
-void		default_config(t_config *config)
+void		load_default_config(t_config *config)
 {
 	int	ext_cfg;
 

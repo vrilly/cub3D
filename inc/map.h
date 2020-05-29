@@ -10,6 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+** The map part of my project really needs refactoring.
+** But i plainly refuse :(
+*/
+
 #ifndef MAP_H
 # define MAP_H
 # include "cub3d.h"
@@ -37,6 +42,7 @@ t_mapbuffer				*mbuf_create(char *line, int line_size);
 void					mbuf_append(t_mapbuffer *root, t_mapbuffer *new);
 enum e_map_tile_type	*mbuf_finalize(t_mapbuffer *root, int *map_height);
 void					mbuf_destroy(t_mapbuffer *root);
+int						fd_readline_sb(t_fdstream *file, char **line);
 int						map_reader_seq_resolution(char *arg, t_game *state);
 int						map_reader_seq_tno(char *arg, t_game *state);
 int						map_reader_seq_tso(char *arg, t_game *state);

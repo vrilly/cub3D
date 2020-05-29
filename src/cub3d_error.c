@@ -28,7 +28,7 @@ char	g_errmsg[7][64] = {
 	"Map filename does not end with .cub"
 };
 
-void	*reterr(t_game *state, char *err)
+void	*set_error(t_game *state, char *err)
 {
 	if (!state->error || !*(state->error))
 		state->error = err;

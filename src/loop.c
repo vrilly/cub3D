@@ -14,16 +14,16 @@
 
 void	movement_loop(t_game *state)
 {
-	if (state->state.walking == 1)
+	if (state->state.walking == FORWARDS)
 		forwards(state);
-	if (state->state.walking == 2)
+	if (state->state.walking == BACKWARDS)
 		backwards(state);
-	if (state->state.rotating == 1)
+	if (state->state.rotating == LEFT)
 		rotate_left(state);
-	if (state->state.rotating == 2)
+	if (state->state.rotating == RIGHT)
 		rotate_right(state);
-	if (state->state.strafing == 1)
+	if (state->state.strafing == LEFT)
 		left(state);
-	if (state->state.strafing == 2)
+	if (state->state.strafing == RIGHT)
 		right(state);
 }

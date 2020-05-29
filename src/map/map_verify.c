@@ -55,7 +55,7 @@ static void	check_resolution(t_game *state)
 		state->current_map->x_res = 16384;
 	if (state->current_map->y_res > 16384)
 		state->current_map->y_res = 16384;
-	if (state->screenshot == 2)
+	if (state->screenshot == OFFSCREEN_SCREENSHOT)
 		return ;
 	mlx_get_screen_size(state->mlx_ptr, &max_x, &max_y);
 	if (state->current_map->x_res > max_x ||
@@ -94,12 +94,12 @@ int			verify_map(t_map *map, t_game *state)
 	ft_memcpy(mapdata, map->mapdata, map->map_height * map->map_width * 4);
 	check_resolution(state);
 	if (!(int)state->vec.pos_x || !(int)state->vec.pos_y)
-		return ((int)reterr(state, "Missing spawn location"));
+		return ((int)set_error(state, "Missing spawn location"));
 	if (!map_leaktest(map, mapdata,
 				(int)state->vec.pos_x, (int)state->vec.pos_y))
-		ret = (int)reterr(state, "Map is not enclosed.");
+		ret = (int)set_error(state, "Map is not enclosed.");
 	if (!check_mandatory_elems(map))
-		ret = (int)reterr(state, "Mandantory map elements are missing");
+		ret = (int)set_error(state, "Mandantory map elements are missing");
 	free(mapdata);
 	return (ret);
 }

@@ -90,4 +90,7 @@ void					render_sprites(t_game *state);
 void					add_sprite(t_game *state, double x, double y);
 void					cast_sprites(t_game *state);
 
+void					start_frame(t_game *state);
+void					end_frame(t_game *state);
+
 #endif

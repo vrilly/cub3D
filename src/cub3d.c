@@ -81,7 +81,7 @@ static enum e_cub_error	parse_args(int argc, char **argv, t_game *state)
 		if (ft_strncmp(argv[arg_pos], "--", 2) != 0)
 			arg_pos++;
 		if (ft_strncmp(argv[arg_pos], "--save", 6) == 0)
-			state->screenshot = 2;
+			state->screenshot = OFFSCREEN_SCREENSHOT;
 		else if (ft_strncmp(argv[arg_pos], "--nosync", 15) == 0)
 		{
 			state->config.mov_speed /= 2;
@@ -103,9 +103,9 @@ int						main(int argc, char **argv)
 
 	ft_bzero(&state, sizeof(t_game));
 	ftlog_init(1);
-	default_config(&state.config);
+	load_default_config(&state.config);
 	if (argc > 1 && ft_strncmp(argv[1], "--conf", 6) == 0)
-		return (start_reconf(&state));
+		return (start_config_wizard(&state));
 	ret = parse_args(argc, argv, &state);
 	if (ret != NO_ERROR)
 	{

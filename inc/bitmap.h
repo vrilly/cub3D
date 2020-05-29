@@ -10,6 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+** This bitmap output thingie is something i'm pretty proud of :)
+** It creates a 32bpp bitmap file without compression
+** I implemented it using only the wikipedia page about the BMP File Format
+*/
+
 #ifndef BITMAP_H
 # define BITMAP_H
 # define BM_MAGIC 0x4D42

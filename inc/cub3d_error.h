@@ -23,5 +23,19 @@ enum		e_cub_error {
 	INVALID_FILENAME
 };
 
+/*
+** All the strings for the possible error codes the game can return
+*/
+
 extern char	g_errmsg[7][64];
+
+/*
+** This function sets the error string in the game state and returns a null ptr
+** If the error is already set then it will not overwrite.
+** This is meant for the error handling in the game engine, where it can go back
+** multiple levels before exiting the program after a (non)-fatal error
+*/
+
+void		*set_error(t_game *state, char *err);
+
 #endif
