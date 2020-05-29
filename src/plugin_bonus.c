@@ -19,6 +19,14 @@ static void			messy_error(char *err)
 	exit(-1);
 }
 
+static void			execute_setup_hook(t_plugin *plugin)
+{
+	if (!plugin->setup_hook)
+		messy_error("Plugin missing setup hook");
+	if (!(*plugin->setup_hook)(&plugin->pl_state))
+		messy_error(plugin->info->name);
+}
+
 static t_plugin		*load_plugin(char *path)
 {
 	t_plugin	*plugin;
@@ -40,8 +48,7 @@ static t_plugin		*load_plugin(char *path)
 	plugin->map_hook = dlsym(plugin->dl_handle, "map_hook");
 	plugin->pregame_hook = dlsym(plugin->dl_handle, "pregame_hook");
 	plugin->update_hook = dlsym(plugin->dl_handle, "update_hook");
-	if (!(*plugin->setup_hook)(&plugin->pl_state))
-		messy_error(plugin->info->name);
+	execute_setup_hook(plugin);
 	ft_printf("[INFO] Loaded plugin: %s\n", plugin->info->name);
 	return (plugin);
 }
