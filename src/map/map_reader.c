@@ -43,9 +43,9 @@ static int	read_mapdata(t_fdstream *fs, char *first_line, t_game *state)
 		ret = fd_readline(fs, &line);
 		if (ret <= 0 || !*line)
 		{
-			ret = 0;
 			if (ret != -1)
 				free(line);
+			ret = 0;
 		}
 	}
 	state->current_map->mapdata = mbuf_finalize(buff,

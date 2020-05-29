@@ -24,8 +24,7 @@ static size_t	calc_arr_size(char const *s, char c)
 		{
 			while (*s && *s == c)
 				s++;
-			if (s)
-				cnt++;
+			cnt++;
 		}
 		s++;
 	}
