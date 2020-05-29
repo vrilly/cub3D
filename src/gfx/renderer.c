@@ -21,7 +21,7 @@ static void	vert_line(int x, t_game *state, t_draw_p *params)
 	c.step = 1.0 * params->texture->height / params->line_height;
 	c.t_y = (params->line_start - state->current_map->y_res / 2 +
 			params->line_height / 2) * c.step;
-	c.t_x = state->vis.wall_x * (double)params->texture->width;
+	c.t_x = (int)(state->vis.wall_x * (double)params->texture->width);
 	if ((state->rcp.side == 0 && state->rcp.rc_dir_x > 0) ||
 			(state->rcp.side == 1 && state->rcp.rc_dir_y < 0))
 		c.t_x = params->texture->width - c.t_x - 1;

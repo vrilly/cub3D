@@ -63,10 +63,10 @@ static void	draw_sprite(t_sprite *sprite, t_game *state, t_vectors *vec)
 	c.tr_x = c.invert * (vec->dir_y * c.pos_x - vec->dir_x * c.pos_y);
 	c.tr_y = c.invert * (-vec->plane_y * c.pos_x + vec->plane_x * c.pos_y);
 	c.screen_x = (int)((c.res_x / 2) * (1 + c.tr_x / c.tr_y));
-	c.height = abs((int)(c.res_y / c.tr_y)) / 1.33;
+	c.height = (int)(abs((int)(c.res_y / c.tr_y)) / 1.33);
 	c.draw_s_y = bnd(-c.height / 2 + c.res_y / 2, 0);
 	c.draw_e_y = bnd(c.height / 2 + c.res_y / 2, c.res_y);
-	c.width = abs((int)(c.res_x / c.tr_y)) / 1.33;
+	c.width = (int)(abs((int)(c.res_x / c.tr_y)) / 1.33);
 	c.draw_s_x = bnd(-c.width / 2 + c.screen_x, 0);
 	c.draw_e_x = bnd(c.width / 2 + c.screen_x, c.res_x);
 	cast_sprite(c, &state->frame, sprite->texture, state->spr.zbuffer);

@@ -57,10 +57,11 @@ int			write_bitmap_to_file(char *path, t_bitmap *bmp)
 	ret = 1;
 	fd = open(path, O_WRONLY | O_CREAT, S_IRWXU | S_IRGRP | S_IROTH);
 	if (!fd || !write_bmp_header(fd, &bmp->header) ||
-	!write_dib_header(fd, &bmp->info))
+			!write_dib_header(fd, &bmp->info))
 		ret = 0;
-	if (write(fd, bmp->bitmap, (bmp->info.width * bmp->info.height * 4)) !=
-	(bmp->info.width * bmp->info.height * 4))
+	if (write(fd, bmp->bitmap,
+			(size_t)bmp->info.width * bmp->info.height * 4) !=
+			bmp->info.width * bmp->info.height * 4)
 		ret = 0;
 	close(fd);
 	free(bmp->bitmap);

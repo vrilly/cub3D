@@ -22,10 +22,10 @@
 typedef struct			s_mapbuffer
 {
 	char				*line;
-	int					line_size;
-	int					str_size;
-	int					line_size_max;
-	int					lines;
+	unsigned int		line_size;
+	unsigned int		str_size;
+	unsigned int		line_size_max;
+	unsigned int		lines;
 	struct s_mapbuffer	*next;
 }						t_mapbuffer;
 
@@ -38,7 +38,7 @@ typedef struct			s_mplookup
 
 t_mplookup				*find_func(char *prefix);
 
-t_mapbuffer				*mbuf_create(char *line, int line_size);
+t_mapbuffer				*mbuf_create(char *line, unsigned int line_size);
 void					mbuf_append(t_mapbuffer *root, t_mapbuffer *new);
 enum e_map_tile_type	*mbuf_finalize(t_mapbuffer *root, int *map_height);
 void					mbuf_destroy(t_mapbuffer *root);

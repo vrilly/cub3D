@@ -49,7 +49,7 @@ int			draw_tex(t_game *state, t_texture *tex, int x, int y)
 				(x * state->frame.bpp / 8);
 		t_offset = yp * tex->size_line;
 		tex_memcpy(state->frame.image_data + offset, tex->data_ptr + t_offset,
-				tex->width * state->frame.bpp / 8);
+				(size_t)(tex->width * state->frame.bpp / 8));
 		yp++;
 	}
 	return (1);

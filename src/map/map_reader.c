@@ -12,9 +12,9 @@
 
 #include "map.h"
 
-static int	maplen(char *line)
+static unsigned int	maplen(char *line)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
 	while (*line)

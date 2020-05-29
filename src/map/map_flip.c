@@ -12,12 +12,12 @@
 
 #include "map.h"
 
-static int	is_pdir(char c)
+static int	is_pdir(int c)
 {
 	return ((c == 'N' || c == 'S' || c == 'E' || c == 'W'));
 }
 
-static void	set_spawn(char direction, unsigned int cl, int x, t_game *map)
+static void	set_spawn(int direction, unsigned int cl, int x, t_game *map)
 {
 	map->vec.pos_x = x + 0.5;
 	map->vec.pos_y = cl + 0.5;

@@ -40,7 +40,7 @@ void		start_frame(t_game *state)
 				&state->frame.endian);
 	}
 	ft_memcpy(state->frame.image_data, state->background.image_data,
-			state->background.size_line * state->current_map->y_res);
+			(size_t)state->background.size_line * state->current_map->y_res);
 }
 
 void		end_frame(t_game *state)
