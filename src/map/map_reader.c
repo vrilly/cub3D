@@ -28,7 +28,8 @@ static unsigned int	maplen(char *line)
 	return (i);
 }
 
-static int	read_mapdata(t_fdstream *fs, char *first_line, t_game *state)
+static int			read_mapdata(t_fdstream *fs, char *first_line,
+		t_game *state)
 {
 	char		*line;
 	int			ret;
@@ -57,7 +58,7 @@ static int	read_mapdata(t_fdstream *fs, char *first_line, t_game *state)
 	return (map_flip(state->current_map, state));
 }
 
-static int	process_line(char *line, t_game *state)
+static int			process_line(char *line, t_game *state)
 {
 	char		*prefix;
 	char		*arg;
@@ -83,7 +84,7 @@ static int	process_line(char *line, t_game *state)
 	return (1);
 }
 
-static int	linereader(t_fdstream *fs, t_game *state)
+static int			linereader(t_fdstream *fs, t_game *state)
 {
 	char	*line;
 	int		ret;
@@ -106,7 +107,7 @@ static int	linereader(t_fdstream *fs, t_game *state)
 	return (ret != -1);
 }
 
-int			read_map_from_file(char *path, t_game *state)
+int					read_map_from_file(char *path, t_game *state)
 {
 	t_map		*map;
 	t_fdstream	*fs;
