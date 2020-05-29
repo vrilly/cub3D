@@ -30,7 +30,8 @@
 enum			e_map_tile_type {
 	TILE_EMPTY = 0,
 	TILE_WALL = 1,
-	TILE_ITEM = 2
+	TILE_ITEM = 2,
+	TILE_LEAKTEST = 3
 };
 
 typedef enum	e_direction {

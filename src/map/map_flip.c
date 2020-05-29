@@ -67,7 +67,8 @@ int			map_flip(t_map *map, t_game *state)
 	enum e_map_tile_type	*new;
 
 	x = 0;
-	new = malloc(sizeof(int) * map->map_width * map->map_height);
+	new = malloc(sizeof(enum e_map_tile_type)
+			* map->map_width * map->map_height);
 	if (!new)
 		safe_exit(state, -1, "malloc fail");
 	while (x < map->map_width)

@@ -32,11 +32,11 @@ int		hook_keydown(int kc, t_game *state)
 int		hook_keyup(int kc, t_game *state)
 {
 	if (kc == state->config.k_a || kc == state->config.k_d)
-		state->state.strafing = 0;
+		state->state.strafing = NOT_MOVING;
 	if (kc == state->config.k_w || kc == state->config.k_s)
-		state->state.walking = 0;
+		state->state.walking = NOT_MOVING;
 	if (kc == state->config.k_left || kc == state->config.k_right)
-		state->state.rotating = 0;
+		state->state.rotating = NOT_MOVING;
 	if (kc == state->config.k_esc)
 		safe_exit(state, 0, NULL);
 	if (kc == state->config.k_prtscr)
