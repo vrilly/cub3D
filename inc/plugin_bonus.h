@@ -71,5 +71,6 @@ enum e_cub_error		init_plugins(t_game *state);
 
 void					execute_frame_hook(t_game *state);
 void					execute_pregame_hook(t_game *state);
+int						execute_map_hook(t_game *state);
 
 #endif

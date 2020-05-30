@@ -79,9 +79,7 @@ static int			process_line(char *line, t_game *state)
 			arg++;
 		return (handler->func(arg, state));
 	}
-	else
-		ftlog(LOG_INFO, "Unsupported element ignored");
-	return (1);
+	return (execute_map_hook(state));
 }
 
 static int			linereader(t_fdstream *fs, t_game *state)
