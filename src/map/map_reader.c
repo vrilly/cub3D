@@ -89,6 +89,7 @@ static int			linereader(t_fdstream *fs, t_game *state)
 	ret = fd_readline_sb(fs, &line);
 	while (ret == 1)
 	{
+		errno = 0;
 		p_ret = process_line(line, state);
 		if (p_ret == 2)
 			read_mapdata(fs, line, state);
@@ -124,5 +125,6 @@ int					read_map_from_file(char *path, t_game *state)
 	ft_strlcpy(map->map_name, path, 32);
 	if (!ret)
 		return ((int)set_error(state, "unknown error during map parsing"));
+	errno = 0;
 	return (verify_map(map, state));
 }

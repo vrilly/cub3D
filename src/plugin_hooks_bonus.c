@@ -15,6 +15,7 @@
 int		execute_map_hook(t_game *state, char *prefix, char *arg)
 {
 	t_pluginlist	*list;
+	int				ret;
 
 	if (state->plugins == NULL)
 		return (1);
@@ -22,11 +23,18 @@ int		execute_map_hook(t_game *state, char *prefix, char *arg)
 	while (list)
 	{
 		if (list->plugin->map_hook != NULL)
-			if ((*list->plugin->map_hook)(state, prefix, arg,
-					list->plugin->pl_state))
+		{
+			ret = (*list->plugin->map_hook)(state, prefix, arg,
+					list->plugin->pl_state);
+			if (ret == -1)
+				safe_exit(state, PLUGIN_FAIL, "Map hook failed.");
+			if (ret == 1)
 				return (1);
+		}
 		list = list->next;
 	}
+	ft_printf("[INFO] Unhandled map element. Prefix: %.*s\n",
+			ft_strclen(prefix, ' '), prefix);
 	return (1);
 }
 
