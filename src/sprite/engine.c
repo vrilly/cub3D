@@ -25,7 +25,7 @@ void		add_sprite(t_game *state, double x, double y)
 	t_sprite_engine	*engine;
 
 	engine = &state->spr;
-	engine->sprites[engine->num_sprites] = malloc(sizeof(t_sprite));
+	engine->sprites[engine->num_sprites] = ft_calloc(1, sizeof(t_sprite));
 	if (!engine->sprites[engine->num_sprites])
 		safe_exit(state, -1, "malloc fail");
 	engine->sprites[engine->num_sprites]->x_pos = x + 0.5;
