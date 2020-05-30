@@ -57,6 +57,9 @@ static void	write_line(int x, int *dst, t_map *map, t_game *state)
 			safe_exit(state, -1, "Multiple spawn locations!");
 		else if (*(dst + (map->map_width * i)) == 2)
 			add_sprite(state, x, i);
+		else
+			execute_spawn_hook(state, (char)*(dst + (map->map_width * i)),
+					x, (int)i);
 		i++;
 	}
 }

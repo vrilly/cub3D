@@ -38,6 +38,29 @@ int		execute_map_hook(t_game *state, char *prefix, char *arg)
 	return (1);
 }
 
+void	execute_spawn_hook(t_game *state, char c, int x, int y)
+{
+	t_pluginlist	*list;
+	int				ret;
+
+	if (state->plugins == NULL)
+		return ;
+	list = state->plugins;
+	while (list)
+	{
+		if (list->plugin->spawn_hook != NULL)
+		{
+			ret = (*list->plugin->spawn_hook)(state, c, x, y,
+											list->plugin->pl_state);
+			if (ret == -1)
+				safe_exit(state, PLUGIN_FAIL, "Map hook failed.");
+			if (ret == 1)
+				return ;
+		}
+		list = list->next;
+	}
+}
+
 void	execute_frame_hook(t_game *state)
 {
 	t_pluginlist *list;

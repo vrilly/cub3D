@@ -46,6 +46,7 @@ static t_plugin		*load_plugin(char *path)
 		messy_error("invalid plugin");
 	plugin->frame_hook = dlsym(plugin->dl_handle, "frame_hook");
 	plugin->map_hook = dlsym(plugin->dl_handle, "map_hook");
+	plugin->spawn_hook = dlsym(plugin->dl_handle, "spawn_hook");
 	plugin->pregame_hook = dlsym(plugin->dl_handle, "pregame_hook");
 	plugin->update_hook = dlsym(plugin->dl_handle, "update_hook");
 	execute_setup_hook(plugin);
