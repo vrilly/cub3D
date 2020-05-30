@@ -45,7 +45,7 @@ static unsigned int	get_tile_color(t_map *map, int x, int y)
 		return (COLOR_EMPTY);
 	if (map_tile == TILE_WALL)
 		return (COLOR_WALL);
-	if (map_tile == TILE_ITEM)
+	if (map_tile == TILE_ITEM || (map_tile >= 'A' && map_tile <= 'Z'))
 		return (COLOR_ITEM);
 	return (COLOR_OOB);
 }

@@ -21,7 +21,7 @@ static unsigned int	maplen(char *line)
 	{
 		if (ft_isdigit(*line) || *line == ' ')
 			i++;
-		if (*line == 'N' || *line == 'E' || *line == 'S' || *line == 'W')
+		if (*line >= 'A' && *line <= 'Z')
 			i++;
 		line++;
 	}

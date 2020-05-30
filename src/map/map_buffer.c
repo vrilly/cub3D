@@ -25,7 +25,7 @@ static void				copy_line(t_mapbuffer *node,
 		if (c == ' ')
 			c = '0';
 		*mapdata = (enum e_map_tile_type)(c -
-				((c == 'N' || c == 'S' || c == 'E' || c == 'W') ? 0 : '0'));
+				((c >= 'A' && c <= 'Z') ? 0 : '0'));
 		mapdata++;
 		i++;
 	}
