@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-int		execute_map_hook(t_game *state)
+int		execute_map_hook(t_game *state, char *prefix, char *arg)
 {
 	t_pluginlist	*list;
 
@@ -22,7 +22,8 @@ int		execute_map_hook(t_game *state)
 	while (list)
 	{
 		if (list->plugin->map_hook != NULL)
-			return (*list->plugin->map_hook)(state, list->plugin->pl_state);
+			return (*list->plugin->map_hook)(state, prefix, arg,
+					list->plugin->pl_state);
 		list = list->next;
 	}
 	return (1);

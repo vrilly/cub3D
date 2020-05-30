@@ -41,7 +41,8 @@ typedef struct			s_plugin
 
 	int				(*setup_hook)(void **pl_state);
 	int				(*frame_hook)(t_game *state, void *pl_state);
-	int				(*map_hook)(t_game *state, void *pl_state);
+	int				(*map_hook)(t_game *state, char *prefix, char *arg,
+			void *pl_state);
 	int				(*update_hook)(t_game *state, void *pl_state);
 	int				(*pregame_hook)(t_game *state, void *pl_state);
 }						t_plugin;
@@ -71,6 +72,7 @@ enum e_cub_error		init_plugins(t_game *state);
 
 void					execute_frame_hook(t_game *state);
 void					execute_pregame_hook(t_game *state);
-int						execute_map_hook(t_game *state);
+int						execute_map_hook(t_game *state, char *prefix,
+		char *arg);
 
 #endif

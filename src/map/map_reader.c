@@ -72,14 +72,12 @@ static int			process_line(char *line, t_game *state)
 		arg = prefix;
 	else
 		arg++;
+	while (*arg == ' ' && *(arg + 1))
+		arg++;
 	handler = find_func(prefix);
 	if (handler)
-	{
-		while (*arg == ' ' && *(arg + 1))
-			arg++;
 		return (handler->func(arg, state));
-	}
-	return (execute_map_hook(state));
+	return (execute_map_hook(state, prefix, arg));
 }
 
 static int			linereader(t_fdstream *fs, t_game *state)
