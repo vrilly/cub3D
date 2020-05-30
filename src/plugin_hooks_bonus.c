@@ -53,7 +53,7 @@ void	execute_spawn_hook(t_game *state, char c, int x, int y)
 			ret = (*list->plugin->spawn_hook)(state, c, x, y,
 											list->plugin->pl_state);
 			if (ret == -1)
-				safe_exit(state, PLUGIN_FAIL, "Map hook failed.");
+				safe_exit(state, PLUGIN_FAIL, "Spawn hook failed.");
 			if (ret == 1)
 				return ;
 		}

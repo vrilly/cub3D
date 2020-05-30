@@ -14,7 +14,7 @@ CUB3D_BASE_PATH = ../../
 INCLUDES		:=  -I $(CUB3D_BASE_PATH)/inc -I $(CUB3D_BASE_PATH)/libft/out \
 					-I $(CUB3D_BASE_PATH)/libmlx
 
-SRCS	= util_bonus.c
+SRCS	= util_bonus.c texloader_bonus.c
 OBJS	:= $(SRCS:.c=.o)
 
 TARGET	:= $(shell uname -s)
@@ -24,7 +24,7 @@ ifeq ($(TARGET),Linux)
 	LDFLAGS = -L ../../ -lmlx
 else
 	NAME = ../libplugin.dylib
-	LDFLAGS = -L ../../ -lmlx
+	LDFLAGS = -L ../../ -lmlx -lft -undefined dynamic_lookup
 endif
 
 CFLAGS	:= -Wall -Wextra -fPIC $(INCLUDES)
