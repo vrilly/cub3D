@@ -22,8 +22,9 @@ int		execute_map_hook(t_game *state, char *prefix, char *arg)
 	while (list)
 	{
 		if (list->plugin->map_hook != NULL)
-			return (*list->plugin->map_hook)(state, prefix, arg,
-					list->plugin->pl_state);
+			if ((*list->plugin->map_hook)(state, prefix, arg,
+					list->plugin->pl_state))
+				return (1);
 		list = list->next;
 	}
 	return (1);
