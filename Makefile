@@ -25,6 +25,7 @@ endif
 
 LIBFT		= libft
 LIBFT_LIB	:= $(LIBFT)/libft.$(LIBEXT)
+LIBPF		= libftprintf
 LIBPF_LIB	:= $(LIBFT)/out/libftprintf.$(LIBEXT)
 LIBMLX		= libmlx
 LIBMLX_LIB	:= $(LIBMLX)/libmlx.$(LIBEXT)
@@ -132,6 +133,7 @@ re: fclean all
 nuke: fclean
 	@$(MAKE) -C $(LIBFT) fclean
 	@$(MAKE) -C $(LIBMLX) clean
+	@$(RM) $(LIBFT).$(LIBEXT) $(LIBMLX).$(LIBEXT) $(LIBPF).$(LIBEXT)
 
 nuke_re: nuke
 	@$(MAKE) re
