@@ -42,7 +42,10 @@ void	execute_spawn_hook(t_game *state, char c, int x, int y)
 {
 	t_pluginlist	*list;
 	int				ret;
+	t_coordinate	coord;
 
+	coord.split_int.x = x;
+	coord.split_int.y = y;
 	if (state->plugins == NULL)
 		return ;
 	list = state->plugins;
@@ -50,8 +53,8 @@ void	execute_spawn_hook(t_game *state, char c, int x, int y)
 	{
 		if (list->plugin->spawn_hook != NULL)
 		{
-			ret = (*list->plugin->spawn_hook)(state, c, x, y,
-											list->plugin->pl_state);
+			ret = (*list->plugin->spawn_hook)(state, c, coord,
+					list->plugin->pl_state);
 			if (ret == -1)
 				safe_exit(state, PLUGIN_FAIL, "Spawn hook failed.");
 			if (ret == 1)

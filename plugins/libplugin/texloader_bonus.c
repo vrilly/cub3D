@@ -42,6 +42,6 @@ int			load_texture_lplugin(t_game *state, char *arg, t_texture *dst,
 		return (0);
 	dst->img_ptr = mlx_xpm_file_to_image(mlx, arg, &dst->width, &dst->height);
 	dst->data_ptr = mlx_get_data_addr(dst->img_ptr, &dst->bpp, &dst->size_line,
-									  &dst->endian);
+			&dst->endian);
 	return (dst->img_ptr != NULL && dst->data_ptr != NULL);
 }

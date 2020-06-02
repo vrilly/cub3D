@@ -33,15 +33,16 @@ int				map_hook(t_game *state, char *prefix, char *arg,
 	return (0);
 }
 
-int				spawn_hook(t_game *state, char c, int x, int y,
+int				spawn_hook(t_game *state, char c, t_coordinate coord,
 		t_pluginstate *ps)
 {
 	if (!(c >= 'A' && c <= 'D'))
 		return (0);
-	if (!spawn_entity(state, c, x, y, ps))
+	if (!spawn_entity(state, c, coord, ps))
 	{
 		ft_printf("[WARN] Tried to use uninitialized entity\n");
-		ft_printf("[WARN] slot: %c x: %d y: %d\n", c, x, y);
+		ft_printf("[WARN] slot: %c x: %d y: %d\n", c, coord.split_int.x,
+				coord.split_int.y);
 	}
 	return (1);
 }

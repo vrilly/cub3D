@@ -49,6 +49,6 @@ typedef struct	s_pluginstate
 }				t_pluginstate;
 
 int				define_entity(t_game *state, t_pluginstate *ps, char *arg);
-int				spawn_entity(t_game *state, char c, int x, int y,
+int				spawn_entity(t_game *state, char c, t_coordinate coord,
 		t_pluginstate *ps);
 #endif

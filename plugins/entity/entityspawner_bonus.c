@@ -27,7 +27,8 @@ static t_sprite	*inject_sprite(t_game *state, int x, int y, t_texture *tex)
 	return (engine->sprites[engine->num_sprites - 1]);
 }
 
-int	spawn_entity(t_game *state, char c, int x, int y, t_pluginstate *ps)
+int				spawn_entity(t_game *state, char c,
+		t_coordinate coord, t_pluginstate *ps)
 {
 	t_entitytype	*et;
 	t_entity		*entity;
@@ -36,7 +37,8 @@ int	spawn_entity(t_game *state, char c, int x, int y, t_pluginstate *ps)
 	et = &ps->custom_entities[c - 'A'];
 	if (et->type == EMPTY_SLOT)
 		return (0);
-	spr = inject_sprite(state, x, y, et->texture);
+	spr = inject_sprite(state, coord.split_int.x, coord.split_int.y,
+			et->texture);
 	if (!spr)
 	{
 		ft_printf("Critical error in entity plugin.\n");

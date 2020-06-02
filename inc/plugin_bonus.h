@@ -27,6 +27,14 @@ typedef struct			s_plugininfo
 	char	*name;
 }						t_plugininfo;
 
+typedef union			u_coordinate {
+	u_int32_t	coordinate;
+	struct {
+		int16_t	x;
+		int16_t y;
+	}			split_int;
+}						t_coordinate;
+
 /*
 ** Plugin struct
 ** Contains all hooks plugins can provide
@@ -43,7 +51,7 @@ typedef struct			s_plugin
 	int				(*frame_hook)(t_game *state, void *pl_state);
 	int				(*map_hook)(t_game *state, char *prefix, char *arg,
 			void *pl_state);
-	int				(*spawn_hook)(t_game *state, char c, int x, int y,
+	int				(*spawn_hook)(t_game *state, char c, t_coordinate coord,
 			void *pl_state);
 	int				(*update_hook)(t_game *state, void *pl_state);
 	int				(*pregame_hook)(t_game *state, void *pl_state);
