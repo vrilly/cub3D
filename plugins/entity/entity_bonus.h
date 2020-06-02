@@ -45,9 +45,12 @@ typedef struct	s_pluginstate
 {
 	t_entitytype	custom_entities[4];
 	t_entity		entities[64];
+
+	int				player_hp;
 	int				num_entities;
 }				t_pluginstate;
 
+int				define_player_entity(t_pluginstate *ps, char *arg);
 int				define_entity(t_game *state, t_pluginstate *ps, char *arg);
 int				spawn_entity(t_game *state, char c, t_coordinate coord,
 		t_pluginstate *ps);

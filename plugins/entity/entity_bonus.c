@@ -22,14 +22,17 @@ int				setup(t_pluginstate **ps_ptr)
 
 	state = ft_calloc(1, sizeof(t_pluginstate));
 	*ps_ptr = state;
+	state->player_hp = -1;
 	return (state != NULL);
 }
 
 int				map_hook(t_game *state, char *prefix, char *arg,
 		t_pluginstate *ps)
 {
-	if (ft_strncmp(prefix, "DEF_ENTITY", 10) == 0)
+	if (ft_strncmp(prefix, "DE", 2) == 0)
 		return (define_entity(state, ps, arg));
+	if (ft_strncmp(prefix, "HP", 2) == 0)
+		return (define_player_entity(ps, arg));
 	return (0);
 }
 
