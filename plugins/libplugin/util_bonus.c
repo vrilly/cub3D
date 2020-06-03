@@ -21,7 +21,7 @@ t_plugininfo	g_plugininfo = {
 ** Later on i could use some blending algorithm for partial transparency
 */
 
-static void	tex_memcpy(void *dst, void *src, size_t n)
+void		tex_memcpy(void *dst, void *src, size_t n)
 {
 	while (n)
 	{
