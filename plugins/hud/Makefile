@@ -14,16 +14,16 @@ CUB3D_BASE_PATH = ../../
 INCLUDES		:=	-I $(CUB3D_BASE_PATH)/inc -I $(CUB3D_BASE_PATH)/libft/out \
 					-I $(CUB3D_BASE_PATH)/libmlx
 
-SRCS	= minimap_bonus.c update_bonus.c
+SRCS	= hud_bonus.c update_bonus.c
 OBJS	:= $(SRCS:.c=.o)
 
 TARGET	:= $(shell uname -s)
 
 ifeq ($(TARGET),Linux)
-	NAME = ../minimap.so
+	NAME = ../hud.so
 	LDFLAGS = -L ../../ -lmlx
 else
-	NAME = ../minimap.dylib
+	NAME = ../hud.dylib
 	LDFLAGS = -L ../../ -lmlx -lft -undefined dynamic_lookup
 endif
 

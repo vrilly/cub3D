@@ -50,7 +50,7 @@ S_SPRITE	= engine.c spr_sort.c spr_cast.c
 S_BMP		= bmp_hdr.c frame_to_bitmap.c save_bmp.c
 S_BONUS		= plugin.c plugin_hooks_bonus.c
 
-B_PLUGINS	= $(addprefix plugins/, minimap.$(LIBEXT) libplugin.$(LIBEXT) \
+B_PLUGINS	= $(addprefix plugins/, hud.$(LIBEXT) libplugin.$(LIBEXT) \
 			  entity.$(LIBEXT) fontrenderer.$(LIBEXT))
 
 ifeq ($(BONUS),1)

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   minimap_bonus.h                                    :+:    :+:            */
+/*   hud_bonus.h                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIMAP_BONUS_H
-# define MINIMAP_BONUS_H
+#ifndef HUD_BONUS_H
+# define HUD_BONUS_H
 # include "libplugin_bonus.h"
 
 # define COLOR_OOB		0x00666666

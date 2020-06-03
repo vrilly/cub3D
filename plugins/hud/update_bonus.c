@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minimap_bonus.h"
+#include "hud_bonus.h"
 
 static void			draw_tile(t_texture *fb, int x, int y, unsigned int color)
 {

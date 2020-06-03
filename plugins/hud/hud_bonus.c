@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   minimap_bonus.c                                    :+:    :+:            */
+/*   hud_bonus.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minimap_bonus.h"
+#include "hud_bonus.h"
 
 t_plugininfo	g_plugininfo = {
-	.name = "Minimap"
+	.name = "Heads-up display"
 };
 
 int				setup(t_pluginstate **ps_ptr)
