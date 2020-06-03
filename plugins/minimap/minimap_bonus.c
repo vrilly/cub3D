@@ -13,7 +13,7 @@
 #include "minimap_bonus.h"
 
 t_plugininfo	g_plugininfo = {
-	.name = "Minimap",
+	.name = "Minimap"
 };
 
 int				setup(t_pluginstate **ps_ptr)

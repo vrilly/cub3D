@@ -41,7 +41,7 @@ int				spawn_entity(t_game *state, char c,
 			et->texture);
 	if (!spr)
 	{
-		ft_printf("Critical error in entity plugin.\n");
+		ft_fprintf(2, "[ERROR] Critical error in entity plugin.\n");
 		exit(-1);
 	}
 	entity = &ps->entities[ps->num_entities];

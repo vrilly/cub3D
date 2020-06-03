@@ -91,7 +91,12 @@ void	execute_pregame_hook(t_game *state)
 	while (list)
 	{
 		if (list->plugin->pregame_hook != NULL)
-			(*list->plugin->pregame_hook)(state, list->plugin->pl_state);
+			if(!(*list->plugin->pregame_hook)(state, list->plugin->pl_state))
+			{
+				ft_fprintf(2, "[ERROR] Plugin %s failed to initialize\n",
+						list->plugin->info->name);
+				exit(PLUGIN_FAIL);
+			}
 		list = list->next;
 	}
 }
