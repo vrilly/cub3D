@@ -95,7 +95,7 @@ void			draw_string(t_game *state, char *str, int x, int y)
 	while (*str)
 	{
 		put_char(state, *str, x, y);
-		y += CHAR_WIDTH;
+		x += CHAR_WIDTH;
 		str++;
 	}
 }
