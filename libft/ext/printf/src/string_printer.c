@@ -79,6 +79,7 @@ int			write_str(char *dst, int dstlen, const char *fmt, va_list args)
 	t_stringbuilder	*root;
 	int				ret;
 
+	root = NULL;
 	while (*fmt)
 		eval_conv(&root, &fmt, args);
 	ret = sb_strcpy(dst, root, dstlen);

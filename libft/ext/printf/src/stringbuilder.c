@@ -32,6 +32,8 @@ int				sb_strcpy(char *str, t_stringbuilder *root, int max_len)
 	int	ret;
 
 	ret = 0;
+	if (max_len < 1)
+		return (0);
 	while (root && max_len)
 	{
 		if (root->strlen > max_len)
@@ -39,8 +41,12 @@ int				sb_strcpy(char *str, t_stringbuilder *root, int max_len)
 		ft_memcpy(str, root->str, root->strlen);
 		ret += root->strlen;
 		str += root->strlen;
+		max_len -= root->strlen;
 		root = root->next;
 	}
+	if (!max_len)
+		str -= 1;
+	*str = 0;
 	return (ret);
 }
 
