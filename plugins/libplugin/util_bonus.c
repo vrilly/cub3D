@@ -27,9 +27,9 @@ void		tex_memcpy(void *dst, void *src, size_t n)
 	{
 		if (*(unsigned int*)src)
 			*(unsigned int*)dst = *(unsigned int*)src;
-		src++;
-		dst++;
-		n--;
+		src += 4;
+		dst += 4;
+		n -= 4;
 	}
 }
 

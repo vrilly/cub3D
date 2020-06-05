@@ -16,54 +16,51 @@ t_plugininfo	g_plugininfo = {
 	.name = "Font renderer"
 };
 
-t_pluginstate	*g_pluginstate_ptr;
+t_texture		*g_font_ptr;
 
-int				setup(t_pluginstate **ps_ptr)
+int				setup(t_texture **ps_ptr)
 {
-	t_pluginstate	*state;
+	t_texture	*font;
 
-	state = ft_calloc(1, sizeof(t_pluginstate));
-	*ps_ptr = state;
-	g_pluginstate_ptr = state;
-	if (!state)
-		return (0);
-	state->font_bitmap = ft_calloc(1, sizeof(t_texture));
-	return (state->font_bitmap != NULL);
+	font = ft_calloc(1, sizeof(t_texture));
+	*ps_ptr = font;
+	g_font_ptr = font;
+	return (font != NULL);
 }
 
-int				pregame_hook(t_game *state, t_pluginstate *ps)
+int				pregame_hook(t_game *state, t_texture *font)
 {
-	ps->font_bitmap->img_ptr = mlx_xpm_file_to_image(state->mlx_ptr,
-			"res/font.xpm", &ps->font_bitmap->width, &ps->font_bitmap->height);
-	if (!ps->font_bitmap->img_ptr)
+	font->img_ptr = mlx_xpm_file_to_image(state->mlx_ptr,
+			"res/font.xpm", &font->width, &font->height);
+	if (!font->img_ptr)
 		return (0);
-	ps->font_bitmap->data_ptr = mlx_get_data_addr(ps->font_bitmap->img_ptr,
-			&ps->font_bitmap->bpp, &ps->font_bitmap->size_line,
-			&ps->font_bitmap->endian);
-	return (ps->font_bitmap->data_ptr != NULL);
+	font->data_ptr = mlx_get_data_addr(font->img_ptr,
+			&font->bpp, &font->size_line,
+			&font->endian);
+	return (font->data_ptr != NULL);
 }
 
 static void		*get_data_ptr(int c, int i)
 {
 	void	*ptr;
 
-	ptr = g_pluginstate_ptr->font_bitmap->data_ptr;
+	ptr = g_font_ptr->data_ptr;
 	if (!ft_isdigit(c))
 	{
 		if (!ft_isalpha(c))
 			return (NULL);
 		c = ft_toupper(c) - 'A';
-		ptr += g_pluginstate_ptr->font_bitmap->size_line * CHAR_HEIGHT * 2;
+		ptr += g_font_ptr->size_line * CHAR_HEIGHT * 2;
 	}
 	else
 		c -= '0';
 	while (c > 7)
 	{
-		c -= 7;
-		ptr += g_pluginstate_ptr->font_bitmap->size_line * CHAR_HEIGHT;
+		c -= 8;
+		ptr += g_font_ptr->size_line * CHAR_HEIGHT;
 	}
 	ptr += 4 * CHAR_WIDTH * c;
-	ptr += g_pluginstate_ptr->font_bitmap->size_line * i;
+	ptr += g_font_ptr->size_line * i;
 	return (ptr);
 }
 
@@ -79,9 +76,9 @@ static void		put_char(t_game *state, char c, int x, int y)
 	i = 0;
 	while (i < CHAR_HEIGHT)
 	{
-		fb = (unsigned int *)state->frame.image_data + state->frame.size_line *
-				(y + i);
-		fb += 4 * x;
+		fb = (unsigned int *)(state->frame.image_data + state->frame.size_line *
+				(y + i));
+		fb += x;
 		char_data = get_data_ptr(c, i);
 		if (!char_data)
 			return ;

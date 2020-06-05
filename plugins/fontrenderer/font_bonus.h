@@ -17,9 +17,6 @@
 # define CHAR_WIDTH 8
 # define CHAR_HEIGHT 8
 
-typedef struct	s_pluginstate
-{
-	t_texture	*font_bitmap;
-}				t_pluginstate;
+void	draw_string(t_game *state, char *str, int x, int y);
 
 #endif
