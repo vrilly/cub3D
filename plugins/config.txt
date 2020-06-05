@@ -2,7 +2,11 @@
 # Add one plugin every line
 # MacOS
 libplugin.dylib
-minimap.dylib
+fontrenderer.dylib
+hud.dylib
+entity.dylib
 # LINUX
-# libplugin.so
-# minimap.so
+#libplugin.so
+#fontrenderer.so
+#hud.so
+#entity.so

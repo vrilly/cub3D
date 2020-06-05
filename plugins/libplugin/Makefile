@@ -27,7 +27,7 @@ else
 	LDFLAGS = -L ../../ -lmlx -lft -undefined dynamic_lookup
 endif
 
-CFLAGS	:= -Wall -Wextra -fPIC $(INCLUDES)
+CFLAGS	:= -Wall -Wextra -Werror -fPIC $(INCLUDES)
 
 %.o : %.c
 	@echo CC $<

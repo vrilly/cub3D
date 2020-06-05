@@ -33,7 +33,7 @@ LIBMLX_LIB	:= $(LIBMLX)/libmlx.$(LIBEXT)
 NAME	= cub3D
 VPATH	:= $(SRC_DIR)
 
-CFLAGS	:= -g -Wall -Wextra -I $(INC_DIR) -I $(LIBFT)/out -I $(LIBMLX)
+CFLAGS	:= -Wall -Wextra -Werror -I $(INC_DIR) -I $(LIBFT)/out -I $(LIBMLX)
 
 LDFLAGS	:= $(LDFLAGS) -L . -L $(LIBMLX) -lftprintf -lft -lmlx -lm \
 		   -Wl,-rpath,.
