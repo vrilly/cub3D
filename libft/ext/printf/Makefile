@@ -24,7 +24,7 @@ endif
 
 VPATH	:= $(SRC_DIR)
 
-CFLAGS	:= -c -Wall -Wextra -Werror -fPIC -I $(INC_DIR)
+CFLAGS	:= -c -Wall -Wextra -Werror -O3 -fPIC -I $(INC_DIR)
 
 S_PRINTF	:=  printf.c parse_flag.c ctable.c nconv.c printer.c \
 				string_printer.c stringbuilder.c

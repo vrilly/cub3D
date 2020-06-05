@@ -27,7 +27,7 @@ endif
 
 VPATH := $(SRC_DIR)
 
-CFLAGS		:= -Wall -Wextra -Werror -fPIC -I $(INC_DIR)
+CFLAGS		:= -Wall -Wextra -Werror -O3 -fPIC -I $(INC_DIR)
 ifeq ($(DEBUG), 1)
 	CFLAGS	:= $(CFLAGS) -g
 endif
