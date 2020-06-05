@@ -44,7 +44,7 @@ typedef struct	s_entity
 typedef struct	s_pluginstate
 {
 	t_entitytype	custom_entities[4];
-	t_entity		entities[64];
+	t_entity		entities[128];
 
 	int				player_hp;
 	int				num_entities;

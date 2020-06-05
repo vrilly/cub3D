@@ -72,7 +72,7 @@ typedef struct			s_sprite_engine
 	t_sprite	**sprites;
 
 	int			num_sprites;
-	int			sprite_order[64];
+	int			sprite_order[128];
 }						t_sprite_engine;
 
 typedef struct s_game	t_game;

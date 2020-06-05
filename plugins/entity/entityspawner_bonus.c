@@ -17,6 +17,8 @@ static t_sprite	*inject_sprite(t_game *state, int x, int y, t_texture *tex)
 	t_sprite_engine	*engine;
 
 	engine = &state->spr;
+	if (engine->num_sprites >= 128)
+		return (NULL);
 	engine->sprites[engine->num_sprites] = ft_calloc(1, sizeof(t_sprite));
 	if (!engine->sprites[engine->num_sprites])
 		return (NULL);
@@ -34,6 +36,8 @@ int				spawn_entity(t_game *state, char c,
 	t_entity		*entity;
 	t_sprite		*spr;
 
+	if (ps->num_entities >= 128)
+		return (0);
 	et = &ps->custom_entities[c - 'A'];
 	if (et->type == EMPTY_SLOT)
 		return (0);

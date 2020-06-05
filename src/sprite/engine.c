@@ -15,7 +15,7 @@
 void		init_sprite_engine(t_game *state, t_map *map)
 {
 	state->spr.zbuffer = ft_calloc(sizeof(double), (size_t)map->x_res);
-	state->spr.sprites = ft_calloc(sizeof(t_sprite *), 64);
+	state->spr.sprites = ft_calloc(sizeof(t_sprite *), 128);
 	if (!state->spr.zbuffer || !state->spr.sprites)
 		safe_exit(state, -1, "malloc fail");
 }
@@ -25,6 +25,8 @@ void		add_sprite(t_game *state, double x, double y)
 	t_sprite_engine	*engine;
 
 	engine = &state->spr;
+	if (engine->num_sprites >= 128)
+		return ;
 	engine->sprites[engine->num_sprites] = ft_calloc(1, sizeof(t_sprite));
 	if (!engine->sprites[engine->num_sprites])
 		safe_exit(state, -1, "malloc fail");

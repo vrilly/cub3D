@@ -43,7 +43,7 @@ int				spawn_hook(t_game *state, char c, t_coordinate coord,
 		return (0);
 	if (!spawn_entity(state, c, coord, ps))
 	{
-		ft_printf("[WARN] Tried to use uninitialized entity\n");
+		ft_printf("[WARN] Tried to use uninitialized entity or overload\n");
 		ft_printf("[WARN] slot: %c x: %d y: %d\n", c, coord.split_int.x,
 				coord.split_int.y);
 	}
