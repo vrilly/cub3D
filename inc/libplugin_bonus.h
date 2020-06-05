@@ -22,6 +22,7 @@
 
 void	tex_memcpy(void *dst, void *src, size_t n);
 int		draw_tex(t_game *state, t_texture *tex, int x, int y);
-int		load_texture_lplugin(t_game *state, char *arg, t_texture *dst, void *mlx);
+int		load_texture_lplugin(t_game *state, char *arg, t_texture *dst,
+		void *mlx);
 
 #endif

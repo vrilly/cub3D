@@ -27,12 +27,14 @@ typedef struct			s_plugininfo
 	char	*name;
 }						t_plugininfo;
 
-typedef union			u_coordinate {
-	u_int32_t	coordinate;
-	struct {
-		int16_t	x;
-		int16_t y;
-	}			split_int;
+typedef union			u_coordinate
+{
+	u_int32_t			coordinate;
+	struct
+	{
+		int16_t			x;
+		int16_t			y;
+	}					split_int;
 }						t_coordinate;
 
 /*
