@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   hud_bonus.h                                        :+:    :+:            */
+/*   fps_bonus.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
@@ -10,24 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUD_BONUS_H
-# define HUD_BONUS_H
-# include <time.h>
-# include "libplugin_bonus.h"
+#include "hud_bonus.h"
 
-# define COLOR_OOB		0x00666666
-# define COLOR_EMPTY	0x00000000
-# define COLOR_WALL		0x00FFFFFF
-# define COLOR_ITEM		0x00FF0000
-
-typedef struct	s_pluginstate
+int	get_fps(t_pluginstate *ps)
 {
-	t_texture	*fb;
-	int			enabled;
-	clock_t		fps_timer;
-}				t_pluginstate;
+	clock_t	newtime;
+	clock_t	deltatime;
 
-int				get_fps(t_pluginstate *ps);
-void			update(t_game *map, t_texture *fb);
-
-#endif
+	newtime = clock();
+	deltatime = newtime - ps->fps_timer;
+	ps->fps_timer = newtime;
+	if (deltatime > 0)
+		return ((int)(CLOCKS_PER_SEC / deltatime));
+	return (0);
+}

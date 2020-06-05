@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "hud_bonus.h"
+#include "font_bonus.h"
 
 t_plugininfo	g_plugininfo = {
 	.name = "Heads-up display"
@@ -54,8 +55,19 @@ int				update_hook(t_game *state, t_pluginstate *ps)
 
 int				frame_hook(t_game *state, t_pluginstate *ps)
 {
+	char	str[16];
+	int		fps;
+
 	if (!ps->enabled)
 		return (1);
 	draw_tex(state, ps->fb, state->current_map->x_res - 90, 0);
+	ft_snprintf(str, 16, "sprites %d", state->spr.num_sprites);
+	draw_string(state, str, state->current_map->x_res - 90, 90);
+	ft_snprintf(str, 16, "x %d y %d", (int)state->vec.pos_x,
+			(int)state->vec.pos_y);
+	draw_string(state, str, state->current_map->x_res - 90, 100);
+	fps = get_fps(ps);
+	ft_snprintf(str, 16, "fps %d", fps);
+	draw_string(state, str, state->current_map->x_res - 90, 110);
 	return (1);
 }

@@ -14,7 +14,7 @@ CUB3D_BASE_PATH = ../../
 INCLUDES		:=	-I $(CUB3D_BASE_PATH)/inc -I $(CUB3D_BASE_PATH)/libft/out \
 					-I $(CUB3D_BASE_PATH)/libmlx -I ../fontrenderer
 
-SRCS	= hud_bonus.c update_bonus.c
+SRCS	= hud_bonus.c update_bonus.c fps_bonus.c
 OBJS	:= $(SRCS:.c=.o)
 
 TARGET	:= $(shell uname -s)
