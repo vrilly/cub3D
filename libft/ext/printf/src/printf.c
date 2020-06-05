@@ -34,3 +34,14 @@ int		ft_printf(const char *fmt, ...)
 	va_end(args);
 	return (ret);
 }
+
+int		ft_snprintf(char *s, size_t n, const char *fmt, ...)
+{
+	va_list	args;
+	int		ret;
+
+	va_start(args, fmt);
+	ret = write_str(s, (int)n, fmt, args);
+	va_end(args);
+	return (ret);
+}

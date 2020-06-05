@@ -26,7 +26,8 @@ VPATH	:= $(SRC_DIR)
 
 CFLAGS	:= -c -Wall -Wextra -Werror -fPIC -I $(INC_DIR)
 
-S_PRINTF	:= printf.c parse_flag.c ctable.c nconv.c printer.c
+S_PRINTF	:=  printf.c parse_flag.c ctable.c nconv.c printer.c \
+				string_printer.c stringbuilder.c
 S_CONV		:= p_sign.c p_str.c p_int.c p_char.c p_uint.c p_ptr.c p_hex.c
 S_FMT		:= prefix_str.c pad_str.c strupper.c field_width.c
 S_UTILS		:= $(addprefix utils_, bzero.c calloc.c ft_str_is.c \
