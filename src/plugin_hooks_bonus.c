@@ -17,6 +17,8 @@ int		execute_map_hook(t_game *state, char *prefix, char *arg)
 	t_pluginlist	*list;
 	int				ret;
 
+	if (!ft_isalpha(*prefix))
+		safe_exit(state, MAP_READ_FAIL, "Invalid element.");
 	if (state->plugins != NULL)
 	{
 		list = state->plugins;
