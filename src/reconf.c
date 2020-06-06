@@ -13,13 +13,15 @@
 #include "cub3d.h"
 
 t_config	g_newcfg;
-t_reconf	g_reconf[7] = {
+t_reconf	g_reconf[9] = {
 	{&g_newcfg.k_w, "Forwards"},
 	{&g_newcfg.k_s, "Backwards"},
 	{&g_newcfg.k_a, "Strafe left"},
 	{&g_newcfg.k_d, "Strafe right"},
 	{&g_newcfg.k_left, "Rotate left"},
 	{&g_newcfg.k_right, "Rotate right"},
+	{&g_newcfg.k_prtscr, "Screenshot"},
+	{&g_newcfg.k_esc, "Quit game"},
 	{NULL, NULL}
 };
 int			g_rc_pos = 0;

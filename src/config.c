@@ -39,8 +39,6 @@ void		load_default_config(t_config *config)
 	int	ext_cfg;
 
 	ext_cfg = load_config(config);
-	config->k_esc = 53;
-	config->k_prtscr = 105;
 	config->mov_speed = 0.125;
 	config->cam_speed = 0.0418;
 	if (ext_cfg)
@@ -51,4 +49,6 @@ void		load_default_config(t_config *config)
 	config->k_d = 2;
 	config->k_left = 123;
 	config->k_right = 124;
+	config->k_esc = 53;
+	config->k_prtscr = 105;
 }
