@@ -49,3 +49,9 @@ int				spawn_hook(t_game *state, char c, t_coordinate coord,
 	}
 	return (1);
 }
+
+int				frame_hook(t_game *state, t_pluginstate *ps)
+{
+	draw_player_lifebar(state, ps->player_hp);
+	return (1);
+}

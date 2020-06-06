@@ -14,6 +14,12 @@
 # define ENTITY_BONUS_H
 # include "libplugin_bonus.h"
 
+# define LIFEBAR_WIDTH		100
+# define LIFEBAR_HEIGHT		16
+# define LB_COLOR_EMPTY		0xFFFF0000
+# define LB_COLOR_FULL		0xFF00FF00
+# define LB_COLOR_BORDER	0xFF000000
+
 typedef enum	e_type
 {
 	EMPTY_SLOT,
@@ -49,6 +55,8 @@ typedef struct	s_pluginstate
 	int				player_hp;
 	int				num_entities;
 }				t_pluginstate;
+
+void			draw_player_lifebar(t_game *state, int player_hp);
 
 int				define_player_entity(t_pluginstate *ps, char *arg);
 int				define_entity(t_game *state, t_pluginstate *ps, char *arg);

@@ -15,7 +15,7 @@ C 239,238,143
 
 DE 0 Ghost 0 100 res/spr_tex_a.xpm
 DE 1 Coin 0 100 res/a coin.xpm
-HP 100
+HP 75
 
 1111111111
 1000000001

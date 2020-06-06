@@ -12,9 +12,9 @@
 
 CUB3D_BASE_PATH = ../../
 INCLUDES		:=	-I $(CUB3D_BASE_PATH)/inc -I $(CUB3D_BASE_PATH)/libft/out \
-					-I $(CUB3D_BASE_PATH)/libmlx
+					-I $(CUB3D_BASE_PATH)/libmlx -I ../fontrenderer
 
-SRCS	= entity_bonus.c entitytype_bonus.c entityspawner_bonus.c
+SRCS	= entity_bonus.c entitytype_bonus.c entityspawner_bonus.c lifebar_bonus.c
 OBJS	:= $(SRCS:.c=.o)
 
 TARGET	:= $(shell uname -s)

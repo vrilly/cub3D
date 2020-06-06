@@ -53,5 +53,5 @@ int			define_entity(t_game *state, t_pluginstate *ps, char *arg)
 int			define_player_entity(t_pluginstate *ps, char *arg)
 {
 	ps->player_hp = ft_atoi(arg);
-	return (ps->player_hp > 0);
+	return (ps->player_hp > 0 && ps->player_hp <= 100);
 }
