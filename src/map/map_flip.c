@@ -30,10 +30,10 @@ static void	set_spawn(int direction, unsigned int cl, int x, t_game *map)
 	}
 	if (direction == 'E' || direction == 'W')
 	{
-		map->vec.dir_x = (direction == 'W') ? -1 : 1;
+		map->vec.dir_x = (direction == 'E') ? -1 : 1;
 		map->vec.dir_y = 0;
 		map->vec.plane_x = 0;
-		map->vec.plane_y = (direction == 'W') ? 0.66 : -0.66;
+		map->vec.plane_y = (direction == 'E') ? 0.66 : -0.66;
 	}
 }
 
