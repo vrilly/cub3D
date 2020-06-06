@@ -29,9 +29,9 @@ int				setup(t_pluginstate **ps_ptr)
 int				map_hook(t_game *state, char *prefix, char *arg,
 		t_pluginstate *ps)
 {
-	if (ft_strncmp(prefix, "DE", 3) == 0)
+	if (ft_strncmp(prefix, "DE ", 3) == 0)
 		return (define_entity(state, ps, arg));
-	if (ft_strncmp(prefix, "HP", 3) == 0)
+	if (ft_strncmp(prefix, "HP ", 3) == 0)
 		return (define_player_entity(ps, arg));
 	return (0);
 }
