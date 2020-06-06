@@ -27,7 +27,7 @@ static int	verify_file(char *arg, t_game *state)
 	}
 	if (read(fd, magic, 9) != 9)
 		ret = 0;
-	if (ft_strncmp(magic, "/* XPM */", 9) != 0)
+	if (ft_strncmp(magic, "/* XPM */", 10) != 0)
 		ret = 0;
 	if (!ret)
 		state->error = "Texture is not a valid XPM file";

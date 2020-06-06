@@ -36,8 +36,8 @@ static int				check_filename_valid(char *filename)
 	if (filename_len < 4)
 		return (0);
 	filename += filename_len - 4;
-	if (ft_strncmp(filename, ".cub", 4) == 0 ||
-	ft_strncmp(filename, ".CUB", 4) == 0)
+	if (ft_strncmp(filename, ".cub", 5) == 0 ||
+	ft_strncmp(filename, ".CUB", 5) == 0)
 		return (1);
 	return (0);
 }
@@ -80,9 +80,9 @@ static enum e_cub_error	parse_args(int argc, char **argv, t_game *state)
 	{
 		if (ft_strncmp(argv[arg_pos], "--", 2) != 0)
 			arg_pos++;
-		if (ft_strncmp(argv[arg_pos], "--save", 6) == 0)
+		if (ft_strncmp(argv[arg_pos], "--save", 7) == 0)
 			state->screenshot = OFFSCREEN_SCREENSHOT;
-		else if (ft_strncmp(argv[arg_pos], "--nosync", 15) == 0)
+		else if (ft_strncmp(argv[arg_pos], "--nosync", 9) == 0)
 		{
 			state->config.mov_speed /= 2;
 			state->config.cam_speed /= 2;
@@ -104,7 +104,7 @@ int						main(int argc, char **argv)
 	ft_bzero(&state, sizeof(t_game));
 	ftlog_init(1);
 	load_default_config(&state.config);
-	if (argc > 1 && ft_strncmp(argv[1], "--conf", 6) == 0)
+	if (argc > 1 && ft_strncmp(argv[1], "--conf", 7) == 0)
 		return (start_config_wizard(&state));
 	ret = parse_args(argc, argv, &state);
 	if (ret != NO_ERROR)

@@ -47,7 +47,7 @@ t_mplookup			*find_func(char *prefix)
 	while (i < MPLOOKUP_SIZE)
 	{
 		if (ft_strncmp(prefix, g_mplookup[i].prefix,
-				ft_strlen(g_mplookup[i].prefix)) == 0)
+				ft_strlen(g_mplookup[i].prefix) + 1) == 0)
 		{
 			if (g_mplookup[i].used == 0)
 				g_mplookup[i].used = 1;
