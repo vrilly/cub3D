@@ -42,5 +42,9 @@ int			load_texture(t_game *state, char *arg, t_texture *dst, void *mlx)
 	dst->img_ptr = mlx_xpm_file_to_image(mlx, arg, &dst->width, &dst->height);
 	dst->data_ptr = mlx_get_data_addr(dst->img_ptr, &dst->bpp, &dst->size_line,
 			&dst->endian);
-	return (dst->img_ptr != NULL && dst->data_ptr != NULL);
+	if (dst->img_ptr == NULL || dst->data_ptr == NULL)
+		return ((int)set_error(state, "texture load failure"));
+	if (16384 % dst->height || 16384 % dst->width)
+		return ((int)set_error(state, "texture is not a power of 2"));
+	return (1);
 }

@@ -14,6 +14,13 @@
 
 void					safe_exit(t_game *state, int ret, char *error)
 {
+	char	errstr[256];
+
+	if (state->error)
+	{
+		ft_snprintf(errstr, 256, "state->error: %s", state->error);
+		ftlog(LOG_ERROR, errstr);
+	}
 	if (state->window)
 		destroy_renderer_window(state);
 	if (error)

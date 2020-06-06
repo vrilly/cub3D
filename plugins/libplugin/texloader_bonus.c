@@ -12,6 +12,13 @@
 
 #include "libplugin_bonus.h"
 
+static void	*set_error_lplugin(t_game *state, char *err)
+{
+	if (!state->error || !*(state->error))
+		state->error = err;
+	return (0);
+}
+
 static int	verify_file(char *arg, t_game *state)
 {
 	int		fd;
@@ -43,5 +50,9 @@ int			load_texture_lplugin(t_game *state, char *arg, t_texture *dst,
 	dst->img_ptr = mlx_xpm_file_to_image(mlx, arg, &dst->width, &dst->height);
 	dst->data_ptr = mlx_get_data_addr(dst->img_ptr, &dst->bpp, &dst->size_line,
 			&dst->endian);
-	return (dst->img_ptr != NULL && dst->data_ptr != NULL);
+	if (dst->img_ptr == NULL || dst->data_ptr == NULL)
+		return ((int)set_error_lplugin(state, "texture load failure"));
+	if (16384 % dst->height || 16384 % dst->width)
+		return ((int)set_error_lplugin(state, "texture is not a power of 2"));
+	return (1);
 }
