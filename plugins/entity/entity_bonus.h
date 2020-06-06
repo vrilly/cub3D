@@ -16,9 +16,9 @@
 
 # define LIFEBAR_WIDTH		100
 # define LIFEBAR_HEIGHT		16
-# define LB_COLOR_EMPTY		0xFFFF0000
-# define LB_COLOR_FULL		0xFF00FF00
-# define LB_COLOR_BORDER	0xFF000000
+# define LB_COLOR_EMPTY		0x00FF0000
+# define LB_COLOR_FULL		0x0000FF00
+# define LB_COLOR_BORDER	0x00000000
 
 typedef enum	e_type
 {
