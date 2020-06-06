@@ -71,26 +71,21 @@ static enum e_cub_error	game_init(t_game *state)
 
 static enum e_cub_error	parse_args(int argc, char **argv, t_game *state)
 {
-	int	arg_pos;
-
-	arg_pos = 1;
 	if (argc < 2)
 		return (ARGS_INCOMPLETE);
-	if (argc == 3)
+	state->map_path = argv[1];
+	if (argc > 2)
 	{
-		if (ft_strncmp(argv[arg_pos], "--", 2) != 0)
-			arg_pos++;
-		if (ft_strncmp(argv[arg_pos], "--save", 7) == 0)
+		if (ft_strncmp(argv[2], "--save", 7) == 0)
 			state->screenshot = OFFSCREEN_SCREENSHOT;
-		else if (ft_strncmp(argv[arg_pos], "--nosync", 9) == 0)
+		else if (ft_strncmp(argv[2], "--nosync", 9) == 0)
 		{
-			state->config.mov_speed /= 2;
-			state->config.cam_speed /= 2;
+			state->config.mov_speed /= 4;
+			state->config.cam_speed /= 4;
 		}
 		else
 			return (ARGS_INVALID);
 	}
-	state->map_path = argv[(arg_pos == 1) ? argc - 1 : argc - 2];
 	if (!check_filename_valid(state->map_path))
 		return (INVALID_FILENAME);
 	return (NO_ERROR);
