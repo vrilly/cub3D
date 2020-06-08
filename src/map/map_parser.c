@@ -37,16 +37,20 @@ int	map_parse_resolution(char *arg, t_game *state)
 	res = ft_atoi(arg);
 	state->current_map->y_res = res;
 	if (state->current_map->x_res < 1 || state->current_map->y_res < 1)
-		return (0);
+		return ((int)set_error(state, "Resolution invalid."));
 	return (1);
 }
 
 int	map_parse_col_ceiling(char *arg, t_game *state)
 {
-	return (get_color_val(arg, &state->current_map->color_floor));
+	if (!get_color_val(arg, &state->current_map->color_floor))
+		return ((int)set_error(state, "Color invalid."));
+	return (1);
 }
 
 int	map_parse_col_floor(char *arg, t_game *state)
 {
-	return (get_color_val(arg, &state->current_map->color_ceiling));
+	if (!get_color_val(arg, &state->current_map->color_ceiling))
+		return ((int)set_error(state, "Color invalid."));
+	return (1);
 }

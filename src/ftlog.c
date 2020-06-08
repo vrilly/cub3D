@@ -15,7 +15,7 @@
 
 static int	g_logger_enabled = 0;
 const char	*g_log_level_str[3] = { "INFO", "WARN", "ERROR" };
-const char	*g_fmt_str = "[%s] %s\n";
+const char	*g_fmt_str = "[%5s] %s\n";
 
 void	ftlog_init(int logger_enabled)
 {
