@@ -14,6 +14,36 @@ Arguments you can use:
 	--save:		Render screenshot offscreen and save it as bitmap
 	--conf:		Configure keymapping
 
+Custom map keys (bonus plugins):
+	cub3D:
+		.. = Silent map comment
+		.! = Output arg to stdout when map is read
+	entity:
+		DE = Define entity
+			args in order:
+			[0-4] Slot to use for entity
+				Translates to A-D in map elements
+			Name to use
+				Name for entity, max 16 chars
+			[0|1] Collisions enabled
+				Set entity to colliding
+			[0-100] HP
+				HP For entity
+			Texture path
+				Path for entity sprite texture
+		IT = Change entity type to item
+			Disables collisions, once player collides it will alter HP
+			and destroy entity
+			args in order:
+			[0-4] Slot to modify, needs to be defined!
+			[-100 - 100] HP Change on collision
+		HP = Set player HP
+			args in order:
+			[0-100] HP
+				Set player HP
+
+			If not set player damage will be disabled.
+
 Limitations:
 	Max resolution for offscreen rendering is 16384*16384, minilibx can't
 		handle higher due to the hardware limitations
