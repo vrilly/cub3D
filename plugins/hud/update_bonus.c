@@ -38,7 +38,7 @@ static unsigned int	get_tile_color(t_map *map, int x, int y)
 {
 	int	map_tile;
 
-	if (x < 0 || y < 0 || x > (int)map->map_width || y > (int)map->map_height)
+	if (x < 0 || y < 0 || x >= map->map_width || y >= map->map_height)
 		return (COLOR_OOB);
 	map_tile = map->mapdata[y * map->map_width + x];
 	if (map_tile == TILE_EMPTY)

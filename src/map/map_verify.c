@@ -95,12 +95,15 @@ int			verify_map(t_map *map, t_game *state)
 			(size_t)map->map_height * map->map_width * 4);
 	check_resolution(state);
 	if (!(int)state->vec.pos_x || !(int)state->vec.pos_y)
-		return ((int)set_error(state, "Missing spawn location"));
-	if (!map_leaktest(map, mapdata,
+		ret = (int)set_error(state, "Missing spawn location");
+	else
+	{
+		if (!map_leaktest(map, mapdata,
 				(int)state->vec.pos_x, (int)state->vec.pos_y))
-		ret = (int)set_error(state, "Map is not enclosed.");
-	if (!check_mandatory_elems(map))
-		ret = (int)set_error(state, "Mandantory map elements are missing");
+			ret = (int)set_error(state, "Map is not enclosed.");
+		if (!check_mandatory_elems(map))
+			ret = (int)set_error(state, "Mandantory map elements are missing");
+	}
 	free(mapdata);
 	return (ret);
 }

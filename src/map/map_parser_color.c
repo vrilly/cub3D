@@ -40,7 +40,7 @@ static int			atoi_rgbval(int *rgbval, char *line)
 	{
 		ii = 0;
 		if (!arr[i])
-			return (0);
+			return (clean_mem(&arr));
 		while (arr[i][ii] == ' ')
 			ii++;
 		rgbval[i] = ft_atoi(arr[i]);
