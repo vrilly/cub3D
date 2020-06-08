@@ -14,14 +14,10 @@
 
 int	map_parse_comment(char *arg)
 {
-	static int	first_comment = 1;
+	char	infostr[128];
 
-	if (first_comment)
-	{
-		first_comment = 0;
-		ftlog(LOG_INFO, "Map info!");
-	}
-	ftlog(LOG_INFO, arg);
+	ft_snprintf(infostr, 128, "Map info: %s", arg);
+	ftlog(LOG_INFO, infostr);
 	return (1);
 }
 
