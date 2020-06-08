@@ -47,8 +47,8 @@ void	execute_spawn_hook(t_game *state, char c, int x, int y)
 	int				ret;
 	t_coordinate	coord;
 
-	coord.split_int.x = x;
-	coord.split_int.y = y;
+	coord.split_int.x = (int16_t)x;
+	coord.split_int.y = (int16_t)y;
 	if (state->plugins == NULL)
 		return ;
 	list = state->plugins;
