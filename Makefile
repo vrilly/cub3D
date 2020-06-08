@@ -41,9 +41,9 @@ CFLAGS	:= $(CFLAGS) -I /usr/X11/include
 
 S_CUB3D		= cub3d.c config.c hooks.c loop.c ftlog.c cub3d_error.c \
 			  reconf.c
-S_MAP		= map_reader.c map_reader_seq.c map_texloader.c map_color.c \
+S_MAP		= map_reader.c map_parser.c map_texloader.c map_parser_color.c \
 			  map_verify.c map_fd.c map_flip.c map_buffer.c \
-			  map_lookup.c map_reader_tex.c
+			  map_lookup.c map_parser_textures.c
 S_GFX		= window.c renderer.c render_calc.c frame.c camera.c background.c \
 			  movement.c
 S_SPRITE	= engine.c spr_sort.c spr_cast.c
