@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-void	precalc(t_game *state, int x)
+void	calc_params(t_game *state, int x)
 {
 	state->rcp.camera_x = 2 * x / (double)state->current_map->x_res - 1;
 	state->rcp.rc_dir_x = state->vec.dir_x +
@@ -25,7 +25,7 @@ void	precalc(t_game *state, int x)
 	state->rcp.d_dist_y = fabs(1 / state->rcp.rc_dir_y);
 }
 
-void	calc_step(t_game *state)
+void	calc_raycaster_step(t_game *state)
 {
 	if (state->rcp.rc_dir_x < 0)
 	{
@@ -79,7 +79,7 @@ void	calc_dda(t_game *state)
 	}
 }
 
-void	prerendercalc(t_game *state)
+void	calc_vert_line(t_game *state)
 {
 	if (state->rcp.side == 0)
 		state->rcp.walldist =
@@ -101,7 +101,7 @@ void	prerendercalc(t_game *state)
 		state->vis.line_end = state->current_map->y_res - 1;
 }
 
-void	wallx_calc(t_game *state)
+void	calc_wallx(t_game *state)
 {
 	if (state->rcp.side == 0)
 	{

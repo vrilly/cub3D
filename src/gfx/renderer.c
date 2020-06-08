@@ -48,11 +48,11 @@ int			render_frame(t_game *state)
 	start_frame(state);
 	while (x < state->current_map->x_res)
 	{
-		precalc(state, x);
-		calc_step(state);
+		calc_params(state, x);
+		calc_raycaster_step(state);
 		calc_dda(state);
-		prerendercalc(state);
-		wallx_calc(state);
+		calc_vert_line(state);
+		calc_wallx(state);
 		vert_line(x, state, &state->vis);
 		state->spr.zbuffer[x] = state->rcp.walldist;
 		x++;

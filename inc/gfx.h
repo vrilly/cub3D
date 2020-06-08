@@ -78,11 +78,11 @@ typedef struct			s_sprite_engine
 typedef struct s_game	t_game;
 typedef struct s_map	t_map;
 
-void					precalc(t_game *state, int x);
-void					calc_step(t_game *state);
+void					calc_params(t_game *state, int x);
+void					calc_raycaster_step(t_game *state);
 void					calc_dda(t_game *state);
-void					prerendercalc(t_game *state);
-void					wallx_calc(t_game *state);
+void					calc_vert_line(t_game *state);
+void					calc_wallx(t_game *state);
 
 void					init_sprite_engine(t_game *state, t_map *map);
 void					sort_sprites(t_sprite_engine *eng);
