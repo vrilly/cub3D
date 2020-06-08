@@ -15,14 +15,14 @@
 static int	map_leaktest(t_map *map, enum e_map_tile_type *mapdata,
 		int pos_x, int pos_y)
 {
-	size_t	offset;
+	int	offset;
 
-	offset = (pos_y * map->map_width) + pos_x;
+	offset = pos_y * map->map_width + pos_x;
 	if (mapdata[offset] == TILE_WALL)
 		return (1);
 	if (pos_x <= 0 || pos_y <= 0 ||
-			pos_x >= (int)map->map_width - 1 ||
-			pos_y >= (int)map->map_height - 1)
+			pos_x >= map->map_width - 1 ||
+			pos_y >= map->map_height - 1)
 	{
 		ft_fprintf(2, "Map not enclosed x:%d y:%d\n", pos_x, pos_y);
 		return (0);
@@ -88,10 +88,11 @@ int			verify_map(t_map *map, t_game *state)
 	int						ret;
 
 	ret = 1;
-	mapdata = malloc(map->map_height * map->map_width * 4);
+	mapdata = malloc((size_t)map->map_height * map->map_width * 4);
 	if (!mapdata)
 		safe_exit(state, -1, "malloc fail");
-	ft_memcpy(mapdata, map->mapdata, map->map_height * map->map_width * 4);
+	ft_memcpy(mapdata, map->mapdata,
+			(size_t)map->map_height * map->map_width * 4);
 	check_resolution(state);
 	if (!(int)state->vec.pos_x || !(int)state->vec.pos_y)
 		return ((int)set_error(state, "Missing spawn location"));

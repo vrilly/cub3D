@@ -27,16 +27,16 @@ static int			return_true(void)
 
 static t_mplookup	g_mplookup[MPLOOKUP_SIZE] =
 {
-	{"R ", &map_reader_seq_resolution, 0},
-	{"NO ", &map_reader_seq_tno, 0},
-	{"SO ", &map_reader_seq_tso, 0},
-	{"WE ", &map_reader_seq_twe, 0},
-	{"EA ", &map_reader_seq_tea, 0},
-	{"S ", &map_reader_seq_ts, 0},
-	{"F ", &map_reader_seq_floor_colour, 0},
-	{"C ", &map_reader_seq_ceiling_colour, 0},
-	{".! ", (int (*)(char*, t_game*))&map_comment, -1},
-	{".. ", (int (*)(char*, t_game*))&return_true, -1}
+	{"R", &map_parse_resolution, 0},
+	{"NO", &map_parse_tex_no, 0},
+	{"SO", &map_parse_tex_so, 0},
+	{"WE", &map_parse_tex_we, 0},
+	{"EA", &map_parse_tex_ea, 0},
+	{"S", &map_parse_tex_sprite, 0},
+	{"F", &map_parse_col_ceiling, 0},
+	{"C", &map_parse_col_floor, 0},
+	{".!", (int(*)(char*, t_game*))&map_parse_comment, -1},
+	{"..", (int(*)(char*, t_game*))&return_true, -1}
 };
 
 t_mplookup			*find_func(char *prefix)

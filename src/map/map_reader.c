@@ -50,7 +50,7 @@ static int			read_mapdata(t_fdstream *fs, char *first_line,
 		}
 	}
 	state->current_map->mapdata = mbuf_finalize(buff,
-			(int*)&state->current_map->map_height);
+			&state->current_map->map_height);
 	if (!state->current_map->mapdata)
 		safe_exit(state, -1, "malloc fail");
 	state->current_map->map_width = buff->line_size_max;

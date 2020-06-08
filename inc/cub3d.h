@@ -68,8 +68,8 @@ typedef struct	s_map
 	t_texture				texture_sprite;
 
 	enum e_map_tile_type	*mapdata;
-	unsigned int			map_width;
-	unsigned int			map_height;
+	int						map_width;
+	int						map_height;
 
 	unsigned int			color_floor;
 	unsigned int			color_ceiling;

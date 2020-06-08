@@ -12,7 +12,7 @@
 
 #include "map.h"
 
-int	map_comment(char *arg)
+int	map_parse_comment(char *arg)
 {
 	static int	first_comment = 1;
 
@@ -25,7 +25,7 @@ int	map_comment(char *arg)
 	return (1);
 }
 
-int	map_reader_seq_resolution(char *arg, t_game *state)
+int	map_parse_resolution(char *arg, t_game *state)
 {
 	int	res;
 
@@ -41,12 +41,12 @@ int	map_reader_seq_resolution(char *arg, t_game *state)
 	return (1);
 }
 
-int	map_reader_seq_floor_colour(char *arg, t_game *state)
+int	map_parse_col_ceiling(char *arg, t_game *state)
 {
 	return (get_color_val(arg, &state->current_map->color_floor));
 }
 
-int	map_reader_seq_ceiling_colour(char *arg, t_game *state)
+int	map_parse_col_floor(char *arg, t_game *state)
 {
 	return (get_color_val(arg, &state->current_map->color_ceiling));
 }

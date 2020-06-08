@@ -15,8 +15,8 @@
 static void				copy_line(t_mapbuffer *node,
 		enum e_map_tile_type *mapdata)
 {
-	unsigned int	i;
-	char			c;
+	int		i;
+	char	c;
 
 	i = 0;
 	while (i < node->str_size)
@@ -31,7 +31,7 @@ static void				copy_line(t_mapbuffer *node,
 	}
 }
 
-t_mapbuffer				*mbuf_create(char *line, unsigned int line_size)
+t_mapbuffer				*mbuf_create(char *line, int line_size)
 {
 	t_mapbuffer	*buff;
 
@@ -57,9 +57,9 @@ void					mbuf_append(t_mapbuffer *root, t_mapbuffer *new)
 
 enum e_map_tile_type	*mbuf_finalize(t_mapbuffer *root, int *map_height)
 {
-	unsigned int			line_size;
-	unsigned int			lines;
-	unsigned int			i;
+	int						line_size;
+	int						lines;
+	int						i;
 	enum e_map_tile_type	*mapdata;
 
 	line_size = root->line_size_max;

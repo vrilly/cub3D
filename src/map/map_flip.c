@@ -17,7 +17,7 @@ static int	is_pdir(int c)
 	return ((c == 'N' || c == 'S' || c == 'E' || c == 'W'));
 }
 
-static void	set_spawn(int direction, unsigned int cl, int x, t_game *map)
+static void	set_spawn(int direction, int cl, int x, t_game *map)
 {
 	map->vec.pos_x = x + 0.5;
 	map->vec.pos_y = cl + 0.5;
@@ -39,7 +39,7 @@ static void	set_spawn(int direction, unsigned int cl, int x, t_game *map)
 
 static void	write_line(int x, int *dst, t_map *map, t_game *state)
 {
-	unsigned int	i;
+	int				i;
 	int				*src;
 	static int		spawnset = 0;
 
@@ -59,14 +59,15 @@ static void	write_line(int x, int *dst, t_map *map, t_game *state)
 			add_sprite(state, x, i);
 		else if (*(dst + (map->map_width * i)) && *(dst + (map->map_width * i))
 				!= 1)
-			execute_spawn_hook(state, *(dst + (map->map_width * i)), x, (int)i);
+			execute_spawn_hook(state,
+					(char)*(dst + (map->map_width * i)), x, i);
 		i++;
 	}
 }
 
 int			map_flip(t_map *map, t_game *state)
 {
-	unsigned int			x;
+	int						x;
 	enum e_map_tile_type	*new;
 
 	x = 0;
