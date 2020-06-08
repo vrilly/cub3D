@@ -15,8 +15,8 @@ C 239,238,143
 
 DE 0 Ghost 0 100 res/spr_tex_a.xpm
 DE 1 Coin 0 100 res/a coin.xpm
-DE 2 Mask 0 100 res/angry_mask.xpm
-DE 3 Vampire 0 100 res/green_vampire.xpm
+DE 2 Mask 1 100 res/angry_mask.xpm
+DE 3 Vampire 1 100 res/green_vampire.xpm
 HP 75
 
 111111111111111111111111111111111111111111111111111111111111111111111

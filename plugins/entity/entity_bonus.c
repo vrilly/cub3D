@@ -55,3 +55,15 @@ int				frame_hook(t_game *state, t_pluginstate *ps)
 	draw_player_lifebar(state, ps->player_hp);
 	return (1);
 }
+
+int				check_collision(t_game *state, t_pluginstate *ps, int x, int y)
+{
+	int	tile;
+
+	tile = state->current_map->mapdata[y * state->current_map->map_width + x];
+	if (tile >= 'A' && tile <= 'D')
+		tile -= 'A';
+	else
+		return (0);
+	return (ps->custom_entities[tile].collisions_enabled);
+}
