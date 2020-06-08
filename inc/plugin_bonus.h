@@ -57,6 +57,8 @@ typedef struct			s_plugin
 			void *pl_state);
 	int				(*update_hook)(t_game *state, void *pl_state);
 	int				(*pregame_hook)(t_game *state, void *pl_state);
+	int				(*check_collision)(t_game *state, void *pl_state,
+			int x, int y);
 }						t_plugin;
 
 /*
@@ -88,5 +90,6 @@ int						execute_map_hook(t_game *state, char *prefix,
 		char *arg);
 void					execute_spawn_hook(t_game *state, char c, int x,
 		int y);
+int						plugin_check_collision(t_game *state, int x, int y);
 
 #endif

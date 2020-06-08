@@ -21,7 +21,8 @@ void	forwards(t_game *state)
 	ny = state->vec.pos_y + state->vec.dir_y * state->config.mov_speed;
 	if (state->current_map->mapdata[((int)ny *
 		state->current_map->map_width) + (int)nx]
-			== TILE_WALL)
+			== TILE_WALL ||
+		plugin_check_collision(state, (int)nx, (int)ny))
 		return ;
 	state->vec.pos_x = nx;
 	state->vec.pos_y = ny;
@@ -36,7 +37,8 @@ void	backwards(t_game *state)
 	ny = state->vec.pos_y - state->vec.dir_y * state->config.mov_speed;
 	if (state->current_map->mapdata[((int)ny *
 		state->current_map->map_width) + (int)nx]
-			== TILE_WALL)
+			== TILE_WALL ||
+		plugin_check_collision(state, (int)nx, (int)ny))
 		return ;
 	state->vec.pos_x = nx;
 	state->vec.pos_y = ny;
@@ -51,7 +53,8 @@ void	left(t_game *state)
 	ny = state->vec.pos_y - state->vec.plane_y * state->config.mov_speed;
 	if (state->current_map->mapdata[((int)ny *
 		state->current_map->map_width) + (int)nx]
-			== TILE_WALL)
+			== TILE_WALL ||
+		plugin_check_collision(state, (int)nx, (int)ny))
 		return ;
 	state->vec.pos_x = nx;
 	state->vec.pos_y = ny;
@@ -66,7 +69,8 @@ void	right(t_game *state)
 	ny = state->vec.pos_y + state->vec.plane_y * state->config.mov_speed;
 	if (state->current_map->mapdata[((int)ny *
 		state->current_map->map_width) + (int)nx]
-			== TILE_WALL)
+			== TILE_WALL ||
+		plugin_check_collision(state, (int)nx, (int)ny))
 		return ;
 	state->vec.pos_x = nx;
 	state->vec.pos_y = ny;

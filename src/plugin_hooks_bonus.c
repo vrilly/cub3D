@@ -105,3 +105,23 @@ void	execute_pregame_hook(t_game *state)
 		list = list->next;
 	}
 }
+
+int		plugin_check_collision(t_game *state, int x, int y)
+{
+	int				colliding;
+	t_pluginlist	*list;
+
+	colliding = 0;
+	if (state->plugins == NULL)
+		return (colliding);
+	list = state->plugins;
+	while (list)
+	{
+		if (list->plugin->check_collision != NULL)
+			if ((*list->plugin->check_collision)(state, list->plugin->pl_state,
+					x, y))
+				colliding = 1;
+		list = list->next;
+	}
+	return (colliding);
+}

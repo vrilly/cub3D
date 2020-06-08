@@ -49,6 +49,7 @@ static t_plugin		*load_plugin(char *path)
 	plugin->spawn_hook = dlsym(plugin->dl_handle, "spawn_hook");
 	plugin->pregame_hook = dlsym(plugin->dl_handle, "pregame_hook");
 	plugin->update_hook = dlsym(plugin->dl_handle, "update_hook");
+	plugin->check_collision = dlsym(plugin->dl_handle, "check_collision");
 	execute_setup_hook(plugin);
 	ft_printf("[INFO] Loaded plugin: %s\n", plugin->info->name);
 	return (plugin);
