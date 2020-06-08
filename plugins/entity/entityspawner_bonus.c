@@ -44,10 +44,7 @@ int				spawn_entity(t_game *state, char c,
 	spr = inject_sprite(state, coord.split_int.x, coord.split_int.y,
 			et->texture);
 	if (!spr)
-	{
-		ft_fprintf(2, "[ERROR] Critical error in entity plugin.\n");
-		exit(-1);
-	}
+		return (0);
 	entity = &ps->entities[ps->num_entities];
 	entity->health_points = et->initial_hp;
 	entity->type = et;

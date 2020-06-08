@@ -86,7 +86,8 @@ void	execute_frame_hook(t_game *state)
 
 void	execute_pregame_hook(t_game *state)
 {
-	t_pluginlist *list;
+	char			errstr[64];
+	t_pluginlist	*list;
 
 	if (state->plugins == NULL)
 		return ;
@@ -96,8 +97,9 @@ void	execute_pregame_hook(t_game *state)
 		if (list->plugin->pregame_hook != NULL)
 			if (!(*list->plugin->pregame_hook)(state, list->plugin->pl_state))
 			{
-				ft_fprintf(2, "[ERROR] Plugin %s failed to initialize\n",
+				ft_snprintf(errstr, 64, "Plugin %s failed to initialize",
 						list->plugin->info->name);
+				ftlog(LOG_ERROR, errstr);
 				exit(PLUGIN_FAIL);
 			}
 		list = list->next;
