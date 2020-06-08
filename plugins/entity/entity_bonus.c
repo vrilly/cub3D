@@ -31,6 +31,8 @@ int				map_hook(t_game *state, char *prefix, char *arg,
 {
 	if (ft_strncmp(prefix, "DE ", 3) == 0)
 		return (define_entity(state, ps, arg));
+	if (ft_strncmp(prefix, "IT ", 3) == 0)
+		return (define_item(ps, arg));
 	if (ft_strncmp(prefix, "HP ", 3) == 0)
 		return (define_player_entity(ps, arg));
 	return (0);
@@ -52,9 +54,15 @@ int				spawn_hook(t_game *state, char c, t_coordinate coord,
 
 int				frame_hook(t_game *state, t_pluginstate *ps)
 {
+	if (ps->player_hp > 100)
+		ps->player_hp = 100;
 	draw_player_lifebar(state, ps->player_hp);
 	return (1);
 }
+
+/*
+** This is hacky as fuck.
+*/
 
 int				check_collision(t_game *state, t_pluginstate *ps, int x, int y)
 {
@@ -65,5 +73,22 @@ int				check_collision(t_game *state, t_pluginstate *ps, int x, int y)
 		tile -= 'A';
 	else
 		return (0);
+	if (ps->custom_entities[tile].type == ITEM)
+	{
+		if (ps->player_hp != -1)
+		{
+			ps->player_hp += ps->custom_entities[tile].collide_damage;
+			if (ps->player_hp <= 0)
+			{
+				ft_printf("You died. R.I.P.\nPlayer was killed by: %s\n",
+						ps->custom_entities[tile].name);
+				exit(0);
+			}
+		}
+		state->spr.sprites[state->spr.sprite_order[0]]->y_pos = -1;
+		state->current_map->mapdata[y * state->current_map->map_width + x] =
+				TILE_EMPTY;
+		return (0);
+	}
 	return (ps->custom_entities[tile].collisions_enabled);
 }

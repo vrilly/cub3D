@@ -50,6 +50,25 @@ int			define_entity(t_game *state, t_pluginstate *ps, char *arg)
 	return (1);
 }
 
+int			define_item(t_pluginstate *ps, char *arg)
+{
+	t_entitytype	*et;
+	int				slot;
+	int				dmg;
+
+	slot = ft_atoi(arg);
+	arg = ft_strchr(arg, ' ');
+	et = &ps->custom_entities[slot];
+	if (slot > 3 || slot < 0 || !arg || et->type == EMPTY_SLOT)
+		return (-1);
+	dmg = ft_atoi(arg);
+	if (dmg > 100 || dmg < -100)
+		return (-1);
+	et->type = ITEM;
+	et->collide_damage = dmg;
+	return (1);
+}
+
 int			define_player_entity(t_pluginstate *ps, char *arg)
 {
 	ps->player_hp = ft_atoi(arg);

@@ -35,6 +35,7 @@ typedef struct	s_entitytype
 	t_type		type;
 	int			collisions_enabled;
 	int			initial_hp;
+	int			collide_damage;
 }				t_entitytype;
 
 typedef struct	s_entity
@@ -43,8 +44,6 @@ typedef struct	s_entity
 	t_sprite		*sprite;
 
 	int				health_points;
-	void			*ai_hook;
-	void			*ai_parameters;
 }				t_entity;
 
 typedef struct	s_pluginstate
@@ -60,6 +59,7 @@ void			draw_player_lifebar(t_game *state, int player_hp);
 
 int				define_player_entity(t_pluginstate *ps, char *arg);
 int				define_entity(t_game *state, t_pluginstate *ps, char *arg);
+int				define_item(t_pluginstate *ps, char *arg);
 int				spawn_entity(t_game *state, char c, t_coordinate coord,
 		t_pluginstate *ps);
 #endif
